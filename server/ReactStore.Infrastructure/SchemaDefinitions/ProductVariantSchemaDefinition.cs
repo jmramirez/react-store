@@ -4,7 +4,7 @@ using ReactStore.Domain.Entities;
 
 namespace ReactStore.Infrastructure.SchemaDefinitions
 {
-    public class ProductVariantDefinition : IEntityTypeConfiguration<ProductVariant>
+    public class ProductVariantSchemaDefinition : IEntityTypeConfiguration<ProductVariant>
     {
         public void Configure(EntityTypeBuilder<ProductVariant> builder)
         {
