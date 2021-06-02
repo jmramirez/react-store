@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReactStore.API", "server\Re
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReactStore.Domain", "server\ReactStore.Domain\ReactStore.Domain.csproj", "{EE7BEF1F-0B51-410A-886C-7ED273FFFAF3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReactStore.Infrastructure", "server\ReactStore.Infrastructure\ReactStore.Infrastructure.csproj", "{EF38B3B4-3F03-424C-A3CD-76FE6DEBC864}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -46,9 +48,22 @@ Global
 		{EE7BEF1F-0B51-410A-886C-7ED273FFFAF3}.Release|x64.Build.0 = Release|Any CPU
 		{EE7BEF1F-0B51-410A-886C-7ED273FFFAF3}.Release|x86.ActiveCfg = Release|Any CPU
 		{EE7BEF1F-0B51-410A-886C-7ED273FFFAF3}.Release|x86.Build.0 = Release|Any CPU
+		{EF38B3B4-3F03-424C-A3CD-76FE6DEBC864}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EF38B3B4-3F03-424C-A3CD-76FE6DEBC864}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EF38B3B4-3F03-424C-A3CD-76FE6DEBC864}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{EF38B3B4-3F03-424C-A3CD-76FE6DEBC864}.Debug|x64.Build.0 = Debug|Any CPU
+		{EF38B3B4-3F03-424C-A3CD-76FE6DEBC864}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{EF38B3B4-3F03-424C-A3CD-76FE6DEBC864}.Debug|x86.Build.0 = Debug|Any CPU
+		{EF38B3B4-3F03-424C-A3CD-76FE6DEBC864}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EF38B3B4-3F03-424C-A3CD-76FE6DEBC864}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EF38B3B4-3F03-424C-A3CD-76FE6DEBC864}.Release|x64.ActiveCfg = Release|Any CPU
+		{EF38B3B4-3F03-424C-A3CD-76FE6DEBC864}.Release|x64.Build.0 = Release|Any CPU
+		{EF38B3B4-3F03-424C-A3CD-76FE6DEBC864}.Release|x86.ActiveCfg = Release|Any CPU
+		{EF38B3B4-3F03-424C-A3CD-76FE6DEBC864}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{F1EFAC34-0057-40A7-8EE4-F08515CD5D06} = {2C28AE36-9B1D-4477-9AC6-94CA5965E898}
 		{EE7BEF1F-0B51-410A-886C-7ED273FFFAF3} = {2C28AE36-9B1D-4477-9AC6-94CA5965E898}
+		{EF38B3B4-3F03-424C-A3CD-76FE6DEBC864} = {2C28AE36-9B1D-4477-9AC6-94CA5965E898}
 	EndGlobalSection
 EndGlobal
