@@ -13,8 +13,9 @@ namespace ReactStore.Infrastructure
         
         public ReactStoreContext(DbContextOptions<ReactStoreContext> options) : base(options){ }
 
-        protected override void OnModelCreating(ModelBuilder builder)
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            
             base.OnModelCreating(builder);
         }
 
