@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using ReactStore.Domain.Entities;
 
@@ -13,6 +14,19 @@ namespace ReactStore.Infrastructure.SchemaDefinitions
 
             builder.Property(p => p.Name)
                 .IsRequired();
+            
+            builder.HasData(
+                new OS()
+                {
+                    Id = Guid.NewGuid(),
+                    Name = "Android"
+                },
+                new OS()
+                {
+                    Id = Guid.NewGuid(),
+                    Name = "iOS"
+                }
+            );
         }
     }
 }

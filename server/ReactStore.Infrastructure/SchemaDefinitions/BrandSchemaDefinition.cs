@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using ReactStore.Domain.Entities;
 
@@ -13,6 +14,34 @@ namespace ReactStore.Infrastructure.SchemaDefinitions
 
             builder.Property(p => p.Name)
                 .IsRequired();
+
+            builder.HasData(
+                new Brand()
+                {
+                    Id = Guid.NewGuid(),
+                    Name = "Apple"
+                },
+                new Brand()
+                {
+                    Id = Guid.NewGuid(),
+                    Name = "Samsung"
+                },
+                new Brand()
+                {
+                    Id = Guid.NewGuid(),
+                    Name = "Google"
+                },
+                new Brand()
+                {
+                    Id = Guid.NewGuid(),
+                    Name = "Motorola"
+                },
+                new Brand()
+                {
+                    Id = Guid.NewGuid(),
+                    Name = "LG"
+                }
+            );
         }
     }
 }
