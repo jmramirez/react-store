@@ -16,4 +16,8 @@
     <ProjectReference Include="..\ReactStore.Infrastructure\ReactStore.Infrastructure.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="StaticFiles\thumbnails" />
+  </ItemGroup>
+
 </Project>
