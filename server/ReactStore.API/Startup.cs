@@ -14,6 +14,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using ReactStore.API.Extensions;
+using ReactStore.Domain.Extensions;
 using ReactStore.Domain.Repositories;
 using ReactStore.Infrastructure.Repositories;
 
@@ -33,6 +34,8 @@ namespace ReactStore.API
         {
             services.AddAppDbContext(Configuration.GetSection("DataSource:ConnectionString").Value);
             services.AddScoped<IProductRepository, ProductRepository>();
+            services.AddMappers()
+                .AddServices();
 
             services.AddControllers();
             services.AddSwaggerGen(c =>

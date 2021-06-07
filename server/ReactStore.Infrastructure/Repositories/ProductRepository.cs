@@ -23,7 +23,7 @@ namespace ReactStore.Infrastructure.Repositories
             string colors, string os, string features)
         {
 
-            var Query = $"%{q.ToLower()}%";
+            var Query = $"%{q?.ToLower()}%";
             var Brands = string.IsNullOrEmpty(brands) ? new List<string>() : brands.Split('|').ToList();
             var Capacity = string.IsNullOrEmpty(capacity) ? new List<string>() : capacity.Split('|').ToList();
             var Colors = string.IsNullOrEmpty(colors) ? new List<string>() : colors.Split('|').ToList();
@@ -46,16 +46,17 @@ namespace ReactStore.Infrastructure.Repositories
                 )
                 .Where(x => Brands.Any() == false || Brands.Contains(x.Brand.Name))
                 .Where(x => minPrice.HasValue == false || x.ProductVariants.Any(v => v.Price >= minPrice.Value))
-                .Where(x => maxPrice.HasValue == false || x.ProductVariants.Any(v => v.Price <= minPrice.Value))
+                .Where(x => maxPrice.HasValue == false || x.ProductVariants.Any(v => v.Price <= maxPrice.Value))
                 .Where(x => minScreen.HasValue == false || x.ScreenSize >= Convert.ToDecimal(minScreen.Value))
                 .Where(x => maxScreen.HasValue == false || x.ScreenSize <= Convert.ToDecimal(maxScreen.Value))
-                .Where(x => Capacity.Any() == false || x.ProductVariants.Any(v => Capacity.Contains(v.Storage.Capacity)))
+                .Where(x => Capacity.Any() == false ||
+                            x.ProductVariants.Any(v => Capacity.Contains(v.Storage.Capacity)))
                 .Where(x => Colors.Any() == false || x.ProductVariants.Any(v => Colors.Contains(v.Color.Name)))
-                .Where(x => OS.Any() || OS.Contains(x.OS.Name))
-                .AsSplitQuery()
-                .Include( x=> x.Brand)
-                .Include(pf => pf.ProductFeatures)
-                .ThenInclude(f => f.Feature)
+                .Where(x => OS.Any() == false || OS.Contains(x.OS.Name))
+                //.AsSplitQuery()
+                //.Include( x=> x.Brand)
+                //.Include(pf => pf.ProductFeatures)
+                //.ThenInclude(f => f.Feature)
                 .Include(v => v.ProductVariants)
                 .ToListAsync();
 
