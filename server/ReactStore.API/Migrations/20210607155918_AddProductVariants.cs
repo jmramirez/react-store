@@ -257,7 +257,6 @@ namespace ReactStore.API.Migrations
                 table: "ProductVariants",
                 keyColumns: new[] { "ColorId", "ProductId", "StorageId" },
                 keyValues: new object[] { new Guid("fee21a32-ec49-46cd-adf9-8ed4b15211c9"), new Guid("8b94cae3-0ef3-4e2e-bbcd-92ec689d3b73"), new Guid("c1d112fd-5a18-415d-9a5f-9cbc602095a2") });
-
         }
     }
 }
