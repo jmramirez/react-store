@@ -1,0 +1,19 @@
+@use '../../partials/mixins' as *;
+@use '../../partials/variables' as *;
+
+.header {
+  min-width: 20rem;
+  
+  &-nav {
+    background-color: #4484CE;
+    display: flex;
+    
+    &__heading {
+      text-decoration: none;
+      font-family: $primary-heading;
+      font-size: 1.6rem;
+      padding: 1rem;
+      color: #FFFFFF;
+    }
+  }
+}
