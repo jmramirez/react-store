@@ -1,14 +1,9 @@
-
 import './App.scss';
-import {Product} from "./components/Product/Product";
-import {Header} from "./components/Header/Header";
-import {ProductsList} from "./components/ProductsList/ProductsList";
 
 function App() {
   return (
     <div className="App">
-      <Header />
-        <ProductsList/>
+      <h1>New app</h1>
     </div>
   );
 }
