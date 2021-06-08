@@ -1,0 +1,1 @@
+export const ProductPage = () => <h1>Product Page</h1>
