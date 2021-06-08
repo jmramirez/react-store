@@ -1,1 +1,0 @@
-export const CataloguePage = () => <h1>Catalogue Page</h1>
