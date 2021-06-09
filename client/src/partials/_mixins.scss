@@ -15,7 +15,16 @@
 @mixin font_base($fontSize, $fontWeight) {
   font-weight: $fontWeight;
   font-size: $fontSize;
-} 
+}
+
+@mixin header {
+  @include font_base(1.4rem, 700);
+  font-family: $primary-heading;
+  
+  @include tablet {
+    font-size: 2.5rem;
+  }
+}
 
 @mixin paragraph {
   @include font_base(0.75rem, 400);
@@ -31,4 +40,6 @@
     line-height: 1.6rem;
   }
 }
+
+
 

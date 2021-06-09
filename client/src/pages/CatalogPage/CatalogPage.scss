@@ -1,0 +1,14 @@
+@use "../../partials/mixins" as *;
+@use "../../partials/variables" as *;
+
+.catalog {
+  padding: 1.625rem 1rem;
+  
+  @include tablet {
+    padding: 2.5rem 1.5rem;
+  }
+  
+  @include desktop {
+    padding: 3rem 6.25rem;
+  }
+}
