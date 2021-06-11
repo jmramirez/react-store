@@ -1,7 +1,11 @@
 @use '../../partials/mixins' as *;
 @use "../../partials/variables" as *;
 
-.catalog {
+.products {
+  @include desktop {
+    width: 794px;
+  }
+  
   &__header {
     @include header;
     margin-bottom: 2rem;
@@ -10,5 +14,9 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
+    
+    @include desktop {
+      justify-content: space-between;
+    }
   }
 }

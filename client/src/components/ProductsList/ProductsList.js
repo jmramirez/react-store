@@ -20,15 +20,15 @@ export const ProductsList = () => {
   }, [])
 
   return(
-    <>
-      <h1 className="catalog__header">Product Page</h1>
-      <ul className="catalog__list">
+    <div className="products">
+      <h1 className="products__header">Phones</h1>
+      <ul className="products__list">
         { products.map((product) => (
           <li key={product.id}>
             <ProductItem product={product}/>
           </li>
         ))}
       </ul>
-    </>
+    </div>
   )
 }
