@@ -3,7 +3,7 @@
 export const ProductItem = ({ product }) => (
     <div className="product">
         <div className="product-image">
-            <img src={product.thumbnail} alt={product.name}/>
+            <img src={product.thumbnail} alt={product.name} className="product-image__src"/>
         </div>
         <div className="product-action">
             <div className="product-content">
