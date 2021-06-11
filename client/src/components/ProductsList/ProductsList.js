@@ -1,6 +1,7 @@
 import './ProductsList.scss'
 import {useEffect, useState} from 'react'
 import axios from 'axios'
+import {ProductItem} from "../ProductItem/ProductItem";
 
 export const ProductsList = () => {
   
@@ -20,11 +21,11 @@ export const ProductsList = () => {
 
   return(
     <>
-      <h1>Product Page</h1>
+      <h1 className="catalog__header">Product Page</h1>
       <ul>
         { products.map((product) => (
           <li key={product.id}>
-            {product.name}
+            <ProductItem product={product}/>
           </li>
         ))}
       </ul>
