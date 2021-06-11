@@ -15,6 +15,10 @@
   height: 30rem;
   
   @include tablet {
+    height: 34rem;
+  }
+  
+  @include  desktop {
     flex-direction: row;
   }
   
