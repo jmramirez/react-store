@@ -22,7 +22,7 @@ export const ProductsList = () => {
   return(
     <>
       <h1 className="catalog__header">Product Page</h1>
-      <ul>
+      <ul className="catalog__list">
         { products.map((product) => (
           <li key={product.id}>
             <ProductItem product={product}/>

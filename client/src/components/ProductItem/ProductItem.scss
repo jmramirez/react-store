@@ -10,10 +10,26 @@
   background-color: #FFFFFF;
   box-shadow: 0 0.5rem 1rem rgb(0 0 0 / 4%);
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
+  max-width: 276px;
+  height: 30rem;
   
   @include tablet {
     flex-direction: row;
+  }
+  
+  &-top {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  &-action {
+    width: 100%;
+  }
+
+  &-image {
+    height: 14rem;
   }
   
   &-content {
@@ -27,11 +43,18 @@
     }
     
     &__description {
-      @include paragraph;
-      margin-bottom: 1.2rem;
+      @include description;
+      display: flex;
+      align-items: baseline;
       
       &--price {
         align-self: flex-end;
+        margin-top: .9rem;
+      }
+      &--span {
+        @include label_header;
+        font-size: 1rem;
+        margin-right: .3rem;
       }
     }
     

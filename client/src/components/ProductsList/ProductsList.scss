@@ -6,4 +6,9 @@
     @include header;
     margin-bottom: 2rem;
   }
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
 }

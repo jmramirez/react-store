@@ -46,5 +46,20 @@
   }
 }
 
+@mixin description {
+  @include font_base(0.8rem, 500);
+  line-height: 1.2rem;
+  color: #717171;
+
+  @include tablet {
+    font-size: 0.89rem;
+    line-height: 1.6rem;
+  }
+
+  @include desktop {
+    line-height: 1.6rem;
+  }
+}
+
 
 
