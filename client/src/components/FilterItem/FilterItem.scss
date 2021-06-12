@@ -1,0 +1,22 @@
+﻿.filter {
+  padding: 0.75rem 1.25rem;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  border-top: none;
+  cursor: pointer;
+  
+  &:first-of-type {
+    border-top: 1px solid rgba(0, 0, 0, 0.125);
+  }
+  
+  &-header {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    
+    &__name {
+      font-weight: 500;
+      font-size: 0.8rem;
+    }
+  }
+}
