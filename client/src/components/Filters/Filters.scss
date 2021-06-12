@@ -3,4 +3,9 @@
 
 .filters {
   width: 285px;
+  
+  &__heading {
+    @include font_base(1.3rem,700);
+    font-family: $primary-heading;
+  }
 }
