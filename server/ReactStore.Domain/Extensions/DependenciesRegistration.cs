@@ -17,7 +17,8 @@ namespace ReactStore.Domain.Extensions
         public static IServiceCollection AddServices(this IServiceCollection services)
         {
             services
-                .AddScoped<IProductServices, ProductServices>();
+                .AddScoped<IProductServices, ProductServices>()
+                .AddScoped<IFilterService, FilterService>();
 
             return services;
         }

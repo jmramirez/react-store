@@ -33,7 +33,12 @@ namespace ReactStore.API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddAppDbContext(Configuration.GetSection("DataSource:ConnectionString").Value);
-            services.AddScoped<IProductRepository, ProductRepository>();
+            services.AddScoped<IProductRepository, ProductRepository>()
+                .AddScoped<IBrandRepository,BrandRepository>()
+                .AddScoped<IColorRepository, ColorRepository>()
+                .AddScoped<IOSRepository, OSRepository>()
+                .AddScoped<IFeatureRepository, FeatureRepository>()
+                .AddScoped<IStorageRepository, StorageRepository>();
             services.AddMappers()
                 .AddServices();
 
