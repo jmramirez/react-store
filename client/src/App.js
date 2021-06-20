@@ -11,7 +11,7 @@ function App() {
         <Header />
         <Switch>
           <Route path='/' exact render={(props) => <CatalogPage {...props} />} />
-          <Route path='/products' component={ProductPage} />
+          <Route path='/products' render={(props) => <CatalogPage {...props} />} />
         </Switch>
       </BrowserRouter>
     </div>
