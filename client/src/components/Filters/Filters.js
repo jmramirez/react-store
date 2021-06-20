@@ -1,9 +1,9 @@
 ﻿import './Filters.scss'
 import {FiltersList} from "../FiltersList/FiltersList";
 
-export const Filters = () => (
+export const Filters = ({ location, history }) => (
     <div className="filters">
         <h2 className="filters__heading">Filters</h2>
-        <FiltersList />
+        <FiltersList location={location}  history={history} />
     </div>
 )
