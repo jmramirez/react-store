@@ -16,27 +16,39 @@ export const MultiFilter = ({ title, items, location, queryKey, history }) => {
         setOpen(!open)
     }
     
-    const clearFilters = () => {
-        searchParams.delete(queryKey)
-        history.push(`/products?${searchParams}`)
+    const clearFilters =  async () => {
+        try {
+            searchParams.delete(queryKey)
+            history.push(`/products?${searchParams}`)
+            const products = await axios.get(`https://localhost:5001/api/products?${searchParams.toString()}`)
+            
+        } catch (err) {
+            console.log(err)
+        }
     }
     
     const changeActive = async (item) => {
-        if(split.indexOf(item) > -1) {
-            let index = split.indexOf(item)
-            split.splice(index, 1)
-        } else {
-            split.push(item)
+        try {
+            if(split.indexOf(item) > -1) {
+                let index = split.indexOf(item)
+                split.splice(index, 1)
+            } else {
+                split.push(item)
+            }
+
+            if(split.length) {
+                const joined = split.join('|')
+                searchParams.set(queryKey,joined)
+            } else {
+                searchParams.delete(queryKey)
+            }
+
+            history.push(`/products?${searchParams}`)
+            const products = await axios.get(`https://localhost:5001/api/products?${searchParams.toString()}`)
+            
+        } catch (err) {
+            console.log(err)
         }
-        
-        if(split.length) {
-            const joined = split.join('|')
-            searchParams.set(queryKey,joined)
-        } else {
-            searchParams.delete(queryKey)
-        }
-        
-        history.push(`/products?${searchParams}`)
         
     }
     

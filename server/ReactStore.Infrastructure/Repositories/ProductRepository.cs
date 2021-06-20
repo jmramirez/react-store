@@ -55,8 +55,8 @@ namespace ReactStore.Infrastructure.Repositories
                 .Where(x => OS.Any() == false || OS.Contains(x.OS.Name))
                 //.AsSplitQuery()
                 //.Include( x=> x.Brand)
-                //.Include(pf => pf.ProductFeatures)
-                //.ThenInclude(f => f.Feature)
+                .Include(pf => pf.ProductFeatures)
+                .ThenInclude(f => f.Feature)
                 .Include(v => v.ProductVariants)
                 .ToListAsync();
 
