@@ -13,6 +13,7 @@
   justify-content: space-between;
   max-width: 276px;
   height: 30rem;
+  border-radius: .5rem;
   
   @include tablet {
     height: 34rem;
@@ -104,6 +105,25 @@
       border: 2px solid #E42D9F;
       outline: none;
       transition: background-color .3s ease-in-out;
+      border-radius: 2.5rem;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      
+      &__icon {
+        font-size: .8rem;
+      }
+      
+      &__text {
+        margin-right: .3rem;
+        transition: all .3s ease-in-out;
+        
+        &:hover {
+          margin-right: .6rem;
+        }
+      }
+      
       
       &:hover {
         background-color: #33678f;

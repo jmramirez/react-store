@@ -7,6 +7,7 @@
   justify-content: center;
   align-items: center;
   transition: all .04s ease-in-out;
+  border-radius: .5rem;
 
   &:hover {
     border: 1px solid #02558b;
@@ -18,10 +19,12 @@
     border: 1px solid #E42D9F;
     color: #FFFFFF;
     background-color: #02558b;
+    border-radius: .5rem;
   }
   
   &--active-all {
     border: 1px solid #E42D9F;
+    border-radius: .5rem;
   }
   
   &__header {

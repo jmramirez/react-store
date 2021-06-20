@@ -2,7 +2,6 @@
   padding: 0.75rem 1.25rem;
   border: 1px solid rgba(0, 0, 0, 0.125);
   border-top: none;
-  cursor: pointer;
 
   &:focus {
     outline: none !important;
@@ -10,6 +9,13 @@
   
   &:first-of-type {
     border-top: 1px solid rgba(0, 0, 0, 0.125);
+    border-top-left-radius: .5rem;
+    border-top-right-radius: .5rem;
+  }
+  
+  &:last-of-type {
+    border-bottom-left-radius: .5rem;
+    border-bottom-right-radius: .5rem;
   }
   
   &-header {
@@ -17,6 +23,7 @@
     width: 100%;
     align-items: center;
     justify-content: space-between;
+    cursor: pointer;
     
     &__name {
       font-weight: 500;

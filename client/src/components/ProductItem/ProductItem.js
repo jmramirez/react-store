@@ -14,7 +14,7 @@ export const ProductItem = ({ product }) => (
                     from* ${product.price}
                 </p>
             </div>
-            <button className="product-content__button">Add Product</button>
+          <button className="product-content__button"><span className="product-content__button__text">Mode Details</span><span className="material-icons product-content__button__icon">arrow_forward</span></button>
         </div>
     </div>
 )
