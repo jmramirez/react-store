@@ -1,5 +1,4 @@
 ﻿import './FilterElement.scss'
-import {useState} from "react";
 
 export const FilterElement = ({ name, setQuery, active }) => {
     return(

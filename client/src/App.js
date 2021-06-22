@@ -1,7 +1,6 @@
 import './App.scss';
 import {BrowserRouter, Switch, Route} from 'react-router-dom'
 import {CatalogPage} from './pages/CatalogPage/CatalogPage'
-import {ProductPage} from './pages/ProductPage/ProductPage'
 import {Header} from './components/Header/Header'
 
 function App() {

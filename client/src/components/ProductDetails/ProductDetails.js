@@ -1,0 +1,2 @@
+﻿import './ProductDetails.scss'
+

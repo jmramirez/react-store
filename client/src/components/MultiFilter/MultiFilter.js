@@ -1,6 +1,5 @@
 ﻿import './MultiFilter.scss'
 import {useEffect, useRef, useState} from "react";
-import axios from "axios";
 import {FilterElement} from "../FilterElement/FilterElement";
 
 export const MultiFilter = ({ title, items, location, queryKey, history }) => {
@@ -20,7 +19,7 @@ export const MultiFilter = ({ title, items, location, queryKey, history }) => {
         try {
             searchParams.delete(queryKey)
             history.push(`/products?${searchParams}`)
-            const products = await axios.get(`https://localhost:5001/api/products?${searchParams.toString()}`)
+            //const products = await axios.get(`https://localhost:5001/api/products?${searchParams.toString()}`)
             
         } catch (err) {
             console.log(err)
@@ -44,7 +43,7 @@ export const MultiFilter = ({ title, items, location, queryKey, history }) => {
             }
 
             history.push(`/products?${searchParams}`)
-            const products = await axios.get(`https://localhost:5001/api/products?${searchParams.toString()}`)
+          //  const products = await axios.get(`https://localhost:5001/api/products?${searchParams.toString()}`)
             
         } catch (err) {
             console.log(err)

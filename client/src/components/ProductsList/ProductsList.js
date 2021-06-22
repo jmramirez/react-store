@@ -3,10 +3,8 @@ import {useEffect, useState} from 'react'
 import axios from 'axios'
 import {ProductItem} from "../ProductItem/ProductItem";
 
-export const ProductsList = ({ location,query }) => {
+export const ProductsList = ({ location }) => {
   const [products, setProducts] = useState([])
-  
-  console.log(location.search)
   
   useEffect(() => {
     const getProducts = async () => {
