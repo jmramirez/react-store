@@ -22,5 +22,13 @@ namespace ReactStore.API.Controllers
             var result = await _productServices.GetProductsAsync( q, brands, minPrice, maxPrice, minScreen, maxScreen, capacity, colors, os, features);
             return Ok(result);
         }
+
+        [HttpGet("{slug}")]
+        public async Task<IActionResult> GetBySlug(string slug)
+        {
+            var product = await _productServices.GetProductBySlug(slug);
+            return Ok(product);
+        }
+        
     }
 }
