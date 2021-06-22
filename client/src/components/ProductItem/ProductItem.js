@@ -1,4 +1,5 @@
 ﻿import './ProductItem.scss'
+import {Link} from 'react-router-dom'
 
 export const ProductItem = ({ product }) => (
     <div className="product">
@@ -7,7 +8,9 @@ export const ProductItem = ({ product }) => (
         </div>
         <div className="product-action">
             <div className="product-content">
+              <Link to={`/products/${product.slug}`}>
                 <h2 className="product-content__header">{product.name}</h2>
+              </Link>
                 <p className="product-content__description">{product.shortDescription}</p>
                 <p className="product-content__description product-content__description--price">
                     <span className="product-content__description product-content__description--span">Price:</span>
