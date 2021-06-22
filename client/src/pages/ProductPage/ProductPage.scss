@@ -1,0 +1,53 @@
+@use "../../partials/mixins" as *;
+@use "../../partials/variables" as *;
+
+.product-details {
+  min-width: 16.75rem;
+  //width: 18rem;
+  margin: 0 1.5rem;
+  padding: 1.625rem 0;
+
+
+  @include tablet {
+    padding: 2.5rem 0;
+  }
+
+  @include desktop {
+    max-width: 67.5rem;
+    padding: 3rem 0;
+    margin: 0 auto;
+    display: flex;
+  }
+  
+  &-top {
+    &__link {
+      padding: 0.5rem 0.66rem;
+      width: 100%;
+      font: inherit;
+      color: #FFFFFF;
+      background-color: #02558b;
+      border: 2px solid #E42D9F;
+      outline: none;
+      transition: background-color 0.3s ease-in-out;
+      border-radius: 2.5rem;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-decoration: none;
+
+      &__text {
+        padding-left: 0.3rem;
+        transition: all 0.3s ease-in-out;
+        
+        &:hover{
+          padding-left: .6rem;
+        }
+      }
+
+      &__icon {
+        font-size: 0.8rem;
+      }
+    } 
+  }
+}
