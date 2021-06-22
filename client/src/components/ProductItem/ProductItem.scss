@@ -66,14 +66,20 @@
     height: 100%;
     margin-bottom: 1rem;
     
+    &__heading {
+      text-decoration: none;
+      color: #323232;
+      
+      &-text {
+        @include label_header;
+        margin-bottom: 1.2rem;
+      }
+    }
+    
     @include desktop {
       align-items: flex-end;
     }
     
-    &__header {
-      @include label_header;
-      margin-bottom: 1.2rem;
-    }
     
     &__description {
       @include description;
@@ -96,7 +102,7 @@
       }
     }
     
-    &__button {
+    &__link {
       padding: 0.8rem 0.86rem;
       width: 100%;
       font: inherit;
@@ -110,6 +116,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      text-decoration: none;
       
       &__icon {
         font-size: .8rem;

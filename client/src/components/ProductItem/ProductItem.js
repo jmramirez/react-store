@@ -4,12 +4,14 @@ import {Link} from 'react-router-dom'
 export const ProductItem = ({ product }) => (
     <div className="product">
         <div className="product-image">
+          <Link to={`/products/${product.slug}`}>
             <img src={product.thumbnail} alt={product.name} className="product-image__src"/>
+          </Link>
         </div>
         <div className="product-action">
             <div className="product-content">
-              <Link to={`/products/${product.slug}`}>
-                <h2 className="product-content__header">{product.name}</h2>
+              <Link to={`/products/${product.slug}`} className="product-content__heading">
+                <h2 className="product-content__heading-text">{product.name}</h2>
               </Link>
                 <p className="product-content__description">{product.shortDescription}</p>
                 <p className="product-content__description product-content__description--price">
@@ -17,7 +19,7 @@ export const ProductItem = ({ product }) => (
                     from* ${product.price}
                 </p>
             </div>
-          <button className="product-content__button"><span className="product-content__button__text">Mode Details</span><span className="material-icons product-content__button__icon">arrow_forward</span></button>
+          <Link to={`/products/${product.slug}`} className="product-content__link"><span className="product-content__link__text">Mode Details</span><span className="material-icons product-content__link__icon">arrow_forward</span></Link>
         </div>
     </div>
 )
