@@ -42,7 +42,7 @@ namespace ReactStore.Domain.Mappers
                 Description = request.Description,
                 Thumbnail = request.Thumbnail,
                 Price = request.ProductVariants.OrderBy(v => v.Price).First().Price,
-                Images = request.Images.Select(i => new ImageResponse{ Id = i.Id, Url = i.Url }),
+                Images = request.Images.OrderBy(i => i.Url).Select(i => new ImageResponse{ Id = i.Id, Url = i.Url }),
                 Features = request.ProductFeatures.Select(pf => new FeatureResponse{ Id = pf.FeatureId, Name = pf.Feature.Name}),
                 ProductVariants = request.ProductVariants.Select(pv => new VariantsResponse
                 {
