@@ -1,0 +1,12 @@
+﻿@use '../../partials/mixins' as *;
+@use '../../partials/variables' as *;
+
+.thumbnail-container {
+  height: 7.82rem;
+  
+  &__image {
+    object-fit: cover;
+    height: 100%;
+    cursor: pointer;
+  }
+}
