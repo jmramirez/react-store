@@ -19,7 +19,7 @@ export const ProductItem = ({ product }) => (
                     from* ${product.price}
                 </p>
             </div>
-          <Link to={`/products/${product.slug}`} className="product-content__link"><span className="product-content__link__text">Mode Details</span><span className="material-icons product-content__link__icon">arrow_forward</span></Link>
+          <Link to={`/products/${product.slug}`} className="product-content__link"><span className="product-content__link__text">More Details</span><span className="material-icons product-content__link__icon">arrow_forward</span></Link>
         </div>
     </div>
 )

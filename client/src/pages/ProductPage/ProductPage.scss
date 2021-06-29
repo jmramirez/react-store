@@ -6,7 +6,7 @@
   //width: 18rem;
   margin: 0 1.5rem;
   padding: 1.625rem 0;
-
+  flex-direction: column;
 
   @include tablet {
     padding: 2.5rem 0;
@@ -17,12 +17,18 @@
     padding: 3rem 0;
     margin: 0 auto;
     display: flex;
+    
   }
   
   &-top {
+    padding-top: 1.8rem;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+    
     &__link {
       padding: 0.5rem 0.66rem;
-      width: 100%;
+      width: 20%;
       font: inherit;
       color: #FFFFFF;
       background-color: #02558b;
@@ -48,6 +54,87 @@
       &__icon {
         font-size: 0.8rem;
       }
-    } 
+    }
+    
+    &__images {
+      width: 48%;
+    }
+    
+    &__content {
+      width: 48%;
+      background-color: #FFFFFF;
+      padding: 2rem;
+      border: 1px solid rgba(0, 0, 0, 0.125);
+      border-radius: 0.5rem;
+      
+      &-heading {
+        @include font_base(2rem,600);
+        font-family: $primary-heading;
+      }
+      
+      &-paragraph {
+        @include font_base(1rem,500);
+        line-height: 1.4rem;
+        letter-spacing: 0.02rem;
+        margin: 1.5rem 0;
+      }
+      
+      &-subHeading {
+        @include font_base(1.5rem,600);
+        font-family: $primary-heading;
+      }
+
+      &-variant {
+        margin: 1.2rem 0 1rem 0;
+      }
+      
+      &-variant__select {
+        width: 100%;
+        height: 2.2rem;
+        border-radius: 3rem;
+        @include font_base(1.1rem, 500);
+        font-family: $primary-font;
+        outline: none;
+        background: #FAFAFA url("../../assets/icons/arrow_drop_down-24px.svg") no-repeat right;
+        -webkit-appearance: none;
+        background-position-x: calc(100% - 1rem);
+        cursor: pointer;
+        padding: 0 1rem;
+        
+        &:active {
+          border: 1px solid #E42D9F;
+        }
+        &:focus {
+          border: 1px solid #E42D9F;
+        }
+        &:disabled {
+          cursor: not-allowed;
+        }
+      }
+      
+      &-list {
+        margin: 1rem;
+        line-height: 1.5rem;
+        font-weight: 500;
+      }
+    }
+  }
+  &-bottom {
+    background-color: #FFFFFF;
+    padding: 2rem;
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    border-radius: 0.5rem;
+
+    &__heading {
+      @include font_base(1.5rem,600);
+      font-family: $primary-heading;
+    }
+    
+    &__paragraph {
+      @include font_base(1.1rem, 500);
+      line-height: 1.7rem;
+      margin-top: 1.3rem;
+      letter-spacing: 0.02rem;
+    }
   }
 }
