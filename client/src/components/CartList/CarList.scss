@@ -1,0 +1,40 @@
+﻿@use '../../partials/mixins' as *;
+@use '../../partials/variables' as *;
+
+.cartList {
+  &__header {
+    display: flex;
+    border-top: 2px solid #DEE2E6;
+    border-bottom: 2px solid #DEE2E6;
+    padding: 1rem 0;
+    
+    &-product {
+      width: 50%;
+    }
+
+    &-product{
+      &-info {
+        width: 12%;
+      }
+
+      &-action {
+        width: 5%;
+
+        &__button {
+
+        }
+      }
+    }
+
+
+    
+    &__labels {
+      @include font_base(1.1rem, 600);
+      font-family: $primary-font;
+    }
+  }
+
+  &__body {
+    padding: 1.5rem 0;
+  }
+}
