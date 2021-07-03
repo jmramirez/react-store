@@ -33,3 +33,13 @@
   font-style: normal;
   font-display: swap;
 }
+
+@font-face {
+  font-family: 'Poppins';
+  src: url('../assets/fonts/Poppins-Medium.woff2') format('woff2'),
+  url('../assets/fonts/Poppins-Medium.woff') format('woff');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
