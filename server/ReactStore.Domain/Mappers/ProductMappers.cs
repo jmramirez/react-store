@@ -53,7 +53,8 @@ namespace ReactStore.Domain.Mappers
                     Color = pv.Color.Name,
                     StorageId = pv.StorageId,
                     Capacity = pv.Storage.Capacity,
-                    Price = pv.Price
+                    Price = pv.Price,
+                    Slug = request.Slug
                 })
             };
             

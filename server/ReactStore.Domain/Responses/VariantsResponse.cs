@@ -12,5 +12,6 @@ namespace ReactStore.Domain.Responses
         public Guid StorageId { get; set; }
         public string Capacity { get; set; }
         public decimal Price { get; set; }
+        public string  Slug { get; set; }
     }
 }
