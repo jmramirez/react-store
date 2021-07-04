@@ -8,6 +8,7 @@
   
   &-nav {
     display: flex;
+    align-items: center;
     
     @include tablet {
       margin: 0 1.5rem;
@@ -29,6 +30,20 @@
       
       @include tablet {
         padding: 0;
+      }
+    }
+    
+    &__shoppingCart {
+      margin-left: auto;
+      color: #FFFFFF;
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      @include font_base(0.9rem, 500);
+      
+      &__icon {
+        color: #E42D9F;
+        font-size: 2rem;
       }
     }
   }
