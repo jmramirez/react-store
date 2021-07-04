@@ -1,13 +1,13 @@
 import {useEffect, useState} from 'react'
 import axios from 'axios'
 import './ProductPage.scss'
-import {Link} from 'react-router-dom'
+import {Link, useHistory} from 'react-router-dom'
 import {ProductImage} from '../../components/ProductImage/ProductImage'
 import _ from 'lodash'
 import  {useDispatch, useSelector} from 'react-redux'
-import { addToCart } from '../../actions/cartActions'
+import { addToCart } from '../../redux/actions/cartActions'
 
-export const ProductPage = ({ match, history }) => {
+export const ProductPage = ({ match }) => {
   const [product, setProduct] = useState(null)
   const [loading, setLoading] = useState(true)
   const [disabled, setDisabled] = useState(true)
@@ -18,6 +18,7 @@ export const ProductPage = ({ match, history }) => {
   const [variant, setVariant] = useState(null)
   const [purchaseEnable, setPurchaseEnable] = useState(true) 
   const dispatch = useDispatch()
+  const history = useHistory()
   
   
   useEffect(() => {
@@ -52,8 +53,17 @@ export const ProductPage = ({ match, history }) => {
         }
       }
     )
+    
+    if(storage.length) {
+      const selectedVariant = product.productVariants.find(
+        v => v.colorId === color && v.storageId === e.target.value
+      )
+      setVariant(selectedVariant)
+    }
     setStorageList(storageList)
     setDisabled(false)
+    setStorage('')
+    setPurchaseEnable(true)
   }
   
   const selectStorage = (e) => {
@@ -67,6 +77,7 @@ export const ProductPage = ({ match, history }) => {
   
   const addProductToCart = (product) => {
     dispatch(addToCart(product))
+    history.push('/cart')
   }
   
   return (
