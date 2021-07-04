@@ -50,7 +50,8 @@
   &-quantity {
     width: 12%;
     display: flex;
-    align-items: center;
+    justify-content: center;
+    flex-direction: column;
 
     &__label {
       @include font_base(1.2rem, 500);
@@ -77,6 +78,16 @@
         background-color: #c9c5c5;
         cursor: not-allowed;
       }
+    }
+    
+    &__top {
+      display: flex;
+    }
+    
+    &__bottom {
+      color: red;
+      @include font_base(0.7rem, 500);
+      margin-top: 0.4rem;
     }
   }
 
