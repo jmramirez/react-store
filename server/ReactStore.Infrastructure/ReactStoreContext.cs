@@ -36,6 +36,7 @@ namespace ReactStore.Infrastructure
             modelBuilder.ApplyConfiguration(new ProductFeatureSchemaDefinition());
             modelBuilder.ApplyConfiguration(new ProductVariantSchemaDefinition());
             modelBuilder.ApplyConfiguration(new StorageSchemaDefinition());
+            modelBuilder.ApplyConfiguration(new RolesSchemaDefinition());
             base.OnModelCreating(modelBuilder);
         }
 

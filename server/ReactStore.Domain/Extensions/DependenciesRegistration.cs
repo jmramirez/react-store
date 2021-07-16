@@ -18,7 +18,8 @@ namespace ReactStore.Domain.Extensions
         {
             services
                 .AddScoped<IProductServices, ProductServices>()
-                .AddScoped<IFilterService, FilterService>();
+                .AddScoped<IFilterService, FilterService>()
+                .AddScoped<IUserService, UserService>();
 
             return services;
         }
