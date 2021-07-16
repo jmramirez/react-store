@@ -16,6 +16,8 @@ using Microsoft.OpenApi.Models;
 using ReactStore.API.Extensions;
 using ReactStore.Domain.Extensions;
 using ReactStore.Domain.Repositories;
+using ReactStore.Domain.Responses;
+using ReactStore.Infrastructure.Extensions;
 using ReactStore.Infrastructure.Repositories;
 
 namespace ReactStore.API
@@ -38,10 +40,14 @@ namespace ReactStore.API
                 .AddScoped<IColorRepository, ColorRepository>()
                 .AddScoped<IOSRepository, OSRepository>()
                 .AddScoped<IFeatureRepository, FeatureRepository>()
-                .AddScoped<IStorageRepository, StorageRepository>();
+                .AddScoped<IStorageRepository, StorageRepository>()
+                .AddScoped<IUserRepository, UserRepository>();
             services.AddMappers()
                 .AddServices();
 
+            services
+                .AddTokenAuthentication(Configuration);
+            
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
@@ -75,7 +81,7 @@ namespace ReactStore.API
             });
 
             app.UseRouting();
-
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
