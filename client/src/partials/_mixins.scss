@@ -62,4 +62,20 @@
 }
 
 
+@mixin link_base($topbottom, $leftright) {
+  padding:  $topbottom $leftright;
+  font: inherit;
+  color: #FFFFFF;
+  background-color: #02558b;
+  border: 2px solid #E42D9F;
+  outline: none;
+  transition: background-color 0.3s ease-in-out;
+  border-radius: 2.5rem;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+}
+
 

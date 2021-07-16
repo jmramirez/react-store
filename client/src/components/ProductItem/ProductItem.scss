@@ -103,20 +103,8 @@
     }
     
     &__link {
-      padding: 0.8rem 0.86rem;
+      @include link_base(0.8rem, 0.86rem);
       width: 100%;
-      font: inherit;
-      color: #FFFFFF;
-      background-color: #02558b;
-      border: 2px solid #E42D9F;
-      outline: none;
-      transition: background-color .3s ease-in-out;
-      border-radius: 2.5rem;
-      cursor: pointer;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      text-decoration: none;
       
       &__icon {
         font-size: .8rem;
@@ -130,8 +118,6 @@
           margin-right: .6rem;
         }
       }
-      
-      
       &:hover {
         background-color: #33678f;
       }

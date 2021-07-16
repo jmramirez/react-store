@@ -27,20 +27,8 @@
     margin-bottom: 2rem;
     
     &__link {
-      padding: 0.5rem 0.66rem;
+      @include link_base(0.5rem, 0.66rem);
       width: 20%;
-      font: inherit;
-      color: #FFFFFF;
-      background-color: #02558b;
-      border: 2px solid #E42D9F;
-      outline: none;
-      transition: background-color 0.3s ease-in-out;
-      border-radius: 2.5rem;
-      cursor: pointer;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      text-decoration: none;
 
       &__text {
         padding-left: 0.3rem;
