@@ -2,6 +2,8 @@
 @use '../../partials/variables' as *;
 
 .cartList {
+  padding: 0 2rem;
+  
   &__header {
     display: flex;
     border-top: 2px solid #DEE2E6;
@@ -25,8 +27,6 @@
         }
       }
     }
-
-
     
     &__labels {
       @include font_base(1.1rem, 600);
@@ -34,7 +34,64 @@
     }
   }
 
+  &__empty {
+    @include font_base(1.5rem, 500);
+    padding: 0 2rem;
+  }
+
   &__body {
     padding: 1.5rem 0;
+  }
+  
+  &-actions {
+    padding: 1.5rem 2rem;
+    background-color: #DADADA;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    
+    &__link-back {
+      @include link_base(0.5rem, 0.66rem);
+      width: 20%;
+
+      &__text {
+        padding-left: 0.3rem;
+        transition: all 0.3s ease-in-out;
+        
+        &:hover {
+          padding-left: .6rem;
+        }
+      }
+      &__icon {
+        font-size: 0.8rem;
+      }
+    }
+    
+    &__total {
+      width: 52%;
+      display: flex;
+      justify-content: flex-end;
+      
+      &__content {
+        @include font_base(1.1rem, 700)
+      }
+    }
+    
+    &__link-check {
+      @include link_base(0.5rem, 0.66rem);
+      width: 13%;
+
+      &__text {
+        padding-left: 0.3rem;
+        transition: all 0.3s ease-in-out;
+
+        &:hover{
+          margin-right: .6rem;
+        }
+      }
+      &__icon {
+        font-size: 0.8rem;
+      }
+    }
   }
 }
