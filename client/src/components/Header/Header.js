@@ -19,11 +19,18 @@ export const Header = () => {
         <Link to="/" className="header-nav__heading">
           CoreNETStore
         </Link>
-        <Link to="/cart" className="header-nav__shoppingCart">
-          <span className="material-icons header-nav__shoppingCart__icon">shopping_cart</span>
-          {totalItems ? `(${totalItems} Items)` : ''} 
-        </Link>
-        
+        <div className="header-nav__links">
+          <div className="header-nav__links-auth">
+            Test
+            <div className="header-nav__links-auth__test">
+              Another test
+            </div>
+          </div>
+          <Link to="/cart" className="header-nav__shoppingCart">
+            <span className="material-icons header-nav__shoppingCart__icon">shopping_cart</span>
+            {totalItems ? `(${totalItems} Items)` : ''}
+          </Link>  
+        </div>
       </nav>
     </header>
   )

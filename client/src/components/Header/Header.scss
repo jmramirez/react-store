@@ -33,6 +33,50 @@
       }
     }
     
+    &__links {
+      display: flex;
+      margin-left: auto;
+      align-items: center;
+      
+      &-auth {
+        color: #FFFFFF;
+        cursor: pointer;
+        padding:  .5rem 1rem;
+        background-color: #33678f;
+        border: 2px solid #FFFFFF;
+        outline: none;
+        border-radius: 2.5rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        @include font_base(0.9rem, 500);
+        position: relative;
+        
+
+        &__test {
+          opacity: 0;
+          transition: all .5s;
+          visibility: hidden;
+          position: absolute;
+          top: 2.31rem;
+          right: 0;
+          width: 9.375rem;
+          padding: 1rem;
+          background-color: #FFFFFF;
+          color: #767676;
+          border: 1px solid;
+          border-radius: 0.3rem;
+        }
+        
+        &:hover & {
+          &__test {
+            opacity: 1;
+            visibility: visible;
+          }
+        }
+      }
+    }
+    
     &__shoppingCart {
       margin-left: auto;
       color: #FFFFFF;
