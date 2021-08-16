@@ -41,7 +41,7 @@
       &-auth {
         color: #FFFFFF;
         cursor: pointer;
-        padding:  .5rem 1rem;
+        padding:  .2rem 1rem;
         background-color: #33678f;
         border: 2px solid #FFFFFF;
         outline: none;
@@ -52,33 +52,51 @@
         @include font_base(0.9rem, 500);
         position: relative;
         
+        &__icon {
+          margin-right: .5rem;
+        }
 
         &__test {
           opacity: 0;
-          transition: all .5s;
+          transition: all .15s;
           visibility: hidden;
           position: absolute;
-          top: 2.31rem;
+          top: 2.6rem;
           right: 0;
-          width: 9.375rem;
+          width: 18rem;
           padding: 1rem;
           background-color: #FFFFFF;
           color: #767676;
           border: 1px solid;
           border-radius: 0.3rem;
+          display: flex;
+          justify-content: space-evenly;
+          
+          &__auth-sign {
+            @include auth_button(#02558b,#FFF)
+          }
+          
+          &__auth-create {
+            @include auth_button(#FFF,#02558b)
+          }
         }
         
         &:hover & {
+          &__icon {
+            color: #E42D9F;
+          }
+          
           &__test {
             opacity: 1;
             visibility: visible;
+            transform: translateY(-8px);
           }
         }
       }
     }
     
     &__shoppingCart {
-      margin-left: auto;
+      margin-left: .5rem;
       color: #FFFFFF;
       display: flex;
       align-items: center;

@@ -21,9 +21,17 @@ export const Header = () => {
         </Link>
         <div className="header-nav__links">
           <div className="header-nav__links-auth">
-            Test
+            <span className="material-icons header-nav__links-auth__icon">
+              account_circle
+            </span>
+            Sign In
             <div className="header-nav__links-auth__test">
-              Another test
+              <button className="header-nav__links-auth__test__auth-sign">
+                Sign In
+              </button>
+              <button className="header-nav__links-auth__test__auth-create">
+                Create Account
+              </button>
             </div>
           </div>
           <Link to="/cart" className="header-nav__shoppingCart">
