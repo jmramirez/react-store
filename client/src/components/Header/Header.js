@@ -2,16 +2,22 @@ import './Header.scss'
 import {Link} from 'react-router-dom'
 import { useSelector} from 'react-redux'
 import {useEffect, useState} from 'react'
+import Modal from "../Modal/Modal";
 
 export const Header = () => {
   const items = useSelector((state) => state.cart.cartItems)
   const [totalItems, setTotalItems] = useState(0)
+  const [modalOpen, setModalOpen] = useState(false)
   
   useEffect(() => {
     const reducer = (accumulator, cartItem) => accumulator + cartItem.quantity;
     const totalItems = items.reduce(reducer, 0)
     setTotalItems(totalItems)
   }, [items])
+  
+  const handleOpenModal = () => {
+    setModalOpen(!modalOpen)
+  }
   
   return (
     <header className="header">
@@ -29,7 +35,7 @@ export const Header = () => {
               <button className="header-nav__links-auth__test__auth-sign">
                 Sign In
               </button>
-              <button className="header-nav__links-auth__test__auth-create">
+              <button className="header-nav__links-auth__test__auth-create" onClick={handleOpenModal}>
                 Create Account
               </button>
             </div>
@@ -40,6 +46,7 @@ export const Header = () => {
           </Link>  
         </div>
       </nav>
+      <Modal modalOpen={modalOpen} handleOpenModal={handleOpenModal} />
     </header>
   )
 }

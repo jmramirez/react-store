@@ -96,4 +96,15 @@
   }
 }
 
+@mixin h1 {
+  font-size: 1.75rem;
+  line-height: 2.25rem;
+  font-weight: 600;
+  font-family: $primary-heading;
+  
+  @include tablet {
+    font-size: 2rem;
+    line-height: 2.5rem;
+  }
+}
 
