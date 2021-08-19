@@ -4,12 +4,19 @@ import {CatalogPage} from './pages/CatalogPage/CatalogPage'
 import {Header} from './components/Header/Header'
 import {ProductPage} from './pages/ProductPage/ProductPage'
 import {CartPage} from './pages/CartPage/CartPage'
+import {useState} from "react";
 
 function App() {
+  const [modalOpen, setModalOpen] = useState(false)
+
+  const handleOpenModal = () => {
+    setModalOpen(!modalOpen)
+  }
+  
   return (
-    <div className="App">
+    <div className={ modalOpen ? 'App__open' : 'App'}>
       <BrowserRouter>
-        <Header />
+        <Header modalOpen={modalOpen} handleOpenModal={handleOpenModal}/>
         <Switch>
           <Route path='/' exact render={(props) => <CatalogPage {...props} />} />
           <Route path='/products/:productSlug' render={(props) => <ProductPage {...props} />} />
