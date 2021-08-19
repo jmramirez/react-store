@@ -3,16 +3,24 @@ import {Link} from 'react-router-dom'
 import { useSelector} from 'react-redux'
 import {useEffect, useState} from 'react'
 import Modal from "../Modal/Modal";
+import { useDispatch } from "react-redux";
+import { showAuthModal} from "../../redux/actions/modalActions";
 
-export const Header = ({handleOpenModal, modalOpen}) => {
+export const Header = () => {
   const items = useSelector((state) => state.cart.cartItems)
+  const modalOpen = useSelector((state) => state.modal.showAuthModal)
   const [totalItems, setTotalItems] = useState(0)
+  const dispatch = useDispatch()
   
   useEffect(() => {
     const reducer = (accumulator, cartItem) => accumulator + cartItem.quantity;
     const totalItems = items.reduce(reducer, 0)
     setTotalItems(totalItems)
   }, [items])
+  
+  const openModal = () => {
+    dispatch(showAuthModal())
+  } 
   
   
   return (
@@ -28,10 +36,10 @@ export const Header = ({handleOpenModal, modalOpen}) => {
             </span>
             Sign In
             <div className="header-nav__links-auth__test">
-              <button className="header-nav__links-auth__test__auth-sign">
+              <button className="header-nav__links-auth__test__auth-sign" onClick={openModal}>
                 Sign In
               </button>
-              <button className="header-nav__links-auth__test__auth-create" onClick={handleOpenModal}>
+              <button className="header-nav__links-auth__test__auth-create" onClick={openModal}>
                 Create Account
               </button>
             </div>
@@ -42,7 +50,7 @@ export const Header = ({handleOpenModal, modalOpen}) => {
           </Link>  
         </div>
       </nav>
-      <Modal modalOpen={modalOpen} handleOpenModal={handleOpenModal} />
+      <Modal modalOpen={modalOpen}  />
     </header>
   )
 }

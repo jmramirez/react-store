@@ -1,6 +1,15 @@
 ﻿import './LogInForm.scss'
+import {useDispatch} from "react-redux";
+import {hideAuthModal} from "../../redux/actions/modalActions";
 
 const LoginForm = () => {
+    const dispatch = useDispatch()
+    
+    const closeModal = (e) => {
+        e.preventDefault()
+        dispatch(hideAuthModal())
+    }
+    
     return(
         <form className="form">
             <div className="form-content">
@@ -16,7 +25,7 @@ const LoginForm = () => {
                 <button className="form-content__button">Not account? Create one!</button>
             </div>
             <div className="form-action">
-                <button>
+                <button className="form-action__cancel" onClick={closeModal}>
                     Cancel
                 </button>
                 <button>

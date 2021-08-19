@@ -68,9 +68,23 @@ body {
     background-color: #DADADA;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     margin-top: 1.5rem;
     border-bottom-left-radius: .5rem;
     border-bottom-right-radius: .5rem;
+    
+    &__cancel {
+      border: 1px solid #02558b;
+      background-color: #E42D9F;
+      color: #FFFFFF;
+      cursor: pointer;
+      display: flex;
+      font: inherit;
+      align-items: center;
+      padding: .5rem 2rem;
+      @include font_base(.9rem,500);
+      border-radius: 2.5rem;
+    }
+    
   }
 }

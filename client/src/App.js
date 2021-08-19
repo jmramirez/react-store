@@ -5,18 +5,16 @@ import {Header} from './components/Header/Header'
 import {ProductPage} from './pages/ProductPage/ProductPage'
 import {CartPage} from './pages/CartPage/CartPage'
 import {useState} from "react";
+import { useSelector } from "react-redux";
 
 function App() {
-  const [modalOpen, setModalOpen] = useState(false)
+  const modalOpen = useSelector((state) => state.modal.showAuthModal) 
 
-  const handleOpenModal = () => {
-    setModalOpen(!modalOpen)
-  }
   
   return (
     <div className={ modalOpen ? 'App__open' : 'App'}>
       <BrowserRouter>
-        <Header modalOpen={modalOpen} handleOpenModal={handleOpenModal}/>
+        <Header modalOpen={modalOpen} />
         <Switch>
           <Route path='/' exact render={(props) => <CatalogPage {...props} />} />
           <Route path='/products/:productSlug' render={(props) => <ProductPage {...props} />} />

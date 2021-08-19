@@ -2,9 +2,11 @@
 import thunk from 'redux-thunk'
 import { composeWithDevTools} from 'redux-devtools-extension'
 import { cartReducer } from './reducers/cartReducers'
+import { modalReducers} from "./reducers/modalReducers";
 
 const reducer = combineReducers({
-  cart: cartReducer
+  cart: cartReducer,
+  modal: modalReducers
 })
 
 const cartItemsFromStorage = localStorage.getItem('cartItems') ? JSON.parse(localStorage.getItem('cartItems')) : []
@@ -12,7 +14,10 @@ const cartItemsFromStorage = localStorage.getItem('cartItems') ? JSON.parse(loca
 const initialState = {
   cart: { 
     cartItems: cartItemsFromStorage 
-  }
+  },
+  modal: {
+    showAuthModal: false 
+  } 
 }
 const middleware = [thunk]
 
