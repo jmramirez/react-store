@@ -1,5 +1,6 @@
 @use './reset' as *;
 @use './variables' as *;
+@use './mixins' as *;
 
 body {
   font-family: $primary-font;
@@ -7,3 +8,69 @@ body {
   background-color: #FAFAFA;
 }
 
+.form {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  
+  &-content {
+    display: flex;
+    flex-direction: column;
+    padding: 0 1rem;
+
+    &__header {
+      @include h1;
+    }
+
+    &__label {
+      font-weight: 500;
+      font-size: 1.1rem;
+      margin-top: 1rem;
+      margin-bottom: 0.5rem;
+      color: $primary-black;
+    }
+
+    &__input {
+      height: 2rem;
+      font-family: inherit;
+      border: 1px solid #E6E4E4;
+      background-color: #FAFAFA;
+      padding: 0.2rem 1rem;
+      font-weight: 500;
+      border-radius: 3rem;
+      outline: none;
+      @include font_base(0.9rem, 500);
+
+      &:focus {
+        box-shadow: 0 0 0 1pt #02558b;
+        color: $primary-black;
+      }
+    }
+
+    &__button {
+      background-color: #FFFFFF;
+      border: none;
+      margin-top: 0.6rem;
+      text-align: left;
+      cursor: pointer;
+      color: #02558b;
+      font-size: 0.8rem;
+    }
+
+    @include tablet {
+      padding: 0 2rem;
+    }
+  }
+
+  &-action {
+    padding: 1rem 2rem;
+    background-color: #DADADA;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1.5rem;
+    border-bottom-left-radius: .5rem;
+    border-bottom-right-radius: .5rem;
+  }
+}
