@@ -86,5 +86,14 @@ body {
       border-radius: 2.5rem;
     }
     
+    &__accept {
+      @include auth_button(#02558b, #E42D9F);
+      color: #FFFFFF;
+      
+      &:hover {
+        border: 1px solid #E42D9F;
+      }
+    }
+    
   }
 }
