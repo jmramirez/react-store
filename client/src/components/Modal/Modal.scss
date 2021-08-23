@@ -40,7 +40,11 @@
       box-shadow: 0 2px 5px rgba(19, 24, 44, 0.1);
       border-radius: 0.5rem;
       top: 20%;
-      transition: all .15s;
+      transition: opacity .15s, visibility 0.15s, transform 0.15s;
+    }
+    
+    &--xl {
+      height: 28rem;
     }
   }
   

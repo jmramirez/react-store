@@ -11,6 +11,7 @@ export const Header = () => {
   const modalOpen = useSelector((state) => state.modal.showAuthModal)
   const [totalItems, setTotalItems] = useState(0)
   const dispatch = useDispatch()
+  const [action, setAction] = useState('')
   
   useEffect(() => {
     const reducer = (accumulator, cartItem) => accumulator + cartItem.quantity;
@@ -18,7 +19,8 @@ export const Header = () => {
     setTotalItems(totalItems)
   }, [items])
   
-  const openModal = () => {
+  const openModal = (action) => {
+    setAction(action)
     dispatch(showAuthModal())
   } 
   
@@ -36,10 +38,10 @@ export const Header = () => {
             </span>
             Sign In
             <div className="header-nav__links-auth__test">
-              <button className="header-nav__links-auth__test__auth-sign" onClick={openModal}>
+              <button className="header-nav__links-auth__test__auth-sign" onClick={() => openModal('signin')}>
                 Sign In
               </button>
-              <button className="header-nav__links-auth__test__auth-create" onClick={openModal}>
+              <button className="header-nav__links-auth__test__auth-create" onClick={() => openModal('signup')}>
                 Create Account
               </button>
             </div>
@@ -50,7 +52,7 @@ export const Header = () => {
           </Link>  
         </div>
       </nav>
-      <Modal modalOpen={modalOpen}  />
+      <Modal modalOpen={modalOpen} action={action}  />
     </header>
   )
 }

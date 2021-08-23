@@ -9,14 +9,15 @@ const LoginForm = () => {
     const  { register, handleSubmit, reset } = useForm({ defaultValues: { email: "", password: ""}})
     const dispatch = useDispatch()
     
+    const modalOpen = useSelector((state) => state.modal.showAuthModal)
     const userLogin = useSelector((state) => state.userLogin)
     const { loading, error, userInfo } = userLogin
     
     useEffect(() => {
-        if(userInfo) {
+        if(!modalOpen) {
             reset()
         }
-    }, [userInfo])
+    }, [modalOpen])
     
     const closeModal = (e) => {
         e.preventDefault()
@@ -36,7 +37,7 @@ const LoginForm = () => {
             {error && <p>{error}</p>}
             <form className="form" onSubmit={handleSubmit(onSubmit)}>
                 <div className="form-content">
-                    <h1 className="form-content__header">Log In</h1>
+                    <h1 className="form-content__header">Sign In</h1>
                     <label className="form-content__label">
                         Username/Email
                     </label>

@@ -2,8 +2,9 @@
 import LoginForm from "../LogInForm/LogInForm";
 import {useDispatch} from "react-redux";
 import {hideAuthModal, showAuthModal} from "../../redux/actions/modalActions";
+import RegisterForm from "../RegisterForm/RegisterForm";
 
-const Modal = ({ modalOpen }) => {
+const Modal = ({ modalOpen, action }) => {
     const dispatch = useDispatch() 
     
     const closeModal = () => {
@@ -17,9 +18,10 @@ const Modal = ({ modalOpen }) => {
     return(
         <div className={ modalOpen ? 'modal--open' : 'modal'}>
             <div className="modal-background"></div>
-            <div className="modal-body">
+            <div className={`modal-body ${action === 'signup'?' modal-body--xl':'' }`}>
                 <button className="modal__close-button" onClick={closeModal}><span className="modal__close-icon"></span></button>
-                <LoginForm handleModal={openModal}/>
+                {action === 'signin' && <LoginForm handleModal={openModal}/>}
+                {action === 'signup' && <RegisterForm />}
             </div>
             
         </div>
