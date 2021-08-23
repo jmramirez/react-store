@@ -6,7 +6,7 @@ import { login } from "../../redux/actions/userActions";
 import {useEffect} from "react";
 
 const LoginForm = () => {
-    const  { register, handleSubmit, reset } = useForm({ defaultValues: { email: "", password: ""}})
+    const  { register, handleSubmit, reset, formState: { errors } } = useForm({ defaultValues: { email: "", password: ""}})
     const dispatch = useDispatch()
     
     const modalOpen = useSelector((state) => state.modal.showAuthModal)
@@ -34,18 +34,20 @@ const LoginForm = () => {
     
     return(
         <>
-            {error && <p>{error}</p>}
             <form className="form" onSubmit={handleSubmit(onSubmit)}>
                 <div className="form-content">
                     <h1 className="form-content__header">Sign In</h1>
+                    {error && <p className="form__error">{error}</p>}
                     <label className="form-content__label">
                         Username/Email
                     </label>
-                    <input className="form-content__input" type="text" {...register("email")} autoComplete="off"/>
+                    <input className="form-content__input" type="text" {...register("email", { required: true })} autoComplete="off"/>
+                    {errors.email &&( <p className="form__error">You must enter username</p>)}
                     <label className="form-content__label">
                         Password
                     </label>
-                    <input type="password" className="form-content__input" {...register("password")}/>
+                    <input type="password" className="form-content__input" {...register("password", { required: true })}/>
+                    {errors.password &&( <p className="form__error">You must enter password</p>)}
                     <button className="form-content__button">Not account? Create one!</button>
                 </div>
                 <div className="form-action">
