@@ -52,7 +52,7 @@ export const Header = () => {
           </Link>  
         </div>
       </nav>
-      <Modal modalOpen={modalOpen} action={action}  />
+      <Modal modalOpen={modalOpen} action={action}  openSignUpForm={openModal}/>
     </header>
   )
 }

@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form";
 import { login } from "../../redux/actions/userActions";
 import {useEffect} from "react";
 
-const LoginForm = () => {
+const LoginForm = ({ signUp }) => {
     const  { register, handleSubmit, reset, formState: { errors } } = useForm({ defaultValues: { email: "", password: ""}})
     const dispatch = useDispatch()
     
@@ -48,7 +48,7 @@ const LoginForm = () => {
                     </label>
                     <input type="password" className="form-content__input" {...register("password", { required: true })}/>
                     {errors.password &&( <p className="form__error">You must enter password</p>)}
-                    <button className="form-content__button">Not account? Create one!</button>
+                    <button className="form-content__button" onClick={() =>signUp('signup')}>Not account? Create one!</button>
                 </div>
                 <div className="form-action">
                     <button className="form-action__cancel" onClick={closeModal}>
