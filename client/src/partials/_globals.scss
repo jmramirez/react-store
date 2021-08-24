@@ -9,7 +9,7 @@ body {
 }
 
 .form {
-  height: 100vh;
+  height: 22rem;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -106,5 +106,11 @@ body {
       }
     }
     
+  }
+  
+  &__error {
+    @include font_base(0.7rem, 600);
+    color: red;
+    margin-top: 0.2rem;
   }
 }
