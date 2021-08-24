@@ -31,6 +31,10 @@ namespace ReactStore.Infrastructure.Repositories
         public async Task<bool> SignUpAsync(AppUser user, string password, CancellationToken cancellationToken)
         {
             var result = await _userManager.CreateAsync(user, password);
+
+            if (result.Succeeded)
+                await _userManager.AddToRoleAsync(user, "Customer");
+            
             return result.Succeeded;
         }
 

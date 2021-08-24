@@ -47,7 +47,12 @@ namespace ReactStore.API.Controllers
         [HttpPost]
         public async Task<IActionResult> SignUp(SignUpRequest request)
         {
-            var user = await _userService.SignUpAsync(request);
+            var user = await _userService.GetUserAsync(new GetUserRequest{ Email = request.Email });
+
+            if (user != null)
+                return BadRequest(new { message ="An user with that email address already exists!"});
+            
+            user = await _userService.SignUpAsync(request);
             if (user == null) return BadRequest();
             return CreatedAtAction(nameof(Get), new { }, null);
         }
