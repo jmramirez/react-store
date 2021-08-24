@@ -54,7 +54,7 @@ namespace ReactStore.API.Controllers
             
             user = await _userService.SignUpAsync(request);
             if (user == null) return BadRequest();
-            return CreatedAtAction(nameof(Get), new { }, null);
+            return CreatedAtAction(nameof(Get), new { }, user);
         }
     }
 }

@@ -40,10 +40,10 @@ namespace ReactStore.Domain.Services
 
         public async Task<UserResponse> SignUpAsync(SignUpRequest request, CancellationToken cancellationToken)
         {
-            var user = new Entities.AppUser {Email = request.Email, UserName = request.Email};
+            var user = new Entities.AppUser {Email = request.Email, UserName = request.Email, FirstName = request.FirstName, LastName = request.LastName};
             bool isCreated = await _userRepository.SignUpAsync(user, request.Password, cancellationToken);
             
-            return !isCreated ? null : new UserResponse { Name = request.Name, Email = request.Email};
+            return !isCreated ? null : new UserResponse { Name = user.FullName, Email = request.Email};
         }
 
         public async Task<TokenResponse> SignInAsync(SignInRequest request, CancellationToken cancellationToken)
