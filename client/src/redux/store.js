@@ -4,13 +4,15 @@ import { composeWithDevTools} from 'redux-devtools-extension'
 import { cartReducer } from './reducers/cartReducers'
 import { modalReducers} from "./reducers/modalReducers";
 import {
-  userLoginReducer
+  userLoginReducer,
+  userRegisterReducer
 } from "./reducers/userReducers";
 
 const reducer = combineReducers({
   cart: cartReducer,
   modal: modalReducers,
-  userLogin: userLoginReducer
+  userLogin: userLoginReducer,
+  userRegister: userRegisterReducer
 })
 
 const cartItemsFromStorage = localStorage.getItem('cartItems') ? JSON.parse(localStorage.getItem('cartItems')) : []
