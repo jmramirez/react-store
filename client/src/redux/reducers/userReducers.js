@@ -7,7 +7,7 @@ import {
     USER_REGISTER_REQUEST,
     USER_REGISTER_SUCCESS,
     USER_REGISTER_FAIL,
-    CLEAR_REGISTER_SUCCESS
+    CLEAR_REGISTER_FAIL
 } from "../constants/userContanst";
 
 export const userLoginReducer = (state = {}, action) => {
@@ -37,6 +37,8 @@ export const userRegisterReducer = (state = {}, action) => {
             return { loading: false, error: action.payload }
         case USER_LOGOUT:
             return { }
+        case CLEAR_REGISTER_FAIL:
+            return {error: null}
         default:
             return state
     }
