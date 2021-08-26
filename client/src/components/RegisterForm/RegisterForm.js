@@ -29,7 +29,6 @@ const RegisterForm = () => {
     
     const onSubmit = (data, e) => {
         e.preventDefault()
-        console.log(data)
         dispatch(signup(data.firstName, data.lastName, data.email, data.password))
         console.log(error)
     }

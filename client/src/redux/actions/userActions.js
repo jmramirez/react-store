@@ -36,6 +36,7 @@ export const login = (email, password) => async (dispatch) => {
             type: USER_LOGIN_SUCCESS,
             payload: data,
         })
+        axios.defaults.headers.common["Authorization"] = `Bearer ${data.token}`
         localStorage.setItem('userInfo', JSON.stringify(data))
         dispatch({
             type: HIDE_AUTH_MODAL
@@ -47,6 +48,7 @@ export const login = (email, password) => async (dispatch) => {
                 error.response && error.response.data.message ?
                     error.response.data.message : error.message
         })
+        delete axios.defaults.headers.common["Authorization"]
     }
 }
 
@@ -93,4 +95,5 @@ export const logout = () => (dispatch) => {
     localStorage.removeItem('cartItems')
     dispatch({ type: USER_LOGOUT })
     dispatch({ type: CART_CLEAR_ITEMS })
+    delete axios.defaults.headers.common["Authorization"];
 }

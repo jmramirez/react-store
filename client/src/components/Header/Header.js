@@ -6,6 +6,7 @@ import Modal from "../Modal/Modal";
 import { useDispatch } from "react-redux";
 import { showAuthModal,  } from "../../redux/actions/modalActions";
 import { logout } from "../../redux/actions/userActions";
+import axios from "axios";
 
 
 export const Header = () => {
@@ -15,6 +16,9 @@ export const Header = () => {
   const dispatch = useDispatch()
   const [action, setAction] = useState('')
   const history = useHistory()
+
+  const userLogin = useSelector((state) => state.userLogin)
+  const { userInfo, token } = userLogin
   
   useEffect(() => {
     const reducer = (accumulator, cartItem) => accumulator + cartItem.quantity;
@@ -22,13 +26,18 @@ export const Header = () => {
     setTotalItems(totalItems)
   }, [items])
   
+  useEffect(() => {
+    if(userInfo)
+      axios.defaults.headers.common["Authorization"] = `Bearer ${token}`
+  }, [])
+  
   const openModal = (action) => {
     setAction(action)
     dispatch(showAuthModal())
   }
   
-  const userLogin = useSelector((state) => state.userLogin)
-  const { userInfo } = userLogin 
+  
+   
   
   const userLogout = () => {
     dispatch(logout())

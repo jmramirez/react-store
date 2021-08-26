@@ -28,7 +28,6 @@ const LoginForm = ({ signUp }) => {
     
     const onSubmit = (data, e) => {
         e.preventDefault()
-        console.log(data,e)
         dispatch(login(data.email, data.password))
     }
     
