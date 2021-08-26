@@ -61,13 +61,13 @@ namespace ReactStore.Domain.Services
             {
                 FullName = user.FullName,
                 Roles = roles,
-                Token = GenerateSecurityToken(request)
+                Token = GenerateSecurityToken(request, roles)
             };
             
             return  token;
         }
 
-        private string GenerateSecurityToken(SignInRequest request)
+        private string GenerateSecurityToken(SignInRequest request, IEnumerable<string> roles)
         {
             var tokenHandler = new JwtSecurityTokenHandler();
             var key = Encoding.ASCII.GetBytes(_authenticationSettings.Secret);
@@ -82,10 +82,10 @@ namespace ReactStore.Domain.Services
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
             };
 
-            /*foreach (var role in roles)
+            foreach (var role in roles)
             {
                 tokenDescriptor.Subject.AddClaim(new Claim(ClaimTypes.Role, role));
-            }*/
+            }
 
             var token = tokenHandler.CreateToken(tokenDescriptor);
             return tokenHandler.WriteToken(token);
