@@ -79,6 +79,10 @@
           &__auth-create {
             @include auth_button(#FFF,#02558b)
           }
+          
+          &--user {
+            top: 2rem;
+          }
         }
         
         &:hover & {

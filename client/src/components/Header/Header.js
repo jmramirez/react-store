@@ -1,10 +1,12 @@
 import './Header.scss'
-import {Link} from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import { useSelector} from 'react-redux'
 import {useEffect, useState} from 'react'
 import Modal from "../Modal/Modal";
 import { useDispatch } from "react-redux";
-import { showAuthModal} from "../../redux/actions/modalActions";
+import { showAuthModal,  } from "../../redux/actions/modalActions";
+import { logout } from "../../redux/actions/userActions";
+
 
 export const Header = () => {
   const items = useSelector((state) => state.cart.cartItems)
@@ -12,6 +14,7 @@ export const Header = () => {
   const [totalItems, setTotalItems] = useState(0)
   const dispatch = useDispatch()
   const [action, setAction] = useState('')
+  const history = useHistory()
   
   useEffect(() => {
     const reducer = (accumulator, cartItem) => accumulator + cartItem.quantity;
@@ -22,7 +25,15 @@ export const Header = () => {
   const openModal = (action) => {
     setAction(action)
     dispatch(showAuthModal())
-  } 
+  }
+  
+  const userLogin = useSelector((state) => state.userLogin)
+  const { userInfo } = userLogin 
+  
+  const userLogout = () => {
+    dispatch(logout())
+    history.push('/')
+  }
   
   
   return (
@@ -32,20 +43,36 @@ export const Header = () => {
           CoreNETStore
         </Link>
         <div className="header-nav__links">
-          <div className="header-nav__links-auth">
-            <span className="material-icons header-nav__links-auth__icon">
-              account_circle
-            </span>
-            Sign In
-            <div className="header-nav__links-auth__test">
-              <button className="header-nav__links-auth__test__auth-sign" onClick={() => openModal('signin')}>
-                Sign In
-              </button>
-              <button className="header-nav__links-auth__test__auth-create" onClick={() => openModal('signup')}>
-                Create Account
-              </button>
-            </div>
-          </div>
+          {
+            userInfo ? 
+                <div className="header-nav__links-auth">
+                  Hello, {userInfo.fullName}
+                  <div className="header-nav__links-auth__test header-nav__links-auth__test--user">
+                    <button className="header-nav__links-auth__test__auth-sign" onClick={() => openModal('signin')}>
+                      Your Account
+                    </button>
+                    <button className="header-nav__links-auth__test__auth-create" onClick={userLogout}>
+                      Log Out
+                    </button>
+                  </div>
+                </div>
+                :(
+                    <div className="header-nav__links-auth">
+                      <span className="material-icons header-nav__links-auth__icon">
+                      account_circle
+                      </span>
+                      Sign In
+                      <div className="header-nav__links-auth__test">
+                        <button className="header-nav__links-auth__test__auth-sign" onClick={() => openModal('signin')}>
+                          Sign In
+                        </button>
+                        <button className="header-nav__links-auth__test__auth-create" onClick={() => openModal('signup')}>
+                          Create Account
+                        </button>
+                      </div>
+                    </div>         
+                )
+          }
           <Link to="/cart" className="header-nav__shoppingCart">
             <span className="material-icons header-nav__shoppingCart__icon">shopping_cart</span>
             {totalItems ? `(${totalItems} Items)` : ''}

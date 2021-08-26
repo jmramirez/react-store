@@ -2,6 +2,7 @@
   ADD_PRODUCT_QUANTITY, 
   CART_ADD_ITEM, 
   CART_REMOVE_ITEM,
+  CART_CLEAR_ITEMS,
   REMOVE_PRODUCT_QUANTITY} from '../constants/cartConstants'
 
 export const cartReducer = (state = { cartItems:[]}, action) => {
@@ -69,6 +70,11 @@ export const cartReducer = (state = { cartItems:[]}, action) => {
       return {
         ...state,
         cartItems: state.cartItems.filter((x) => x.productId !== action.payload.productId || x.colorId !== action.payload.colorId || x.storageId !== action.payload.storageId)
+      }
+    case CART_CLEAR_ITEMS:
+      return {
+        ...state,
+        cartItems: [],
       }
     default:
       return state

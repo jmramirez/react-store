@@ -8,6 +8,7 @@ import {
     USER_REGISTER_FAIL,
     USER_REGISTER_SUCCESS,
 } from "../constants/userContanst";
+import { CART_CLEAR_ITEMS } from "../constants/cartConstants";
 
 import {
     HIDE_AUTH_MODAL
@@ -71,6 +72,8 @@ export const signup = (firstName, lastName, email, password) => async (dispatch)
             type: USER_REGISTER_SUCCESS,
             payload: data,
         })
+
+        localStorage.setItem('userInfo', JSON.stringify(data))
         
         dispatch({
             type: HIDE_AUTH_MODAL
@@ -83,4 +86,11 @@ export const signup = (firstName, lastName, email, password) => async (dispatch)
                     error.response.data.message: error.message
         })
     }
+}
+
+export const logout = () => (dispatch) => {
+    localStorage.removeItem('userInfo')
+    localStorage.removeItem('cartItems')
+    dispatch({ type: USER_LOGOUT })
+    dispatch({ type: CART_CLEAR_ITEMS })
 }
