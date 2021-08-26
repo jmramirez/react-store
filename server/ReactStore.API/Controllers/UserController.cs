@@ -54,7 +54,9 @@ namespace ReactStore.API.Controllers
             
             user = await _userService.SignUpAsync(request);
             if (user == null) return BadRequest();
-            return CreatedAtAction(nameof(Get), new { }, user);
+            var token = await _userService.SignInAsync(new SignInRequest
+                {Email = user.Email, Password = request.Password});
+            return Ok(token);
         }
     }
 }
