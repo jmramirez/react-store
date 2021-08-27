@@ -22,7 +22,8 @@ namespace ReactStore.Infrastructure
         public DbSet<ProductFeature> ProductFeatures { get; set; }
         public DbSet<ProductVariant> ProductVariants { get; set; }
         public DbSet<Storage> Storage { get; set; }
-        
+        public DbSet<Order> Orders { get; set; }
+
         public ReactStoreContext(DbContextOptions<ReactStoreContext> options) : base(options){ }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -37,6 +38,8 @@ namespace ReactStore.Infrastructure
             modelBuilder.ApplyConfiguration(new ProductVariantSchemaDefinition());
             modelBuilder.ApplyConfiguration(new StorageSchemaDefinition());
             modelBuilder.ApplyConfiguration(new RolesSchemaDefinition());
+            modelBuilder.Entity<Order>()
+                .OwnsOne(x => x.DeliveryAddress);
             base.OnModelCreating(modelBuilder);
         }
 
