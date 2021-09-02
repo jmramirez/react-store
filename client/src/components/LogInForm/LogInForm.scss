@@ -2,3 +2,7 @@
 @use "../../partials/mixins" as *;
 @use "../../partials/globals" as *;
 
+.form--login {
+  height: 22rem;
+}
+

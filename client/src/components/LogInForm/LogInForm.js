@@ -33,7 +33,7 @@ const LoginForm = ({ signUp }) => {
     
     return(
         <>
-            <form className="form" onSubmit={handleSubmit(onSubmit)}>
+            <form className="form form--login" onSubmit={handleSubmit(onSubmit)}>
                 <div className="form-content">
                     <h1 className="form-content__header">Sign In</h1>
                     {error && <p className="form__error">{error}</p>}
