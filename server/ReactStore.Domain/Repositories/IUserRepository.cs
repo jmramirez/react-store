@@ -5,7 +5,7 @@ using ReactStore.Domain.Entities;
 
 namespace ReactStore.Domain.Repositories
 {
-    public interface IUserRepository
+    public interface IUserRepository 
     {
         Task<bool> AuthenticateAsync(string email, string password, CancellationToken cancellationToken = default);
         Task<bool> SignUpAsync(AppUser user, string password, CancellationToken cancellationToken = default);

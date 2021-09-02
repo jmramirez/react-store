@@ -77,6 +77,7 @@ namespace ReactStore.Domain.Services
                 Subject = new ClaimsIdentity(new []
                 {
                     new Claim(ClaimTypes.Email, request.Email),
+                    new Claim(ClaimTypes.Name, request.Email)
                 }),
                 Expires = DateTime.UtcNow.AddDays(_authenticationSettings.ExpirationDays),
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
