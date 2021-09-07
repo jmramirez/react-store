@@ -7,7 +7,7 @@ export const CartSummary = ({ items }) => (
                 <span className="cartSummary__container__text">{item.name} - {item.color}</span>
                 <span className="cartSummary__container__text">{item.capacity} - Quantity: {item.quantity}</span>
             </div>
-            <div>
+            <div className="cartSummary__subTotal">
                 <span className="cartSummary__container__text">Subtotal: ${item.subTotal}</span>
             </div>
         </li>)

@@ -11,12 +11,17 @@
   &__container {
     display: flex;
     flex-direction: column;
-    width: 70%;
+    width: 65%;
     
     &__text {
       @include font_base(0.9rem,500);
       margin: 0.5rem;
       color: #47525D;
     }
+  }
+  
+  &__subTotal {
+    display: flex;
+    width: 35%;
   }
 }
