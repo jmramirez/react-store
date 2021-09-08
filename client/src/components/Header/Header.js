@@ -12,9 +12,9 @@ import axios from "axios";
 export const Header = () => {
   const items = useSelector((state) => state.cart.cartItems)
   const modalOpen = useSelector((state) => state.modal.showAuthModal)
+  const action = useSelector((state) => state.modal.actionForm)
   const [totalItems, setTotalItems] = useState(0)
   const dispatch = useDispatch()
-  const [action, setAction] = useState('')
   const history = useHistory()
 
   const userLogin = useSelector((state) => state.userLogin)
@@ -32,8 +32,7 @@ export const Header = () => {
   }, [])
   
   const openModal = (action) => {
-    setAction(action)
-    dispatch(showAuthModal())
+    dispatch(showAuthModal(action))
   }
   
   

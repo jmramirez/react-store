@@ -7,6 +7,7 @@ import {CartPage} from './pages/CartPage/CartPage'
 import {useState} from "react";
 import { useSelector } from "react-redux";
 import {CheckoutPage} from "./pages/CheckoutPage/CheckoutPage";
+import {PrivateRoute} from "./components/PrivateRoute/PrivateRoute";
 
 function App() {
   const modalOpen = useSelector((state) => state.modal.showAuthModal) 
@@ -21,7 +22,7 @@ function App() {
           <Route path='/products/:productSlug' render={(props) => <ProductPage {...props} />} />
           <Route path='/products' render={(props) => <CatalogPage {...props} />} />
           <Route path='/cart' render={(props) => <CartPage {...props} />}/>
-          <Route path='/checkout' render={(props) => <CheckoutPage {...props} />}/>
+          <PrivateRoute path='/checkout' component={CheckoutPage} />
         </Switch>
       </BrowserRouter>
     </div>
