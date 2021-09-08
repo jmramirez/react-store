@@ -1,18 +1,32 @@
 ﻿import './CarList.scss'
-import { useSelector } from 'react-redux'
+import {useDispatch, useSelector} from 'react-redux'
 import {CartItem} from '../CartItem/CartItem'
 import {useEffect, useState} from 'react'
-import {Link} from "react-router-dom";
+import {Link, useHistory} from "react-router-dom";
+import {showAuthModal} from "../../redux/actions/modalActions";
 
 export const CarList = () => {
   const items = useSelector((state) => state.cart.cartItems)
+  const userLogin = useSelector((state) => state.userLogin)
+  const { userInfo } = userLogin
   const [subtotal, setSubtotal] = useState(0)
+  const history = useHistory()
+  const dispatch = useDispatch()
 
   useEffect(() => {
     const reducer = (accumulator, cartItem) => accumulator + cartItem.subTotal;
     const total = items.reduce(reducer,0)
     setSubtotal(total)
   },[items])
+    
+  const checkout = () => {
+      if(userInfo){
+        history.push('/checkout')   
+      }
+      else {
+          dispatch(showAuthModal('signin'))
+      }
+  }
   
   return (
       <div>
@@ -52,10 +66,13 @@ export const CarList = () => {
                       <div className="cartList-actions__total">
                           <p className="cartList-actions__total__content">Product Total: ${subtotal}</p>
                       </div>
-                      <Link to='/' className="cartList-actions__link-check">
-                      <span className="cartList-actions__link-check__text">Chekout</span>
-                      <span className="material-icons cartList-actions__link-check__icon">arrow_forward</span>    
-                      </Link>
+                      <button className="cartList-actions__link-check" onClick={checkout}>
+                          <span className="cartList-actions__link-check__text">Chekout</span>
+                          <span className="material-icons cartList-actions__link-check__icon">arrow_forward</span>
+                      </button>
+                      {/*<Link to='/checkout' className="cartList-actions__link-check">
+                            
+                      </Link>*/}
                   </>
               )
           }
