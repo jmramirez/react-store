@@ -8,9 +8,10 @@ import {
     CLEAR_REGISTER_FAIL
 } from "../constants/userContanst";
 
-export const showAuthModal = () => async(dispatch, getState) => {
+export const showAuthModal = (actionForm) => async(dispatch, getState) => {
     dispatch({
-        type: SHOW_AUTH_MODAL
+        type: SHOW_AUTH_MODAL,
+        payload: actionForm
     })
 }
 

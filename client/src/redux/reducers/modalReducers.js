@@ -8,12 +8,14 @@ export const modalReducers = (state={ showAuthModal: false}, action) => {
         case SHOW_AUTH_MODAL:
             return {
                 ...state,
-                showAuthModal: true
+                showAuthModal: true,
+                actionForm: action.payload
             }
         case HIDE_AUTH_MODAL:
             return {
                 ...state,
-                showAuthModal: false
+                showAuthModal: false,
+                actionForm: null
             }
         default:
             return state
