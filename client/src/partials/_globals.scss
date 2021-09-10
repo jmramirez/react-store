@@ -68,6 +68,23 @@ body {
       }
     }
 
+    &--checkout {
+      width: 53%;
+      border-right: 2px solid #E6E4E4;
+    }
+    
+    &--summary {
+      width: 45%;
+    }
+
+    &__header--md {
+      @extend .form-content__header;
+      font-size: 1.4rem;
+      border-top: 2px solid #E6E4E4;
+      border-bottom: 2px solid #E6E4E4;
+      margin-top: 1.5rem;
+    }
+
     @include tablet {
       padding: 0 2rem;
     }
