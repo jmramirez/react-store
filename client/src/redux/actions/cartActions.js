@@ -2,7 +2,7 @@
   CART_ADD_ITEM,
   CART_REMOVE_ITEM,
   ADD_PRODUCT_QUANTITY,
-  REMOVE_PRODUCT_QUANTITY
+  REMOVE_PRODUCT_QUANTITY, CART_CLEAR_ITEMS
 } from '../constants/cartConstants'
 
 export const addToCart = (item) => async (dispatch, getState) => {
@@ -40,4 +40,9 @@ export const reduceProductQuantity = (item) => async (dispatch, getState) => {
     product: item
   })
   localStorage.setItem('cartItems', JSON.stringify(getState().cart.cartItems))
+}
+
+export const clearCartItems = () => (dispatch) => {
+  localStorage.removeItem('cartItems')
+  dispatch({type: CART_CLEAR_ITEMS})
 }
