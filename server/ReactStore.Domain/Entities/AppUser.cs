@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.AspNetCore.Identity;
 
 namespace ReactStore.Domain.Entities
@@ -11,5 +12,7 @@ namespace ReactStore.Domain.Entities
 
         [NotMapped]
         public string FullName => $"{FirstName} {LastName}";
+
+        public List<Order> Orders { get; set; } = new List<Order>();
     }
 }
