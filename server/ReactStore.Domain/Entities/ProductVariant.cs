@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace ReactStore.Domain.Entities
 {
@@ -12,5 +13,7 @@ namespace ReactStore.Domain.Entities
         public Product Product { get; set; }
         public Color Color { get; set; }
         public Storage Storage { get; set; }
+        
+        public IEnumerable<OrderItem> Items { get; set; }
     }
 }
