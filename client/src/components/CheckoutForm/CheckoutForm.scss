@@ -16,28 +16,66 @@
     @include font_base(1rem, 600);
     margin-top: 1rem;
   }
-}
-
-
-.form-content{
-  &--checkout {
-    width: 53%;
-    border-right: 2px solid #E6E4E4;
-  }
-  &--summary {
-    width: 45%;
-  }
-}
   
+  &__submitted {
+    margin: 1rem 0;
+    padding: 0 1rem 0.75rem 1rem;
+    border-radius: .25rem;
 
-.form-content__header--md {
-  @extend .form-content__header;
-  font-size: 1.4rem;
-  border-top: 2px solid #E6E4E4;
-  border-bottom: 2px solid #E6E4E4;
-  margin-top: 1.5rem;
+    &__heading {
+      @include font_base(1.5rem,600);
+      font-family: $primary-heading;
+      margin: 1rem 0;
+    }
+
+    &__paragraph {
+      @include font_base(.9rem,500);
+      margin-bottom:.75rem;
+    }
+
+    &__link {
+      color: #155724;
+      font-weight: 600;
+    }
+    
+    &--successfully{
+      color: #155724;
+      border-color: #c3e6cd;
+      background-color: #D4EDDA;  
+    }
+    
+    &--error {
+      color: #9f3a38;
+      border-color: #e0b4b4;
+      background-color: #fff6f6;
+    }
+  }
+  
+  &__successfully {
+    margin: 1rem 0;
+    padding: 0 1rem 0.75rem 1rem;
+    color: #155724;
+    border-color: #c3e6cd;
+    background-color: #D4EDDA;
+    border-radius: .25rem;
+    
+    &__heading {
+      @include font_base(1.5rem,600);
+      font-family: $primary-heading;
+      margin: 1rem 0;
+    }
+    
+    &__paragraph {
+      @include font_base(.9rem,500);
+      margin-bottom:.75rem;
+    }
+    
+    &__link {
+      color: #155724;
+      font-weight: 600;
+    }
+  }
 }
-
 
 
 

@@ -1,22 +1,32 @@
 ﻿import './CheckoutForm.scss'
 import {CardElement, Elements, useElements, useStripe} from "@stripe/react-stripe-js";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import {useEffect, useState} from "react";
 import {CartSummary} from "../CartSummary/CartSummary";
 import {useForm} from "react-hook-form";
+import axios from "axios";
+import {Link} from "react-router-dom";
+import {clearCartItems} from "../../redux/actions/cartActions";
 
 
 
 const CheckoutForm = () => {
     const { register, handleSubmit, reset, formState: { errors }} = useForm()
-    const items = useSelector((state) => state.cart.cartItems)
+    const orderItems = useSelector((state) => state.cart.cartItems)
+    const [order,setOrder] = useState([])
     const [subTotal, setSubTotal] = useState(0)
+    const [successfullySubmitted, setSuccessfullySubmitted ] = useState(false)
+    const [notSubmitted, setNotSubmitted] = useState(false)
+    const [error, setError] = useState('')
     const stripe = useStripe()
     const elements = useElements()
+    const userLogin = useSelector((state) => state.userLogin)
+    const { userInfo } = userLogin
+    const dispatch = useDispatch()
     
     useEffect(() => {
         const reducer = (accumulator, cartItem) => accumulator + cartItem.subTotal;
-        const total = items.reduce(reducer,0)
+        const total = orderItems.reduce(reducer,0)
         setSubTotal(total)
     }, [])
     
@@ -24,66 +34,126 @@ const CheckoutForm = () => {
     const onSubmit = async (data, e) => {
         try {
             e.preventDefault()
-            const payload = await stripe.createPaymentMethod({
-                type: "card",
-                card: elements.getElement(CardElement)
-            })
-            console.log(payload)   
-        } catch (e) {
-            console.log(e)
+            const stripeToken = await stripe.createToken(elements.getElement(CardElement), data.nameOnCard)
+            const response = await axios.post(
+                'https://localhost:5001/api/orders',
+                {
+                    stripeToken: stripeToken.token.id,
+                    firstName: data.firstName,
+                    lastName: data.lastName,
+                    address1: data.address1,
+                    address2: data.address2,
+                    townCity: data.townCity,
+                    country: data.country,
+                    postCode: data.postCode,
+                    items: orderItems.map(item => {
+                        return {
+                            productId: item.productId,
+                            colorId: item.colorId,
+                            storageId: item.storageId,
+                            quantity: item.quantity
+                        }
+                    })
+                },
+                {
+                    headers: {
+                        'Authorization': `Bearer ${userInfo.token}`
+                    }
+                }
+            )
+            if(response){
+                setSuccessfullySubmitted(true)
+                setNotSubmitted(false)
+                setOrder(orderItems)
+                dispatch(clearCartItems())
+            }
+        } catch (error) {
+            setNotSubmitted(true)
+            setError(error.response.data.message)
         }
     }
     
     return (
         <>
             <form className="form--checkout" onSubmit={handleSubmit(onSubmit)}>
-                <div className="form-content form-content--checkout">
-                    <h3 className="form-content__header--md">Delivery Address</h3>
-                    <label className="form-content__label">First Name</label>
-                    <input className="form-content__input"/>
-                    <label className="form-content__label">Last Name</label>
-                    <input className="form-content__input"/>
-                    <label className="form-content__label">Address</label>
-                    <input className="form-content__input"/>
-                    <label className="form-content__label">Address 2</label>
-                    <input className="form-content__input"/>
-                    <label className="form-content__label">Town / City</label>
-                    <input className="form-content__input"/>
-                    <label className="form-content__label">Country</label>
-                    <input className="form-content__input"/>
-                    <label className="form-content__label">Postal Code</label>
-                    <input className="form-content__input"/>
-                    <h3 className="form-content__header--md">Payment Details</h3>
-                    <label className="form-content__label">Name on Card</label>
-                    <input className="form-content__input"/>
-                    <label className="form-content__label">Credit/debit card details</label>
-                    <CardElement
-                        options={{
-                            style: {
-                                base: {
-                                    fontSize: '16px',
-                                    color: '#424770',
-                                    '::placeholder': {
-                                        color: '#323232',
+                {!successfullySubmitted &&
+                (
+                    <div className="form-content form-content--checkout">
+                        <h3 className="form-content__header--md">Delivery Address</h3>
+                        <label className="form-content__label">First Name</label>
+                        <input className="form-content__input" type="text" {...register("firstName", {required: true})} autoComplete="off"/>
+                        {errors.firstName &&( <p className="form__error">You must provide First Name</p>)}
+                        <label className="form-content__label">Last Name</label>
+                        <input className="form-content__input" type="text" {...register("lastName", {required: true})} autoComplete="off"/>
+                        {errors.lastName &&( <p className="form__error">You must provide Last Name</p>)}
+                        <label className="form-content__label">Address</label>
+                        <input className="form-content__input" type="text" {...register("address1", {required: true})} autoComplete="off"/>
+                        {errors.address &&( <p className="form__error">You must provide Address</p>)}
+                        <label className="form-content__label">Address 2</label>
+                        <input className="form-content__input" type="text" {...register("address2")} autoComplete="off"/>
+                        <label className="form-content__label">Town / City</label>
+                        <input className="form-content__input" type="text" {...register("townCity", {required: true})} autoComplete="off"/>
+                        {errors.city &&( <p className="form__error">You must provide your City</p>)}
+                        <label className="form-content__label">Country</label>
+                        <input className="form-content__input" type="text" {...register("country", {required: true})} autoComplete="off"/>
+                        {errors.firstName &&( <p className="form__error">You must provide your Country</p>)}
+                        <label className="form-content__label">Postal Code</label>
+                        <input className="form-content__input" type="text" {...register("postCode", {required: true})} autoComplete="off"/>
+                        {errors.firstName &&( <p className="form__error">You must provide Postal Code</p>)}
+                        <h3 className="form-content__header--md">Payment Details</h3>
+                        <label className="form-content__label">Name on Card</label>
+                        <input className="form-content__input" type="text" {...register("nameOnCard", {required: true})} autoComplete="off"/>
+                        {errors.firstName &&( <p className="form__error">You must provide Name on Card</p>)}
+                        <label className="form-content__label">Credit/debit card details</label>
+                        <CardElement
+                            options={{
+                                style: {
+                                    base: {
+                                        fontSize: '16px',
+                                        color: '#424770',
+                                        '::placeholder': {
+                                            color: '#323232',
+                                        },
+                                        lineHeight: '24px',
                                     },
-                                    lineHeight: '24px',
+                                    invalid: {
+                                        color: '#9e2146',
+                                    },
                                 },
-                                invalid: {
-                                    color: '#9e2146',
-                                },
-                            },
-                        }}
-                    />
-                    <input type="submit" value="Place your order" className="form--checkout__action"/>
-                </div>
+                            }}
+                        />
+                        <input type="submit" value="Place your order" className="form--checkout__action"/>
+                    </div>    
+                )}
                 <div className="form-content form-content--summary">
-                    <h3 className="form-content__header--md">Your Cart</h3>
-                    <ul>
-                        <CartSummary items={items} />
-                        <li className="form--checkout__total">
-                            Total: ${subTotal}
-                        </li>
-                    </ul>
+                    <div>
+                        <h3 className="form-content__header--md">Your Cart</h3>
+                        <ul>
+                            <CartSummary items={successfullySubmitted? order : orderItems} />
+                            <li className="form--checkout__total">
+                                Total: ${subTotal}
+                            </li>
+                        </ul>    
+                    </div>
+                    { successfullySubmitted && (
+                        <div className="form--checkout__submitted form--checkout__submitted--successfully">
+                            <h3 className="form--checkout__submitted__heading">Order placed successfully.</h3>
+                            <p className="form--checkout__submitted__paragraph">
+                                Your order number is <strong>{}</strong>
+                            </p>
+                            <p className="form--checkout__successfully__paragraph">
+                                Click <Link to="/" className="form--checkout__successfully__link">here</Link> to see your orders.
+                            </p>
+                        </div>  
+                    )}
+                    { notSubmitted && (
+                        <div className="form--checkout__submitted form--checkout__submitted--error">
+                            <h3 className="form--checkout__submitted__heading">{error}</h3>
+                            <p className="form--checkout__submitted__paragraph">
+                                Please verify your info
+                            </p>
+                        </div>
+                    )}
                 </div>
             </form>
         </>
