@@ -47,10 +47,10 @@ const LoginForm = ({ signUp }) => {
                     </label>
                     <input type="password" className="form-content__input" {...register("password", { required: true })}/>
                     {errors.password &&( <p className="form__error">You must enter password</p>)}
-                    <button className="form-content__button" onClick={() =>signUp('signup')}>Not account? Create one!</button>
+                    <button className="form-content__button" type="button"  onClick={() =>signUp('signup')}>Not account? Create one!</button>
                 </div>
                 <div className="form-action">
-                    <button className="form-action__cancel" onClick={closeModal}>
+                    <button className="form-action__cancel" onClick={closeModal} type="button">
                         Cancel
                     </button>
                     <input className="form-action__accept" type="submit" value="Log In" />
