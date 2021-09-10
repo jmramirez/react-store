@@ -151,13 +151,13 @@ namespace ReactStore.API.Migrations
                         new
                         {
                             Id = 1,
-                            ConcurrencyStamp = "aee948ca-0b2d-4fbf-9e97-62c452425e9d",
+                            ConcurrencyStamp = "93af1dd6-4af6-47f6-b339-8c3870046fd7",
                             Name = "Admin"
                         },
                         new
                         {
                             Id = 2,
-                            ConcurrencyStamp = "22083b6f-9aba-4b43-973b-324574126212",
+                            ConcurrencyStamp = "42e66dc6-dcc2-4363-af4e-88c5e3823390",
                             Name = "Customer"
                         });
                 });
@@ -256,27 +256,27 @@ namespace ReactStore.API.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("124ecc39-e8d2-4137-840e-91375b7caca4"),
+                            Id = new Guid("4083fe1d-5792-4f78-b475-ff8dc49ff770"),
                             Name = "Apple"
                         },
                         new
                         {
-                            Id = new Guid("6809e4b1-4d93-4969-84aa-839aaa2b4866"),
+                            Id = new Guid("cf6fc884-75c3-487f-9df3-8ae9a1a54fee"),
                             Name = "Samsung"
                         },
                         new
                         {
-                            Id = new Guid("8818c21c-0531-4b1c-affc-1c790cb0a67f"),
+                            Id = new Guid("e9218ce2-c1ea-4436-adff-73f4fe5b7baf"),
                             Name = "Google"
                         },
                         new
                         {
-                            Id = new Guid("c9c1ee3f-ca72-40e4-a77b-04f473d34ec5"),
+                            Id = new Guid("f67f6528-83dc-42cb-906e-85a06b5b0b8a"),
                             Name = "Motorola"
                         },
                         new
                         {
-                            Id = new Guid("bab87fc9-e712-45de-bee6-d0f761216ffb"),
+                            Id = new Guid("863c021c-2df5-439f-9406-9a38470e4624"),
                             Name = "LG"
                         });
                 });
@@ -298,47 +298,47 @@ namespace ReactStore.API.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("44319a76-5eeb-449c-97a6-d711429135a1"),
+                            Id = new Guid("694cfe9a-d18b-46c9-8ef3-11163d91a9df"),
                             Name = "Black"
                         },
                         new
                         {
-                            Id = new Guid("04e3d556-d95b-416b-b2e7-2cd657bbae13"),
+                            Id = new Guid("9eed779f-5afd-48fc-9b94-79dec4a39d9b"),
                             Name = "White"
                         },
                         new
                         {
-                            Id = new Guid("95b492d6-24bb-44ee-979e-9e0adfbff8b1"),
+                            Id = new Guid("0f6fb8a9-8367-43a1-a43c-64063667a5eb"),
                             Name = "Blue"
                         },
                         new
                         {
-                            Id = new Guid("2f8044bf-5659-4375-a615-718ee1820084"),
+                            Id = new Guid("9b19c4cc-f6f4-4f5e-a11b-ca7c2a1d5d7c"),
                             Name = "Green"
                         },
                         new
                         {
-                            Id = new Guid("037830bc-45d8-491b-a99b-28d29ea84ab9"),
+                            Id = new Guid("87deb307-03a7-4107-9b0c-0c04d85d2719"),
                             Name = "Purple"
                         },
                         new
                         {
-                            Id = new Guid("67e71cd0-91cd-42e7-870b-d9d33dc526f9"),
+                            Id = new Guid("ad19a8b7-e083-41cd-b527-ced2b5f91ebd"),
                             Name = "Red"
                         },
                         new
                         {
-                            Id = new Guid("2381ebc8-a4a3-474b-a262-1257cad99d3a"),
+                            Id = new Guid("aa6bb402-3d98-44ea-96dc-6a6519791fb0"),
                             Name = "Red"
                         },
                         new
                         {
-                            Id = new Guid("1b7c04af-a0c1-40e4-9eeb-3f0bdbd7497d"),
+                            Id = new Guid("60e94e18-8fe3-4255-9ff0-3af68e0e744c"),
                             Name = "Pink"
                         },
                         new
                         {
-                            Id = new Guid("07dcf836-e63f-4f50-903b-f254dd874e6e"),
+                            Id = new Guid("89821d11-76b7-4c8e-910d-451cf162d37c"),
                             Name = "Grey"
                         });
                 });
@@ -360,32 +360,32 @@ namespace ReactStore.API.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("12387058-27bc-4bde-9b69-1dd8267dceec"),
+                            Id = new Guid("fa5db1f1-b714-42ec-bd1c-dfcc147d99b7"),
                             Name = "5G"
                         },
                         new
                         {
-                            Id = new Guid("738d415f-2dd1-4d92-a574-b63947fc5c29"),
+                            Id = new Guid("e925292d-08ec-4eff-b161-3542e986132d"),
                             Name = "4G"
                         },
                         new
                         {
-                            Id = new Guid("dfdb06d2-2b2c-4047-b1b3-b7faade5d170"),
+                            Id = new Guid("2aad7405-d875-42fa-8cc8-adb7526b3c5e"),
                             Name = "Memory Expandable"
                         },
                         new
                         {
-                            Id = new Guid("297bf12f-3fd7-432d-819d-eeca271150c3"),
+                            Id = new Guid("72179e80-198d-4df0-a266-da0b008480cc"),
                             Name = "USB-C Connector"
                         },
                         new
                         {
-                            Id = new Guid("fe1dd8ee-b00f-467c-ae70-16da650a15d1"),
+                            Id = new Guid("f3abb52f-fd09-4e5c-a9a1-f79df7ba0d9c"),
                             Name = "Fast Charger"
                         },
                         new
                         {
-                            Id = new Guid("3baabde0-da81-49fe-9543-a6c05f8a535d"),
+                            Id = new Guid("186d6a11-fb15-483e-8992-dae3382dac41"),
                             Name = "Wireless  Charging"
                         });
                 });
@@ -412,163 +412,163 @@ namespace ReactStore.API.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("4ed0704b-b26d-400f-b7df-7fe3a1701da3"),
+                            Id = new Guid("664845d1-33cf-49f7-8f67-f3fabc3464e3"),
                             ProductId = new Guid("7e60cf5a-0aab-49d5-9ef2-3f2c9b0f097d"),
                             Url = "https://localhost:5001/galaxys21ultra/samsung-s21-ultra.png"
                         },
                         new
                         {
-                            Id = new Guid("374a2526-8225-435a-bb7c-467a5b6f75ac"),
+                            Id = new Guid("853c448b-f8da-498f-a052-79009310392e"),
                             ProductId = new Guid("7e60cf5a-0aab-49d5-9ef2-3f2c9b0f097d"),
                             Url = "https://localhost:5001/galaxys21ultra/samsung-s21-ultra1.png"
                         },
                         new
                         {
-                            Id = new Guid("8a29c23d-81bd-46ff-869c-628952b34e39"),
+                            Id = new Guid("320efcc9-00f8-417b-aabc-39ee59c5c07d"),
                             ProductId = new Guid("7e60cf5a-0aab-49d5-9ef2-3f2c9b0f097d"),
                             Url = "https://localhost:5001/galaxys21ultra/samsung-s21-ultra2.png"
                         },
                         new
                         {
-                            Id = new Guid("97457b9c-0ddf-4489-ba67-99e1da23bf5e"),
+                            Id = new Guid("9daa3ab9-ea58-4f28-a4a1-e95f3b1c735b"),
                             ProductId = new Guid("7e60cf5a-0aab-49d5-9ef2-3f2c9b0f097d"),
                             Url = "https://localhost:5001/galaxys21ultra/samsung-s21-ultra3.png"
                         },
                         new
                         {
-                            Id = new Guid("c415e902-df22-4356-b26c-184811b9e89f"),
+                            Id = new Guid("9bb59747-dbfd-450d-8ef0-88e8ba277416"),
                             ProductId = new Guid("533ed09f-6a3a-4ad7-922f-76ebc4a9bc30"),
                             Url = "https://localhost:5001/galaxynote20/galaxy-note20.png"
                         },
                         new
                         {
-                            Id = new Guid("96c77a62-039b-4459-a5f4-091d61c4fe84"),
+                            Id = new Guid("257bd5af-10df-4efe-80c4-98f423a9b74a"),
                             ProductId = new Guid("533ed09f-6a3a-4ad7-922f-76ebc4a9bc30"),
                             Url = "https://localhost:5001/galaxynote20/galaxy-note20_1.png"
                         },
                         new
                         {
-                            Id = new Guid("5e1cb9f9-bf4e-4947-bdfa-2ebe6076daa1"),
+                            Id = new Guid("1cdf72d5-b705-4f53-bb56-bf14c958a13f"),
                             ProductId = new Guid("533ed09f-6a3a-4ad7-922f-76ebc4a9bc30"),
                             Url = "https://localhost:5001/galaxynote20/galaxy-note20_2.png"
                         },
                         new
                         {
-                            Id = new Guid("e73a84aa-5d36-41e2-8294-fe03abc7b41a"),
+                            Id = new Guid("9936d20a-0c4e-479e-807d-d0daec74929f"),
                             ProductId = new Guid("533ed09f-6a3a-4ad7-922f-76ebc4a9bc30"),
                             Url = "https://localhost:5001/galaxynote20/galaxy-note20_3.png"
                         },
                         new
                         {
-                            Id = new Guid("0cbe7161-1d7c-4966-a64a-83385ca109c3"),
+                            Id = new Guid("e1dc2c53-919c-4f65-b680-0ebe07aa7885"),
                             ProductId = new Guid("8b94cae3-0ef3-4e2e-bbcd-92ec689d3b73"),
                             Url = "https://localhost:5001/iphone12promax/iphone12-pro.png"
                         },
                         new
                         {
-                            Id = new Guid("be679348-f782-4111-be70-c4fea2c79b4d"),
+                            Id = new Guid("d990b0be-141a-4faa-a349-f75003577af2"),
                             ProductId = new Guid("8b94cae3-0ef3-4e2e-bbcd-92ec689d3b73"),
                             Url = "https://localhost:5001/iphone12promax/iphone12-pro1.png"
                         },
                         new
                         {
-                            Id = new Guid("7b76a258-d6ff-4382-a40f-bfa8c36d5a00"),
+                            Id = new Guid("3c26a7ee-a93d-4f4a-aaa8-9f60ab7fda32"),
                             ProductId = new Guid("8b94cae3-0ef3-4e2e-bbcd-92ec689d3b73"),
                             Url = "https://localhost:5001/iphone12promax/iphone12-pro2.png"
                         },
                         new
                         {
-                            Id = new Guid("1ddf8184-a0b6-46bf-b0c8-210496b5240a"),
+                            Id = new Guid("c7b5b32e-a375-400b-beb5-360515d09080"),
                             ProductId = new Guid("8b94cae3-0ef3-4e2e-bbcd-92ec689d3b73"),
                             Url = "https://localhost:5001/iphone12promax/iphone12-pro3.png"
                         },
                         new
                         {
-                            Id = new Guid("b56ad263-ef6c-4c03-becc-e7252bc9d278"),
+                            Id = new Guid("d6ae74b2-0227-4f8d-939b-eb9f8a2f7f4e"),
                             ProductId = new Guid("d96901d6-44aa-4d67-b616-a347966df5a2"),
                             Url = "https://localhost:5001/iphone12/iphone-12.png"
                         },
                         new
                         {
-                            Id = new Guid("4ad388f1-633d-4264-ab30-51713ce2934e"),
+                            Id = new Guid("7749826b-a657-4be3-a558-4e3ae67f0aa8"),
                             ProductId = new Guid("d96901d6-44aa-4d67-b616-a347966df5a2"),
                             Url = "https://localhost:5001/iphone12/iphone-12_1.png"
                         },
                         new
                         {
-                            Id = new Guid("83ad84a4-c951-4a2e-8191-b8065cc93d95"),
+                            Id = new Guid("eada588d-a1c7-40dd-9a60-d60eae78c0f2"),
                             ProductId = new Guid("d96901d6-44aa-4d67-b616-a347966df5a2"),
                             Url = "https://localhost:5001/iphone12/iphone-12_2.png"
                         },
                         new
                         {
-                            Id = new Guid("a4e3c382-21d2-4b98-915e-da09f5bef52f"),
+                            Id = new Guid("995ca79a-0a45-4195-8273-0f09f410e796"),
                             ProductId = new Guid("a3478123-d608-4032-b447-b634a2dec89c"),
                             Url = "https://localhost:5001/iphone12mini/iphone-12-mini.png"
                         },
                         new
                         {
-                            Id = new Guid("6475e8b9-4e01-4834-bb54-6ef91844d2c0"),
+                            Id = new Guid("918d6230-208c-4a1f-af66-47e26be2c546"),
                             ProductId = new Guid("a3478123-d608-4032-b447-b634a2dec89c"),
                             Url = "https://localhost:5001/iphone12mini/iphone-12-mini1.png"
                         },
                         new
                         {
-                            Id = new Guid("c12c40e8-2918-4939-b3e8-b98c97b2a2d2"),
+                            Id = new Guid("b271fdd2-70e5-4c9c-ba60-9c18634b3ee0"),
                             ProductId = new Guid("a3478123-d608-4032-b447-b634a2dec89c"),
                             Url = "https://localhost:5001/iphone12mini/iphone-12-mini2.png"
                         },
                         new
                         {
-                            Id = new Guid("563789fd-f7a6-4170-8e72-4b9a27692b9d"),
+                            Id = new Guid("d4caa76b-9f15-48a0-996f-f925d3e5cb0a"),
                             ProductId = new Guid("a3478123-d608-4032-b447-b634a2dec89c"),
                             Url = "https://localhost:5001/iphone12mini/iphone-12-mini3.png"
                         },
                         new
                         {
-                            Id = new Guid("0d8e1c87-c891-469f-817a-8cc3a73497ce"),
+                            Id = new Guid("eed207a2-3904-495c-9ffa-4593c5bb53a5"),
                             ProductId = new Guid("5b5087a0-5cac-4fde-b39d-d6fbdb7f5d57"),
                             Url = "https://localhost:5001/google5/google-pixel5.png"
                         },
                         new
                         {
-                            Id = new Guid("6ba38e52-ab75-4501-b278-a22445b03e8b"),
+                            Id = new Guid("98d46381-c748-441c-a42b-d6fc56d478bd"),
                             ProductId = new Guid("5b5087a0-5cac-4fde-b39d-d6fbdb7f5d57"),
                             Url = "https://localhost:5001/google5/google-pixel5_1.png"
                         },
                         new
                         {
-                            Id = new Guid("0dc7d7e6-b8d6-423e-9953-e2325ab82d1b"),
+                            Id = new Guid("bb69450b-ef66-4eb9-be38-ee1d0f045ebc"),
                             ProductId = new Guid("5b5087a0-5cac-4fde-b39d-d6fbdb7f5d57"),
                             Url = "https://localhost:5001/google5/google-pixel5_2.png"
                         },
                         new
                         {
-                            Id = new Guid("a1db8086-3026-428e-a953-e106454afc84"),
+                            Id = new Guid("f77adca5-10e5-4942-b7d9-1fc03195c62e"),
                             ProductId = new Guid("5b5087a0-5cac-4fde-b39d-d6fbdb7f5d57"),
                             Url = "https://localhost:5001/google5/google-pixel5_3.png"
                         },
                         new
                         {
-                            Id = new Guid("5157e030-f466-453d-8dd8-f4186df95bf3"),
+                            Id = new Guid("a09afe60-d968-4322-9d7d-84e4690167ea"),
                             ProductId = new Guid("fc386a0a-48a8-49e9-aff7-e0bf6902d3b3"),
                             Url = "https://localhost:5001/galaxys21/samsung-s21.png"
                         },
                         new
                         {
-                            Id = new Guid("f4f9e408-bd06-4ef8-8f2a-bbf7741e8fc2"),
+                            Id = new Guid("6a1a5c86-a30b-4f10-a72b-6a49fc19ba74"),
                             ProductId = new Guid("fc386a0a-48a8-49e9-aff7-e0bf6902d3b3"),
                             Url = "https://localhost:5001/galaxys21/samsung-s21_1.png"
                         },
                         new
                         {
-                            Id = new Guid("11fc7244-68d6-483e-a831-6edbd1924f23"),
+                            Id = new Guid("535ce4ce-2597-4b7c-9de2-7308110b496c"),
                             ProductId = new Guid("fc386a0a-48a8-49e9-aff7-e0bf6902d3b3"),
                             Url = "https://localhost:5001/galaxys21/samsung-s21_2.png"
                         },
                         new
                         {
-                            Id = new Guid("53e00340-715d-4bc4-868b-96d8965b5e46"),
+                            Id = new Guid("e4b83e6c-6a89-465f-9f10-deb702ba2ea9"),
                             ProductId = new Guid("fc386a0a-48a8-49e9-aff7-e0bf6902d3b3"),
                             Url = "https://localhost:5001/galaxys21/samsung-s21_3.png"
                         });
@@ -591,12 +591,12 @@ namespace ReactStore.API.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("36f04dbd-015d-4c4d-b2d7-3fb7d8f80302"),
+                            Id = new Guid("5ebd7336-4c47-4a33-a0db-e3bfe5b540e8"),
                             Name = "Android"
                         },
                         new
                         {
-                            Id = new Guid("4fb944d8-8af5-4e26-995b-9a97d9a3d121"),
+                            Id = new Guid("c0a14f61-1241-4b1b-9809-a14011baaa2f"),
                             Name = "iOS"
                         });
                 });
@@ -621,7 +621,7 @@ namespace ReactStore.API.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Orders");
+                    b.ToTable("Orders", "reactstore");
                 });
 
             modelBuilder.Entity("ReactStore.Domain.Entities.OrderItem", b =>
@@ -631,37 +631,28 @@ namespace ReactStore.API.Migrations
                         .HasColumnType("integer")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
-                    b.Property<int>("ColorId")
-                        .HasColumnType("integer");
+                    b.Property<Guid>("ColorId")
+                        .HasColumnType("uuid");
 
                     b.Property<int>("OrderId")
                         .HasColumnType("integer");
 
-                    b.Property<int>("ProductId")
-                        .HasColumnType("integer");
-
-                    b.Property<Guid?>("ProductVariantColorId")
-                        .HasColumnType("uuid");
-
-                    b.Property<Guid?>("ProductVariantProductId")
-                        .HasColumnType("uuid");
-
-                    b.Property<Guid?>("ProductVariantStorageId")
+                    b.Property<Guid>("ProductId")
                         .HasColumnType("uuid");
 
                     b.Property<int>("Quantity")
                         .HasColumnType("integer");
 
-                    b.Property<int>("StorageId")
-                        .HasColumnType("integer");
+                    b.Property<Guid>("StorageId")
+                        .HasColumnType("uuid");
 
                     b.HasKey("Id");
 
                     b.HasIndex("OrderId");
 
-                    b.HasIndex("ProductVariantColorId", "ProductVariantProductId", "ProductVariantStorageId");
+                    b.HasIndex("ColorId", "ProductId", "StorageId");
 
-                    b.ToTable("OrderItem");
+                    b.ToTable("OrderItems", "reactstore");
                 });
 
             modelBuilder.Entity("ReactStore.Domain.Entities.Product", b =>
@@ -722,7 +713,7 @@ namespace ReactStore.API.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("3272de68-bd0b-4b22-8f2c-b2f4ef45755a"),
+                            Id = new Guid("187452bb-9e1a-4fca-a871-c51f1d7123db"),
                             BrandId = new Guid("6213ab61-e37d-40fe-9fd9-61ea21fba50b"),
                             Description = "The best iPhone display ever for incredible contrast and higher resolution. With Ceramic Shield, which has four times better drop performance. Superfast speeds. Superlow latency. So you can get faster downloads, better-quality video streaming, more responsive gaming and real-time interactivity. A14 Bionic is the fastest chip in a smartphone. With a 16-core Neural Engine, it crunches trillions of operations each second. And it’s superefficient for great battery life. ",
                             Name = "iPhone 12 mini",
@@ -736,7 +727,7 @@ namespace ReactStore.API.Migrations
                         },
                         new
                         {
-                            Id = new Guid("4c1e8022-7c0b-474e-b88a-f85453c941df"),
+                            Id = new Guid("2dac889f-434e-4e24-b9da-d69300049935"),
                             BrandId = new Guid("6213ab61-e37d-40fe-9fd9-61ea21fba50b"),
                             Description = "The best iPhone display ever for incredible contrast and higher resolution. With Ceramic Shield, which has four times better drop performance. Superfast speeds. Superlow latency. So you can get faster downloads, better-quality video streaming, more responsive gaming and real-time interactivity.A14 Bionic is the fastest chip in a smartphone. With a 16-core Neural Engine, it crunches trillions of operations each second. And it’s superefficient for great battery life.",
                             Name = "iPhone 12",
@@ -750,7 +741,7 @@ namespace ReactStore.API.Migrations
                         },
                         new
                         {
-                            Id = new Guid("be68ce73-3ac0-45c8-af37-f8fb6e613c8c"),
+                            Id = new Guid("46c8a4bc-87c2-4204-b137-2cf82a43ef01"),
                             BrandId = new Guid("6213ab61-e37d-40fe-9fd9-61ea21fba50b"),
                             Description = "The Super Retina XDR display goes edge to edge. With Ceramic Shield, which has four times better drop performance. Superfast speeds. Superlow latency. So you can get faster downloads, better-quality video streaming, more responsive gaming and real-time interactivity. Introducing the first 5-nanometre chip in the industry. Which means more speed, more power and more efficiency. LiDAR creates accurate depth maps in nanoseconds, so objects are placed instantly and more accurately in AR experiences.",
                             Name = "iPhone 12 Pro Max",
@@ -764,7 +755,7 @@ namespace ReactStore.API.Migrations
                         },
                         new
                         {
-                            Id = new Guid("b8aff321-c8b2-48ea-9cbb-9a88846ef21a"),
+                            Id = new Guid("e2982908-d613-4715-8659-eefe46dd26c0"),
                             BrandId = new Guid("8ab3a1c4-0b52-4671-ab2a-753e28c1a0be"),
                             Description = "With 5G,you can download your favourite movies on the go and start watching before you know it. Go from game time to show time, all in crystal clear HD. Pixel’s 5G hotspot is powerful enough to keep multiple devices connected at once. HDR+ automatically enhances colour and lighting, so the photos that you take stay as vivid as you remember. With HD Duo screen sharing, you can read articles, watch live sports, and laugh together as if you were sitting in the same room. Adaptive Battery reduces power to the apps that you rarely use, so your mobile phone keeps its charge all day.",
                             Name = "Google Pixel 5",
@@ -778,7 +769,7 @@ namespace ReactStore.API.Migrations
                         },
                         new
                         {
-                            Id = new Guid("14745d8b-2e07-4e5f-8be5-d2c95d09ba95"),
+                            Id = new Guid("369797be-d93f-4848-9e07-ad852cf08a0d"),
                             BrandId = new Guid("7360baa4-71c3-442d-9328-7f9cfbdf5e1f"),
                             Description = "This isn't the time to slow down, this is the time to forge ahead and take the opportunities that come your way. You don’t need a smartphone. You need a power phone. One as beautiful as it is intelligent with a pen that is mighty, a battery that doesn't leave you hanging and is as well-connected as you are. The Galaxy Note20 5G and Galaxy Note20 Ultra 5G take power to the next level with cutting-edge technology, letting you master whatever you choose to do next. The Galaxy Note20 5G and Galaxy Note20 Ultra 5G have a big battery. Big enough to last all day. But that's not all, it's also intelligent. The Galaxy Note20 5G and Galaxy Note20 Ultra 5G intuitively manage your app usage to conserve energy on its own so you don't need to. Rest assured that you can tackle those emails during the day and be left with enough power to tackle your opponents at night. And if you are running low on battery, get hours of power from minutes of charge with Super Fast Charging.",
                             Name = "Samsung Galaxy Note20",
@@ -792,7 +783,7 @@ namespace ReactStore.API.Migrations
                         },
                         new
                         {
-                            Id = new Guid("4c83bbae-fef3-4be6-9a70-2b878c5ace4f"),
+                            Id = new Guid("0d4071b5-5532-4524-9bf8-a1ca7aafce22"),
                             BrandId = new Guid("7360baa4-71c3-442d-9328-7f9cfbdf5e1f"),
                             Description = "Create share-ready GIFs and videos in one take1 or pick your favourite moments and pull your favorite stills in super high res to share with your followers. Zoom in close, take photos and videos like a pro, and capture incredible share-ready moments with our easy-to-use, multi-lens camera. Power every scroll, click, tap, and stream all day long and then some with an intelligent battery that works with you, not against you. A night out. Your best friend's birthday party. Family moments you'll want to remember forever. Capture your life's best moments in head-turning, super smooth 8K video.",
                             Name = "Samsung Galaxy S21 Ultra",
@@ -806,7 +797,7 @@ namespace ReactStore.API.Migrations
                         },
                         new
                         {
-                            Id = new Guid("58de3021-ae4a-4df7-baa5-0e625ba2187e"),
+                            Id = new Guid("072dc017-7b1b-4b73-9d46-0ca1779c12c2"),
                             BrandId = new Guid("7360baa4-71c3-442d-9328-7f9cfbdf5e1f"),
                             Description = "Create share-ready GIFs and videos in one take1 or pick your favourite moments and pull your favorite stills in super high res to share with your followers. Zoom in close, take photos and videos like a pro, and capture incredible share-ready moments with our easy-to-use, multi-lens camera. Power every scroll, click, tap, and stream all day long and then some with an intelligent battery that works with you, not against you. A night out. Your best friend's birthday party. Family moments you'll want to remember forever. Capture your life's best moments in head-turning, super smooth 8K video.",
                             Name = "Samsung Galaxy S21",
@@ -1243,27 +1234,27 @@ namespace ReactStore.API.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("8e4821c1-edc6-4b56-a8bb-92ccf761fd58"),
+                            Id = new Guid("4b6d2f64-68c1-4fe1-805a-f1c0516eacef"),
                             Capacity = "32GB"
                         },
                         new
                         {
-                            Id = new Guid("9bc7acd0-4430-4685-9205-78b53206fadb"),
+                            Id = new Guid("1ea54453-bd7b-4f15-9445-70b89202171c"),
                             Capacity = "64GB"
                         },
                         new
                         {
-                            Id = new Guid("a6dc3b28-19be-4fdd-b8d0-d68c095413bc"),
+                            Id = new Guid("a91def6b-fd80-43e4-9ea9-d588cc15eb10"),
                             Capacity = "128GB"
                         },
                         new
                         {
-                            Id = new Guid("c502d610-b7c1-4fc7-8850-c8637ecb22d6"),
+                            Id = new Guid("5fb56e04-c55f-4ea5-88a6-c4c90d661c7a"),
                             Capacity = "256GB"
                         },
                         new
                         {
-                            Id = new Guid("53abb888-871f-4507-9573-808bca05d2b3"),
+                            Id = new Guid("d38d8c78-8f3e-4a82-a67b-30043dad3bd7"),
                             Capacity = "512GB"
                         });
                 });
@@ -1333,7 +1324,7 @@ namespace ReactStore.API.Migrations
             modelBuilder.Entity("ReactStore.Domain.Entities.Order", b =>
                 {
                     b.HasOne("ReactStore.Domain.Entities.AppUser", "User")
-                        .WithMany()
+                        .WithMany("Orders")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -1395,8 +1386,10 @@ namespace ReactStore.API.Migrations
                         .IsRequired();
 
                     b.HasOne("ReactStore.Domain.Entities.ProductVariant", "ProductVariant")
-                        .WithMany()
-                        .HasForeignKey("ProductVariantColorId", "ProductVariantProductId", "ProductVariantStorageId");
+                        .WithMany("Items")
+                        .HasForeignKey("ColorId", "ProductId", "StorageId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("ProductVariant");
                 });
@@ -1466,6 +1459,11 @@ namespace ReactStore.API.Migrations
                     b.Navigation("Storage");
                 });
 
+            modelBuilder.Entity("ReactStore.Domain.Entities.AppUser", b =>
+                {
+                    b.Navigation("Orders");
+                });
+
             modelBuilder.Entity("ReactStore.Domain.Entities.Brand", b =>
                 {
                     b.Navigation("Products");
@@ -1498,6 +1496,11 @@ namespace ReactStore.API.Migrations
                     b.Navigation("ProductFeatures");
 
                     b.Navigation("ProductVariants");
+                });
+
+            modelBuilder.Entity("ReactStore.Domain.Entities.ProductVariant", b =>
+                {
+                    b.Navigation("Items");
                 });
 
             modelBuilder.Entity("ReactStore.Domain.Entities.Storage", b =>

@@ -9,9 +9,9 @@ namespace ReactStore.API.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             
-
             migrationBuilder.CreateTable(
                 name: "Orders",
+                schema: "reactstore",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
@@ -39,50 +39,54 @@ namespace ReactStore.API.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "OrderItem",
+                name: "OrderItems",
+                schema: "reactstore",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     OrderId = table.Column<int>(type: "integer", nullable: false),
-                    ProjectId = table.Column<int>(type: "integer", nullable: false),
-                    ColorId = table.Column<int>(type: "integer", nullable: false),
-                    StorageId = table.Column<int>(type: "integer", nullable: false),
-                    Quantity = table.Column<int>(type: "integer", nullable: false),
-                    ProductVariantColorId = table.Column<Guid>(type: "uuid", nullable: true),
-                    ProductVariantProductId = table.Column<Guid>(type: "uuid", nullable: true),
-                    ProductVariantStorageId = table.Column<Guid>(type: "uuid", nullable: true)
+                    ProductId = table.Column<Guid>(type: "uuid", nullable: false),
+                    ColorId = table.Column<Guid>(type: "uuid", nullable: false),
+                    StorageId = table.Column<Guid>(type: "uuid", nullable: false),
+                    Quantity = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_OrderItem", x => x.Id);
+                    table.PrimaryKey("PK_OrderItems", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_OrderItem_Orders_OrderId",
+                        name: "FK_OrderItems_Orders_OrderId",
                         column: x => x.OrderId,
+                        principalSchema: "reactstore",
                         principalTable: "Orders",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_OrderItem_ProductVariants_ProductVariantColorId_ProductVari~",
-                        columns: x => new { x.ProductVariantColorId, x.ProductVariantProductId, x.ProductVariantStorageId },
+                        name: "FK_OrderItems_ProductVariants_ColorId_ProductId_StorageId",
+                        columns: x => new { x.ColorId, x.ProductId, x.StorageId },
                         principalSchema: "reactstore",
                         principalTable: "ProductVariants",
                         principalColumns: new[] { "ColorId", "ProductId", "StorageId" },
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
+            
+
             migrationBuilder.CreateIndex(
-                name: "IX_OrderItem_OrderId",
-                table: "OrderItem",
+                name: "IX_OrderItems_ColorId_ProductId_StorageId",
+                schema: "reactstore",
+                table: "OrderItems",
+                columns: new[] { "ColorId", "ProductId", "StorageId" });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_OrderItems_OrderId",
+                schema: "reactstore",
+                table: "OrderItems",
                 column: "OrderId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_OrderItem_ProductVariantColorId_ProductVariantProductId_Pro~",
-                table: "OrderItem",
-                columns: new[] { "ProductVariantColorId", "ProductVariantProductId", "ProductVariantStorageId" });
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Orders_UserId",
+                schema: "reactstore",
                 table: "Orders",
                 column: "UserId");
         }
@@ -90,10 +94,12 @@ namespace ReactStore.API.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "OrderItem");
+                name: "OrderItems",
+                schema: "reactstore");
 
             migrationBuilder.DropTable(
-                name: "Orders");
+                name: "Orders",
+                schema: "reactstore");
 
             
         }
