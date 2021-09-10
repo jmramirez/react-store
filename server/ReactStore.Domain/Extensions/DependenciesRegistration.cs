@@ -9,7 +9,8 @@ namespace ReactStore.Domain.Extensions
         public static IServiceCollection AddMappers(this IServiceCollection services)
         {
             services
-                .AddSingleton<IProductMappers, ProductMappers>();
+                .AddSingleton<IProductMappers, ProductMappers>()
+                .AddSingleton<IOrderMappers, OrderMappers>();
 
             return services;
         }
@@ -19,7 +20,8 @@ namespace ReactStore.Domain.Extensions
             services
                 .AddScoped<IProductServices, ProductServices>()
                 .AddScoped<IFilterService, FilterService>()
-                .AddScoped<IUserService, UserService>();
+                .AddScoped<IUserService, UserService>()
+                .AddScoped<IOrderService, OrderService>();
 
             return services;
         }

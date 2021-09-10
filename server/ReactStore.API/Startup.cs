@@ -19,6 +19,7 @@ using ReactStore.Domain.Repositories;
 using ReactStore.Domain.Responses;
 using ReactStore.Infrastructure.Extensions;
 using ReactStore.Infrastructure.Repositories;
+using Stripe;
 
 namespace ReactStore.API
 {
@@ -36,12 +37,13 @@ namespace ReactStore.API
         {
             services.AddAppDbContext(Configuration.GetSection("DataSource:ConnectionString").Value);
             services.AddScoped<IProductRepository, ProductRepository>()
-                .AddScoped<IBrandRepository,BrandRepository>()
+                .AddScoped<IBrandRepository, BrandRepository>()
                 .AddScoped<IColorRepository, ColorRepository>()
                 .AddScoped<IOSRepository, OSRepository>()
                 .AddScoped<IFeatureRepository, FeatureRepository>()
                 .AddScoped<IStorageRepository, StorageRepository>()
-                .AddScoped<IUserRepository, UserRepository>();
+                .AddScoped<IUserRepository, UserRepository>()
+                .AddScoped<IOrderRepository, OrderRepository>();
             services.AddMappers()
                 .AddServices();
 
@@ -88,6 +90,9 @@ namespace ReactStore.API
             {
                 endpoints.MapControllers();
             });
+
+            StripeConfiguration.ApiKey =
+                "sk_test_51JSqRkHyqUWXkZvhMdMlr2Of4LCkKSkz0Jk9Fmm2oqptjI2cEeKJZyQQRaFscIsyfrbwVv43D0oWpeT9oKWHiOmP00kJRSQjJW";
         }
     }
 }
