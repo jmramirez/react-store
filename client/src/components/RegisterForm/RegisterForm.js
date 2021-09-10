@@ -62,7 +62,7 @@ const RegisterForm = () => {
                     {errors.passwordConfirmation &&( <p className="form__error">{errors.passwordConfirmation.message}</p>)}
                 </div>
                 <div className="form-action">
-                    <button className="form-action__cancel" onClick={closeModal}>
+                    <button className="form-action__cancel" onClick={closeModal} type="button">
                         Cancel
                     </button>
                     <input className="form-action__accept" type="submit" value="Join Now" />
