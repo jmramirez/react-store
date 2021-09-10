@@ -38,8 +38,8 @@ namespace ReactStore.Infrastructure
             modelBuilder.ApplyConfiguration(new ProductVariantSchemaDefinition());
             modelBuilder.ApplyConfiguration(new StorageSchemaDefinition());
             modelBuilder.ApplyConfiguration(new RolesSchemaDefinition());
-            modelBuilder.Entity<Order>()
-                .OwnsOne(x => x.DeliveryAddress);
+            modelBuilder.ApplyConfiguration(new OrderSchemaDefinition());
+            modelBuilder.ApplyConfiguration(new OrderItemSchemaDefinition());
             base.OnModelCreating(modelBuilder);
         }
 
