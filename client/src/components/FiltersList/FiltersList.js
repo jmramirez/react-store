@@ -3,9 +3,9 @@ import {useEffect, useState} from "react";
 import axios from "axios";
 import {MultiFilter} from "../MultiFilter/MultiFilter";
 
-export const FiltersList = ({ location, history}) => {
+export const FiltersList = ({ location, history, open }) => {
   const [filtersItems, setFiltersItems] = useState([])
-  const [loading, setLoading] = useState(true) 
+  const [loading, setLoading] = useState(true)
         
 
     useEffect(() => {
@@ -25,7 +25,7 @@ export const FiltersList = ({ location, history}) => {
     return (
       loading ? <div>Loading...</div> 
         : 
-      <div className="filters-list">
+      <div className={open? "filters-list filters-list--open" : "filters-list"}>
         <MultiFilter title="Brands" items={filtersItems.brands} location={location} history={history} queryKey="brands" />
         {/*<FilterItem title="Price"/>*/}
         {/*<FilterItem title="Screen Size"/>*/}

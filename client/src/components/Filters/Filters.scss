@@ -9,18 +9,11 @@
   }
 
   &__header {
-    display: flex;
-    justify-content:space-between;
-    align-items: center;
-    box-shadow: 0 0.5rem 1rem rgb(0 0 0 / 4%);
-    border: 1px solid rgba(0, 0, 0, 0.125);
-    border-radius: 0.5rem;
-    padding: 0.5rem 1rem;
+    display: none;
+
 
     @include desktop {
-      box-shadow: none;
-      border: none;
-      padding: 0;
+      display: flex;
     }
 
     &__heading {
@@ -33,8 +26,22 @@
       font-size: 1.2rem;
 
       &--open {
-        transform: rotate(180deg);
+        transform: rotate(90deg);
       }
+
+      @include desktop {
+        display: none;
+      }
+    }
+
+    &--button {
+      box-shadow: 0 0.5rem 1rem rgb(0 0 0 / 4%);
+      border: 1px solid rgba(0, 0, 0, 0.125);
+      border-radius: 0.5rem;
+      padding: 0.5rem 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
 
       @include desktop {
         display: none;
