@@ -2,7 +2,11 @@
 @use '../../partials/variables' as *;
 
 .thumbnail-container {
-  height: 7.82rem;
+  height: 5.6rem;
+
+  @include desktop{
+    height: 7.82rem;
+  }
   
   &__image {
     object-fit: cover;

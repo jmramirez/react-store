@@ -2,14 +2,15 @@
 @use "../../partials/variables" as *;
 
 .product-details {
-  min-width: 16.75rem;
+  min-width: 20rem;
   //width: 18rem;
-  margin: 0 1.5rem;
-  padding: 1.625rem 0;
+
+  padding: 1.625rem 1rem;
   flex-direction: column;
 
   @include tablet {
     padding: 2.5rem 0;
+    margin: 0 1.5rem;
   }
 
   @include desktop {
@@ -23,16 +24,30 @@
   &-top {
     padding-top: 1.8rem;
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
     margin-bottom: 2rem;
+
+    @include tablet{
+      flex-direction: row;
+    }
     
     &__link {
       @include link_base(0.5rem, 0.66rem);
-      width: 20%;
+      width: 2rem;
+
+      @include tablet{
+        width: 13rem;
+      }
 
       &__text {
         padding-left: 0.3rem;
         transition: all 0.3s ease-in-out;
+        display: none;
+
+        @include tablet{
+          display: flex;
+        }
         
         &:hover{
           padding-left: .6rem;
@@ -45,19 +60,38 @@
     }
     
     &__images {
-      width: 48%;
+      width: 100%;
+      margin-bottom: 1.5rem;
+
+      @include tablet{
+        width: 48%;
+        margin-bottom: 0;
+      }
+
     }
     
     &__content {
-      width: 48%;
+      width: 100%;
       background-color: #FFFFFF;
       padding: 2rem;
       border: 1px solid rgba(0, 0, 0, 0.125);
       border-radius: 0.5rem;
-      
+
+      @include tablet {
+        width: 48%;
+      }
+
       &-heading {
-        @include font_base(2rem,600);
+        @include font_base(1.7rem,600);
         font-family: $primary-heading;
+
+        @include tablet{
+          font-size: 1.8rem;
+        }
+
+        @include desktop{
+          font-size: 2rem;
+        }
       }
       
       &-paragraph {
@@ -68,8 +102,16 @@
       }
       
       &-subHeading {
-        @include font_base(1.5rem,600);
+        @include font_base(1.3rem,600);
         font-family: $primary-heading;
+
+        @include tablet{
+          font-size: 1.4rem;
+        }
+
+        @include desktop{
+          font-size: 1.5rem;
+        }
       }
 
       &-variant {
@@ -102,9 +144,15 @@
           color: #FFFFFF;
           display: flex;
           align-items: center;
+          justify-content: center;
           padding: .5rem 1.5rem;
           cursor: pointer;
           transition: all .3s ease-in-out;
+          width: 100%;
+
+          @include tablet{
+            width: 11rem;
+          }
           
           &:hover {
             background-color: #33678f;
@@ -161,10 +209,18 @@
     }
     
     &__paragraph {
-      @include font_base(1.1rem, 500);
+      @include font_base(0.75rem, 500);
       line-height: 1.7rem;
       margin-top: 1.3rem;
       letter-spacing: 0.02rem;
+
+      @include tablet{
+        font-size: 1rem;
+      }
+
+      @include desktop{
+        font-size: 1.1rem;
+      }
     }
   }
 }

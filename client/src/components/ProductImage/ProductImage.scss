@@ -5,11 +5,20 @@
   background-color: #FFFFFF;
   border-radius: 0.5rem;
   border: 1px solid rgba(0, 0, 0, 0.125);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
   
   &-main {
-    height: 540px;
-    width: 510px;
+    height: 381px;
+    width: 272px;
     padding: 3rem;
+
+    @include tablet{
+      height: 540px;
+      width: 510px;
+    }
     
     &__img {
       height: 100%;
@@ -20,6 +29,7 @@
   
   &-thumbs {
     border-top: 1px solid rgba(0, 0, 0, 0.125);
+    width: 100%;
     
     &__list {
       display: flex;
