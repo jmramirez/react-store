@@ -9,11 +9,15 @@
   &-nav {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 0.5rem 0;
     
     @include tablet {
       margin: 0 1.5rem;
       height: 5rem;
       align-items: center;
+      padding: 0;
     }
     
     @include desktop {
@@ -25,18 +29,25 @@
       text-decoration: none;
       font-family: $primary-heading;
       font-size: 1.6rem;
-      padding: 1rem 1.625rem;
+      /*padding: 1rem 1.625rem;*/
+      padding: 0 1.625rem;
+      margin: 0.5rem 0;
       color: #FFFFFF;
       
       @include tablet {
         padding: 0;
+        margin: 0;
       }
     }
     
     &__links {
       display: flex;
-      margin-left: auto;
+      margin: 0.5rem 0;
       align-items: center;
+
+      @include tablet {
+        margin: 0 0 0 auto;
+      }
       
       &-auth {
         color: #FFFFFF;
@@ -56,28 +67,54 @@
           margin-right: .5rem;
         }
 
+        &-text {
+          display: none;
+
+          @include tablet{
+            display: flex;
+          }
+        }
+
         &__test {
           opacity: 0;
           transition: all .15s;
           visibility: hidden;
           position: absolute;
           top: 2.6rem;
-          right: 0;
-          width: 18rem;
-          padding: 1rem;
+          right: auto;
+          width: 11.3rem;
+          padding: 0.5rem 1rem;
           background-color: #FFFFFF;
           color: #767676;
           border: 1px solid;
           border-radius: 0.3rem;
           display: flex;
+          flex-direction: column;
           justify-content: space-evenly;
+
+          @include tablet {
+            flex-direction: row;
+            width: 18rem;
+            right: 0;
+            padding: 1rem;
+          }
           
           &__auth-sign {
-            @include auth_button(#02558b,#FFF)
+            @include auth_button(#02558b,#FFF);
+            margin: 0.25rem 0;
+
+            @include tablet{
+              margin: 0;
+            }
           }
           
           &__auth-create {
-            @include auth_button(#FFF,#02558b)
+            @include auth_button(#FFF,#02558b);
+            margin: 0.25rem 0;
+
+            @include tablet{
+              margin: 0;
+            }
           }
           
           &--user {
@@ -109,7 +146,11 @@
       
       &__icon {
         color: #E42D9F;
-        font-size: 2rem;
+        font-size: 1.7rem;
+
+        @include tablet{
+          font-size: 2rem;
+        }
       }
     }
   }
