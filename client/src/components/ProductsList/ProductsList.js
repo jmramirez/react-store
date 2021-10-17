@@ -9,7 +9,7 @@ export const ProductsList = ({ location }) => {
   useEffect(() => {
     const getProducts = async () => {
       try {
-        const response = await axios.get(`https://localhost:5001/api/products${location.search}`)
+        const response = await axios.get(`https://localhost:44383/api/products${location.search}`)
         setProducts(response.data)
       } catch (e) {
         console.log(e)

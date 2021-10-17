@@ -1,7 +1,15 @@
-﻿.filters-list {
+﻿@use '../../partials/mixins' as *;
+@use "../../partials/variables" as *;
+
+.filters-list {
   margin-top: 1.5rem;
   background-color: #FFFFFF;
   box-shadow: 0 0.5rem 1rem rgb(0 0 0 / 4%);
-  width: 87%;
+  width: 100%;
+  max-width: 276px;
   border-radius: .5rem;
+
+  @include desktop {
+    width: 87%;
+  }
 }

@@ -11,7 +11,7 @@ export const FiltersList = ({ location, history}) => {
     useEffect(() => {
       const getFilters = async () =>{
         try {
-          const filters = await axios.get(`https://localhost:5001/api/filters`)
+          const filters = await axios.get(`https://localhost:44383/api/filters`)
           setFiltersItems(filters.data)
           setLoading(false)
         } catch (e){

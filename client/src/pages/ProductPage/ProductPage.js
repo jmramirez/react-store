@@ -23,7 +23,7 @@ export const ProductPage = ({ match }) => {
   
   useEffect(() => {
     const getProduct = async (slug) => {
-      const product = await axios.get(`https://localhost:5001/api/products/${slug}`)
+      const product = await axios.get(`https://localhost:44383/api/products/${slug}`)
       setProduct(product.data)
       const colorsList = _.uniqBy(product.data.productVariants.map( v =>{
           return {

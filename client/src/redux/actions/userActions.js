@@ -27,7 +27,7 @@ export const login = (email, password) => async (dispatch) => {
         }
         
         const { data } = await axios.post(
-            'https://localhost:5001/api/user/auth',
+            'https://localhost:44383/api/user/auth',
             { email, password },
             config
         )
@@ -65,7 +65,7 @@ export const signup = (firstName, lastName, email, password) => async (dispatch)
         }
         
         const { data } = await axios.post(
-            'https://localhost:5001/api/user',
+            'https://localhost:44383/api/user',
             { firstName, lastName, email, password},
             config
         )

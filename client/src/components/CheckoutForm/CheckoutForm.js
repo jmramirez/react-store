@@ -36,7 +36,7 @@ const CheckoutForm = () => {
             e.preventDefault()
             const stripeToken = await stripe.createToken(elements.getElement(CardElement), data.nameOnCard)
             const response = await axios.post(
-                'https://localhost:5001/api/orders',
+                'https://localhost:44383/api/orders',
                 {
                     stripeToken: stripeToken.token.id,
                     firstName: data.firstName,
