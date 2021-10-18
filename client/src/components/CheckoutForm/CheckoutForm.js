@@ -1,5 +1,5 @@
 ﻿import './CheckoutForm.scss'
-import {CardElement, Elements, useElements, useStripe} from "@stripe/react-stripe-js";
+import {CardElement, useElements, useStripe} from "@stripe/react-stripe-js";
 import { useSelector, useDispatch } from "react-redux";
 import {useEffect, useState} from "react";
 import {CartSummary} from "../CartSummary/CartSummary";
@@ -10,8 +10,8 @@ import {clearCartItems} from "../../redux/actions/cartActions";
 
 
 
-const CheckoutForm = () => {
-    const { register, handleSubmit, reset, formState: { errors }} = useForm()
+const CheckoutForm = ({ submitForm }) => {
+    const { register, handleSubmit,  formState: { errors }} = useForm()
     const orderItems = useSelector((state) => state.cart.cartItems)
     const [order,setOrder] = useState([])
     const [subTotal, setSubTotal] = useState(0)
@@ -28,7 +28,7 @@ const CheckoutForm = () => {
         const reducer = (accumulator, cartItem) => accumulator + cartItem.subTotal;
         const total = orderItems.reduce(reducer,0)
         setSubTotal(total)
-    }, [])
+    }, [orderItems])
     
     
     const onSubmit = async (data, e) => {
@@ -62,6 +62,7 @@ const CheckoutForm = () => {
                 }
             )
             if(response){
+                submitForm()
                 setSuccessfullySubmitted(true)
                 setNotSubmitted(false)
                 setOrder(orderItems)
@@ -142,7 +143,7 @@ const CheckoutForm = () => {
                                 Your order number is <strong>{}</strong>
                             </p>
                             <p className="form--checkout__successfully__paragraph">
-                                Click <Link to="/" className="form--checkout__successfully__link">here</Link> to see your orders.
+                                Click <Link to="/" className="form--checkout__successfully__link">here</Link> to see go back to the store.
                             </p>
                         </div>  
                     )}
