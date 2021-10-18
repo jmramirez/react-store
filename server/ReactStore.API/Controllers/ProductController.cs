@@ -17,9 +17,9 @@ namespace ReactStore.API.Controllers
 
         [HttpGet]
         public async Task<IActionResult> Get(string q, string brands, int? minPrice, int? maxPrice, int? minScreen,
-            int? maxScreen, string capacity, string colors, string os, string features)
+            int? maxScreen, string storage, string colors, string os, string features)
         {
-            var result = await _productServices.GetProductsAsync( q, brands, minPrice, maxPrice, minScreen, maxScreen, capacity, colors, os, features);
+            var result = await _productServices.GetProductsAsync( q, brands, minPrice, maxPrice, minScreen, maxScreen, storage, colors, os, features);
             return Ok(result);
         }
 

@@ -19,13 +19,13 @@ namespace ReactStore.Infrastructure.Repositories
 
         public IUnitOfWork UnitOfWork => _context;
 
-        public async Task<IEnumerable<Product>> GetAsync(string q, string brands, int? minPrice, int? maxPrice, int? minScreen, int? maxScreen, string capacity,
+        public async Task<IEnumerable<Product>> GetAsync(string q, string brands, int? minPrice, int? maxPrice, int? minScreen, int? maxScreen, string storage,
             string colors, string os, string features)
         {
 
             var Query = $"%{q?.ToLower()}%";
             var Brands = string.IsNullOrEmpty(brands) ? new List<string>() : brands.Split('|').ToList();
-            var Capacity = string.IsNullOrEmpty(capacity) ? new List<string>() : capacity.Split('|').ToList();
+            var Capacity = string.IsNullOrEmpty(storage) ? new List<string>() : storage.Split('|').ToList();
             var Colors = string.IsNullOrEmpty(colors) ? new List<string>() : colors.Split('|').ToList();
             var OS = string.IsNullOrEmpty(os) ? new List<string>() : os.Split('|').ToList();
             
