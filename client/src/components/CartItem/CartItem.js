@@ -7,7 +7,6 @@ export const CartItem = ({ item }) => {
   const dispatch = useDispatch()
 
   const handleClick = (item) => {
-    console.log(item)
     dispatch(removeFromCart(item))
   }
   

@@ -15,7 +15,6 @@ export const CheckoutPage = () => {
     
     useEffect(() =>{
         if(!items.length && !formSubmitted ) {
-            console.log(formSubmitted)
             setRedirectToCart(true)
         }
     },[items.length, formSubmitted])
