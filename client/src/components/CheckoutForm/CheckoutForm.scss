@@ -5,8 +5,12 @@
 
 .form--checkout {
   @extend .form;
-  flex-direction: row;
-  justify-content: unset;
+  flex-direction: column-reverse;
+
+  @include tablet{
+    flex-direction: row;
+    justify-content: unset;
+  }
   
   &__action {
     @include link_base(.7rem,2rem)

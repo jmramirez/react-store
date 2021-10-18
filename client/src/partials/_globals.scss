@@ -69,12 +69,20 @@ body {
     }
 
     &--checkout {
-      width: 53%;
-      border-right: 2px solid #E6E4E4;
+      width: 100%;
+
+      @include tablet {
+        width: 53%;
+        border-right: 2px solid #E6E4E4;
+      }
     }
     
     &--summary {
-      width: 45%;
+      width: 100%;
+
+      @include tablet {
+        width: 45%;
+      }
     }
 
     &__header--md {
@@ -91,7 +99,7 @@ body {
   }
 
   &-action {
-    padding: 1rem 2rem;
+    padding: 1rem 0.5rem;
     background-color: #DADADA;
     display: flex;
     align-items: center;
@@ -99,6 +107,11 @@ body {
     margin-top: 1.5rem;
     border-bottom-left-radius: .5rem;
     border-bottom-right-radius: .5rem;
+
+    @include tablet{
+      padding: 1rem 2rem;
+      justify-content: space-between;
+    }
     
     &__cancel {
       border: 1px solid #02558b;
