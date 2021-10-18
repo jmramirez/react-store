@@ -56,9 +56,9 @@ export const Header = () => {
                 <div className="header-nav__links-auth">
                   Hello, {userInfo.fullName}
                   <div className="header-nav__links-auth__test header-nav__links-auth__test--user">
-                    <button className="header-nav__links-auth__test__auth-sign" onClick={() => openModal('signin')}>
+                    {/*<button className="header-nav__links-auth__test__auth-sign" onClick={() => openModal('signin')}>
                       Your Account
-                    </button>
+                    </button>*/}
                     <button className="header-nav__links-auth__test__auth-create" onClick={userLogout}>
                       Log Out
                     </button>

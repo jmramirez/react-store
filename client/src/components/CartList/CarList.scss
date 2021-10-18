@@ -44,8 +44,13 @@
   }
 
   &__empty {
-    @include font_base(1.5rem, 500);
-    padding: 0 2rem 2rem 2rem;
+    @include font_base(1.1rem, 500);
+    padding: 0 1rem 2rem 1rem;
+
+    @include tablet{
+      font-size: 1.5rem;
+      padding: 0 2rem 2rem 2rem;
+    }
   }
 
   &__body {
