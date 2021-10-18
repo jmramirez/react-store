@@ -11,13 +11,13 @@ const LoginForm = ({ signUp }) => {
     
     const modalOpen = useSelector((state) => state.modal.showAuthModal)
     const userLogin = useSelector((state) => state.userLogin)
-    const { loading, error, userInfo } = userLogin
+    const {  error } = userLogin
     
     useEffect(() => {
         if(!modalOpen) {
             reset()
         }
-    }, [modalOpen])
+    }, [modalOpen, reset])
     
     const closeModal = (e) => {
         e.preventDefault()

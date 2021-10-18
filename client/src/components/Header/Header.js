@@ -29,7 +29,7 @@ export const Header = () => {
   useEffect(() => {
     if(userInfo)
       axios.defaults.headers.common["Authorization"] = `Bearer ${token}`
-  }, [])
+  }, [token, userInfo])
   
   const openModal = (action) => {
     dispatch(showAuthModal(action))
@@ -56,9 +56,6 @@ export const Header = () => {
                 <div className="header-nav__links-auth">
                   Hello, {userInfo.fullName}
                   <div className="header-nav__links-auth__test header-nav__links-auth__test--user">
-                    {/*<button className="header-nav__links-auth__test__auth-sign" onClick={() => openModal('signin')}>
-                      Your Account
-                    </button>*/}
                     <button className="header-nav__links-auth__test__auth-create" onClick={userLogout}>
                       Log Out
                     </button>

@@ -2,7 +2,6 @@ import './RegisterForm.scss'
 import {useForm} from "react-hook-form";
 import {useDispatch, useSelector} from "react-redux";
 import { hideAuthModal } from "../../redux/actions/modalActions";
-import {value} from "lodash/seq";
 import {useEffect, useRef} from "react";
 import { signup } from "../../redux/actions/userActions";
 
@@ -19,7 +18,7 @@ const RegisterForm = () => {
         if(!modalOpen) {
             reset()
         }
-    }, [modalOpen])
+    }, [modalOpen, reset])
     
     const closeModal = (e) => {
         e.preventDefault()

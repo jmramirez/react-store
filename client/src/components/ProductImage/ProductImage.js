@@ -10,7 +10,7 @@ export const ProductImage = ({ images }) => {
   useEffect(() => {
     const filteredImage = images.filter(imageSelected => imageSelected.id !== image.id)
     setImagesList(filteredImage)
-  }, [imageId])
+  }, [imageId, image.id, images])
   
   const changeImage = (imageId) => {
     const newImage = images.find(image => image.id === imageId)

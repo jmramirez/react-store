@@ -27,8 +27,6 @@ export const FiltersList = ({ location, history, open }) => {
         : 
       <div className={open? "filters-list filters-list--open" : "filters-list"}>
         <MultiFilter title="Brands" items={filtersItems.brands} location={location} history={history} queryKey="brands" />
-        {/*<FilterItem title="Price"/>*/}
-        {/*<FilterItem title="Screen Size"/>*/}
         <MultiFilter title="Color" items={filtersItems.colors} location={location} history={history} queryKey="colors"/>
         <MultiFilter title="Operating System" items={filtersItems.os} location={location} history={history} queryKey="os" />
         <MultiFilter title="Features" items={filtersItems.features} location={location} history={history} queryKey="features"/>

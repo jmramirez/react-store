@@ -1,6 +1,6 @@
 ﻿import './Filters.scss'
 import {FiltersList} from "../FiltersList/FiltersList";
-import {useEffect, useRef, useState} from 'react';
+import { useState} from 'react';
 
 export const Filters = ({ location, history}) => {
   const [openList, setOpenList] = useState(false)

@@ -4,7 +4,7 @@ import './ProductPage.scss'
 import {Link, useHistory} from 'react-router-dom'
 import {ProductImage} from '../../components/ProductImage/ProductImage'
 import _ from 'lodash'
-import  {useDispatch, useSelector} from 'react-redux'
+import  {useDispatch} from 'react-redux'
 import { addToCart } from '../../redux/actions/cartActions'
 
 export const ProductPage = ({ match }) => {

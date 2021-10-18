@@ -4,7 +4,6 @@ import {CatalogPage} from './pages/CatalogPage/CatalogPage'
 import {Header} from './components/Header/Header'
 import {ProductPage} from './pages/ProductPage/ProductPage'
 import {CartPage} from './pages/CartPage/CartPage'
-import {useState} from "react";
 import { useSelector } from "react-redux";
 import {CheckoutPage} from "./pages/CheckoutPage/CheckoutPage";
 import {PrivateRoute} from "./components/PrivateRoute/PrivateRoute";
