@@ -1,10 +1,9 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
-using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace ReactStore.API.Migrations
 {
-    public partial class InitialMigration : Migration
+    public partial class AppMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -15,11 +14,11 @@ namespace ReactStore.API.Migrations
                 name: "AspNetRoles",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "integer", nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    Name = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: true),
-                    NormalizedName = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: true),
-                    ConcurrencyStamp = table.Column<string>(type: "text", nullable: true)
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
+                    NormalizedName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
+                    ConcurrencyStamp = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -30,25 +29,25 @@ namespace ReactStore.API.Migrations
                 name: "AspNetUsers",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "integer", nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    FirstName = table.Column<string>(type: "text", nullable: true),
-                    LastName = table.Column<string>(type: "text", nullable: true),
-                    RefreshToken = table.Column<string>(type: "text", nullable: true),
-                    UserName = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: true),
-                    NormalizedUserName = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: true),
-                    Email = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: true),
-                    NormalizedEmail = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: true),
-                    EmailConfirmed = table.Column<bool>(type: "boolean", nullable: false),
-                    PasswordHash = table.Column<string>(type: "text", nullable: true),
-                    SecurityStamp = table.Column<string>(type: "text", nullable: true),
-                    ConcurrencyStamp = table.Column<string>(type: "text", nullable: true),
-                    PhoneNumber = table.Column<string>(type: "text", nullable: true),
-                    PhoneNumberConfirmed = table.Column<bool>(type: "boolean", nullable: false),
-                    TwoFactorEnabled = table.Column<bool>(type: "boolean", nullable: false),
-                    LockoutEnd = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: true),
-                    LockoutEnabled = table.Column<bool>(type: "boolean", nullable: false),
-                    AccessFailedCount = table.Column<int>(type: "integer", nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    FirstName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    LastName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    RefreshToken = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    UserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
+                    NormalizedUserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
+                    Email = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
+                    NormalizedEmail = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
+                    EmailConfirmed = table.Column<bool>(type: "bit", nullable: false),
+                    PasswordHash = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    SecurityStamp = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ConcurrencyStamp = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    PhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    PhoneNumberConfirmed = table.Column<bool>(type: "bit", nullable: false),
+                    TwoFactorEnabled = table.Column<bool>(type: "bit", nullable: false),
+                    LockoutEnd = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true),
+                    LockoutEnabled = table.Column<bool>(type: "bit", nullable: false),
+                    AccessFailedCount = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -60,8 +59,8 @@ namespace ReactStore.API.Migrations
                 schema: "reactstore",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "uuid", nullable: false),
-                    Name = table.Column<string>(type: "text", nullable: false)
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -73,8 +72,8 @@ namespace ReactStore.API.Migrations
                 schema: "reactstore",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "uuid", nullable: false),
-                    Name = table.Column<string>(type: "text", nullable: false)
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -86,8 +85,8 @@ namespace ReactStore.API.Migrations
                 schema: "reactstore",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "uuid", nullable: false),
-                    Name = table.Column<string>(type: "text", nullable: false)
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -99,8 +98,8 @@ namespace ReactStore.API.Migrations
                 schema: "reactstore",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "uuid", nullable: false),
-                    Name = table.Column<string>(type: "text", nullable: false)
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -112,8 +111,8 @@ namespace ReactStore.API.Migrations
                 schema: "reactstore",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "uuid", nullable: false),
-                    Capacity = table.Column<string>(type: "text", nullable: false)
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Capacity = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -124,11 +123,11 @@ namespace ReactStore.API.Migrations
                 name: "AspNetRoleClaims",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "integer", nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    RoleId = table.Column<int>(type: "integer", nullable: false),
-                    ClaimType = table.Column<string>(type: "text", nullable: true),
-                    ClaimValue = table.Column<string>(type: "text", nullable: true)
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    RoleId = table.Column<int>(type: "int", nullable: false),
+                    ClaimType = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ClaimValue = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -145,11 +144,11 @@ namespace ReactStore.API.Migrations
                 name: "AspNetUserClaims",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "integer", nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    UserId = table.Column<int>(type: "integer", nullable: false),
-                    ClaimType = table.Column<string>(type: "text", nullable: true),
-                    ClaimValue = table.Column<string>(type: "text", nullable: true)
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    UserId = table.Column<int>(type: "int", nullable: false),
+                    ClaimType = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ClaimValue = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -166,10 +165,10 @@ namespace ReactStore.API.Migrations
                 name: "AspNetUserLogins",
                 columns: table => new
                 {
-                    LoginProvider = table.Column<string>(type: "text", nullable: false),
-                    ProviderKey = table.Column<string>(type: "text", nullable: false),
-                    ProviderDisplayName = table.Column<string>(type: "text", nullable: true),
-                    UserId = table.Column<int>(type: "integer", nullable: false)
+                    LoginProvider = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    ProviderKey = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    ProviderDisplayName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    UserId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -186,8 +185,8 @@ namespace ReactStore.API.Migrations
                 name: "AspNetUserRoles",
                 columns: table => new
                 {
-                    UserId = table.Column<int>(type: "integer", nullable: false),
-                    RoleId = table.Column<int>(type: "integer", nullable: false)
+                    UserId = table.Column<int>(type: "int", nullable: false),
+                    RoleId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -210,10 +209,10 @@ namespace ReactStore.API.Migrations
                 name: "AspNetUserTokens",
                 columns: table => new
                 {
-                    UserId = table.Column<int>(type: "integer", nullable: false),
-                    LoginProvider = table.Column<string>(type: "text", nullable: false),
-                    Name = table.Column<string>(type: "text", nullable: false),
-                    Value = table.Column<string>(type: "text", nullable: true)
+                    UserId = table.Column<int>(type: "int", nullable: false),
+                    LoginProvider = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    Value = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -227,21 +226,50 @@ namespace ReactStore.API.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Orders",
+                schema: "reactstore",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    UserId = table.Column<int>(type: "int", nullable: false),
+                    Placed = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    DeliveryAddress_FirstName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    DeliveryAddress_LastName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    DeliveryAddress_Address1 = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    DeliveryAddress_Address2 = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    DeliveryAddress_TownCity = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    DeliveryAddress_Country = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    DeliveryAddress_Postcode = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    PaymentStatus = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Orders", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Orders_AspNetUsers_UserId",
+                        column: x => x.UserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Products",
                 schema: "reactstore",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "uuid", nullable: false),
-                    Name = table.Column<string>(type: "text", nullable: false),
-                    Slug = table.Column<string>(type: "text", nullable: false),
-                    Thumbnail = table.Column<string>(type: "text", nullable: false),
-                    ShortDescription = table.Column<string>(type: "text", nullable: false),
-                    Description = table.Column<string>(type: "text", nullable: false),
-                    ScreenSize = table.Column<decimal>(type: "numeric(14,2)", precision: 14, scale: 2, nullable: false),
-                    TalkTime = table.Column<decimal>(type: "numeric(14,2)", precision: 14, scale: 2, nullable: false),
-                    StandByTime = table.Column<decimal>(type: "numeric(14,2)", precision: 14, scale: 2, nullable: false),
-                    BrandId = table.Column<Guid>(type: "uuid", nullable: false),
-                    OSId = table.Column<Guid>(type: "uuid", nullable: false)
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Slug = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    Thumbnail = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ShortDescription = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ScreenSize = table.Column<decimal>(type: "decimal(14,2)", precision: 14, scale: 2, nullable: false),
+                    TalkTime = table.Column<decimal>(type: "decimal(14,2)", precision: 14, scale: 2, nullable: false),
+                    StandByTime = table.Column<decimal>(type: "decimal(14,2)", precision: 14, scale: 2, nullable: false),
+                    BrandId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    OSId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -267,9 +295,9 @@ namespace ReactStore.API.Migrations
                 schema: "reactstore",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "uuid", nullable: false),
-                    Url = table.Column<string>(type: "text", nullable: false),
-                    ProductId = table.Column<Guid>(type: "uuid", nullable: false)
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Url = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ProductId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -288,8 +316,8 @@ namespace ReactStore.API.Migrations
                 schema: "reactstore",
                 columns: table => new
                 {
-                    ProductId = table.Column<Guid>(type: "uuid", nullable: false),
-                    FeatureId = table.Column<Guid>(type: "uuid", nullable: false)
+                    ProductId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    FeatureId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -315,10 +343,10 @@ namespace ReactStore.API.Migrations
                 schema: "reactstore",
                 columns: table => new
                 {
-                    ProductId = table.Column<Guid>(type: "uuid", nullable: false),
-                    ColorId = table.Column<Guid>(type: "uuid", nullable: false),
-                    StorageId = table.Column<Guid>(type: "uuid", nullable: false),
-                    Price = table.Column<decimal>(type: "numeric(14,2)", precision: 14, scale: 2, nullable: false)
+                    ProductId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    ColorId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    StorageId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Price = table.Column<decimal>(type: "decimal(14,2)", precision: 14, scale: 2, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -344,6 +372,47 @@ namespace ReactStore.API.Migrations
                         principalTable: "Storage",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "OrderItems",
+                schema: "reactstore",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    OrderId = table.Column<int>(type: "int", nullable: false),
+                    ProductId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    ColorId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    StorageId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Quantity = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_OrderItems", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_OrderItems_Orders_OrderId",
+                        column: x => x.OrderId,
+                        principalSchema: "reactstore",
+                        principalTable: "Orders",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_OrderItems_ProductVariants_ColorId_ProductId_StorageId",
+                        columns: x => new { x.ColorId, x.ProductId, x.StorageId },
+                        principalSchema: "reactstore",
+                        principalTable: "ProductVariants",
+                        principalColumns: new[] { "ColorId", "ProductId", "StorageId" },
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.InsertData(
+                table: "AspNetRoles",
+                columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
+                values: new object[,]
+                {
+                    { 1, "cc828056-a334-436d-a664-99c8631cd0e7", "Admin", null },
+                    { 2, "89ddd1f9-4b73-44e8-a45d-f813c3c1c6a1", "Customer", null }
                 });
 
             migrationBuilder.InsertData(
@@ -389,7 +458,7 @@ namespace ReactStore.API.Migrations
                     { new Guid("aa9fb69a-380a-4c28-968f-61f700750153"), "5G" },
                     { new Guid("3f66e2b9-ad81-42c7-9923-a7ec1d9fe252"), "Memory Expandable" }
                 });
-            
+
             migrationBuilder.InsertData(
                 schema: "reactstore",
                 table: "OS",
@@ -399,7 +468,20 @@ namespace ReactStore.API.Migrations
                     { new Guid("c81d73b4-2d7e-4ae8-8802-057dda516f79"), "Android" },
                     { new Guid("bc052339-a7a9-429f-a673-b03589b84fad"), "iOS" }
                 });
-            
+
+            migrationBuilder.InsertData(
+                schema: "reactstore",
+                table: "Storage",
+                columns: new[] { "Id", "Capacity" },
+                values: new object[,]
+                {
+                    { new Guid("c1d112fd-5a18-415d-9a5f-9cbc602095a2"), "256GB" },
+                    { new Guid("fb6e6a8c-19a9-4598-b290-97cce3e93272"), "32GB" },
+                    { new Guid("2183be20-628e-480b-93e9-0b1fefb38120"), "64GB" },
+                    { new Guid("80c335a6-eaae-42eb-a83a-0d7f47dc543a"), "128GB" },
+                    { new Guid("52f4cfc5-10a6-41b2-8761-1273de874546"), "512GB" }
+                });
+
             migrationBuilder.InsertData(
                 schema: "reactstore",
                 table: "Products",
@@ -441,6 +523,14 @@ namespace ReactStore.API.Migrations
                     { new Guid("ca055cbd-deaf-475a-9520-4a6b9c9ffd43"), new Guid("8b94cae3-0ef3-4e2e-bbcd-92ec689d3b73"), "https://localhost:5001/iphone12promax/iphone12-pro.png" },
                     { new Guid("36b795a6-37e4-4bff-b3fc-9fd6adae818a"), new Guid("533ed09f-6a3a-4ad7-922f-76ebc4a9bc30"), "https://localhost:5001/galaxynote20/galaxy-note20_3.png" },
                     { new Guid("4e552d81-b631-468b-a8f5-f944ba1eb0c1"), new Guid("533ed09f-6a3a-4ad7-922f-76ebc4a9bc30"), "https://localhost:5001/galaxynote20/galaxy-note20_2.png" },
+                });
+
+            migrationBuilder.InsertData(
+                schema: "reactstore",
+                table: "Images",
+                columns: new[] { "Id", "ProductId", "Url" },
+                values: new object[,]
+                {
                     { new Guid("ddcfc599-8047-416a-9680-52678e68093f"), new Guid("533ed09f-6a3a-4ad7-922f-76ebc4a9bc30"), "https://localhost:5001/galaxynote20/galaxy-note20_1.png" },
                     { new Guid("08a2bc75-720f-4cbc-9167-8137b92e45ad"), new Guid("533ed09f-6a3a-4ad7-922f-76ebc4a9bc30"), "https://localhost:5001/galaxynote20/galaxy-note20.png" },
                     { new Guid("1f346493-2f60-4fe5-abb5-03f19a051fc7"), new Guid("7e60cf5a-0aab-49d5-9ef2-3f2c9b0f097d"), "https://localhost:5001/galaxys21ultra/samsung-s21-ultra3.png" },
@@ -450,18 +540,6 @@ namespace ReactStore.API.Migrations
                     { new Guid("aee9bb79-c0b4-41bd-bc57-83c19d9f186f"), new Guid("d96901d6-44aa-4d67-b616-a347966df5a2"), "https://localhost:5001/iphone12/iphone-12_1.png" }
                 });
 
-            migrationBuilder.InsertData(
-                schema: "reactstore",
-                table: "Storage",
-                columns: new[] { "Id", "Capacity" },
-                values: new object[,]
-                {
-                    { new Guid("c1d112fd-5a18-415d-9a5f-9cbc602095a2"), "256GB" },
-                    { new Guid("fb6e6a8c-19a9-4598-b290-97cce3e93272"), "32GB" },
-                    { new Guid("2183be20-628e-480b-93e9-0b1fefb38120"), "64GB" },
-                    { new Guid("80c335a6-eaae-42eb-a83a-0d7f47dc543a"), "128GB" },
-                    { new Guid("52f4cfc5-10a6-41b2-8761-1273de874546"), "512GB" }
-                });
             
 
             migrationBuilder.InsertData(
@@ -511,6 +589,14 @@ namespace ReactStore.API.Migrations
                     { new Guid("51c347f4-3293-4a63-9170-0531b325548d"), new Guid("a3478123-d608-4032-b447-b634a2dec89c"), new Guid("80c335a6-eaae-42eb-a83a-0d7f47dc543a"), 1080m },
                     { new Guid("51c347f4-3293-4a63-9170-0531b325548d"), new Guid("a3478123-d608-4032-b447-b634a2dec89c"), new Guid("2183be20-628e-480b-93e9-0b1fefb38120"), 1008m },
                     { new Guid("ea32ab8f-e614-4327-955e-3b26670cc1c9"), new Guid("d96901d6-44aa-4d67-b616-a347966df5a2"), new Guid("c1d112fd-5a18-415d-9a5f-9cbc602095a2"), 1380m },
+                });
+
+            migrationBuilder.InsertData(
+                schema: "reactstore",
+                table: "ProductVariants",
+                columns: new[] { "ColorId", "ProductId", "StorageId", "Price" },
+                values: new object[,]
+                {
                     { new Guid("ea32ab8f-e614-4327-955e-3b26670cc1c9"), new Guid("d96901d6-44aa-4d67-b616-a347966df5a2"), new Guid("80c335a6-eaae-42eb-a83a-0d7f47dc543a"), 1236m },
                     { new Guid("ea32ab8f-e614-4327-955e-3b26670cc1c9"), new Guid("d96901d6-44aa-4d67-b616-a347966df5a2"), new Guid("2183be20-628e-480b-93e9-0b1fefb38120"), 1164m },
                     { new Guid("ea32ab8f-e614-4327-955e-3b26670cc1c9"), new Guid("a3478123-d608-4032-b447-b634a2dec89c"), new Guid("2183be20-628e-480b-93e9-0b1fefb38120"), 1008m },
@@ -538,6 +624,8 @@ namespace ReactStore.API.Migrations
                     { new Guid("30462f05-b486-4ee0-b2d8-364d5627145d"), new Guid("7e60cf5a-0aab-49d5-9ef2-3f2c9b0f097d"), new Guid("c1d112fd-5a18-415d-9a5f-9cbc602095a2"), 2125m },
                     { new Guid("700b2a28-ea84-419c-bf6d-7fe1126b4b4b"), new Guid("a3478123-d608-4032-b447-b634a2dec89c"), new Guid("c1d112fd-5a18-415d-9a5f-9cbc602095a2"), 1225m }
                 });
+
+
             
 
             migrationBuilder.CreateIndex(
@@ -549,7 +637,8 @@ namespace ReactStore.API.Migrations
                 name: "RoleNameIndex",
                 table: "AspNetRoles",
                 column: "NormalizedName",
-                unique: true);
+                unique: true,
+                filter: "[NormalizedName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetUserClaims_UserId",
@@ -575,7 +664,8 @@ namespace ReactStore.API.Migrations
                 name: "UserNameIndex",
                 table: "AspNetUsers",
                 column: "NormalizedUserName",
-                unique: true);
+                unique: true,
+                filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Brands_Id",
@@ -588,6 +678,24 @@ namespace ReactStore.API.Migrations
                 schema: "reactstore",
                 table: "Images",
                 column: "ProductId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_OrderItems_ColorId_ProductId_StorageId",
+                schema: "reactstore",
+                table: "OrderItems",
+                columns: new[] { "ColorId", "ProductId", "StorageId" });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_OrderItems_OrderId",
+                schema: "reactstore",
+                table: "OrderItems",
+                column: "OrderId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Orders_UserId",
+                schema: "reactstore",
+                table: "Orders",
+                column: "UserId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_ProductFeatures_ProductId",
@@ -649,7 +757,18 @@ namespace ReactStore.API.Migrations
                 schema: "reactstore");
 
             migrationBuilder.DropTable(
+                name: "OrderItems",
+                schema: "reactstore");
+
+            migrationBuilder.DropTable(
                 name: "ProductFeatures",
+                schema: "reactstore");
+
+            migrationBuilder.DropTable(
+                name: "AspNetRoles");
+
+            migrationBuilder.DropTable(
+                name: "Orders",
                 schema: "reactstore");
 
             migrationBuilder.DropTable(
@@ -657,14 +776,11 @@ namespace ReactStore.API.Migrations
                 schema: "reactstore");
 
             migrationBuilder.DropTable(
-                name: "AspNetRoles");
+                name: "Features",
+                schema: "reactstore");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
-
-            migrationBuilder.DropTable(
-                name: "Features",
-                schema: "reactstore");
 
             migrationBuilder.DropTable(
                 name: "Colors",

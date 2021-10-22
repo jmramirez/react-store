@@ -2,8 +2,8 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using ReactStore.Infrastructure;
 
 namespace ReactStore.API.Migrations
@@ -15,25 +15,25 @@ namespace ReactStore.API.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("Relational:MaxIdentifierLength", 63)
-                .HasAnnotation("ProductVersion", "5.0.6")
-                .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+                .HasAnnotation("Relational:MaxIdentifierLength", 128)
+                .HasAnnotation("ProductVersion", "5.0.11")
+                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<int>", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
-                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("ClaimType")
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ClaimValue")
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("RoleId")
-                        .HasColumnType("integer");
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -46,17 +46,17 @@ namespace ReactStore.API.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
-                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("ClaimType")
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ClaimValue")
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("UserId")
-                        .HasColumnType("integer");
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -68,16 +68,16 @@ namespace ReactStore.API.Migrations
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<int>", b =>
                 {
                     b.Property<string>("LoginProvider")
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("ProviderKey")
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("ProviderDisplayName")
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("UserId")
-                        .HasColumnType("integer");
+                        .HasColumnType("int");
 
                     b.HasKey("LoginProvider", "ProviderKey");
 
@@ -89,10 +89,10 @@ namespace ReactStore.API.Migrations
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<int>", b =>
                 {
                     b.Property<int>("UserId")
-                        .HasColumnType("integer");
+                        .HasColumnType("int");
 
                     b.Property<int>("RoleId")
-                        .HasColumnType("integer");
+                        .HasColumnType("int");
 
                     b.HasKey("UserId", "RoleId");
 
@@ -104,16 +104,16 @@ namespace ReactStore.API.Migrations
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<int>", b =>
                 {
                     b.Property<int>("UserId")
-                        .HasColumnType("integer");
+                        .HasColumnType("int");
 
                     b.Property<string>("LoginProvider")
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Name")
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Value")
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("UserId", "LoginProvider", "Name");
 
@@ -124,26 +124,27 @@ namespace ReactStore.API.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
-                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
                         .HasMaxLength(256)
-                        .HasColumnType("character varying(256)");
+                        .HasColumnType("nvarchar(256)");
 
                     b.Property<string>("NormalizedName")
                         .HasMaxLength(256)
-                        .HasColumnType("character varying(256)");
+                        .HasColumnType("nvarchar(256)");
 
                     b.HasKey("Id");
 
                     b.HasIndex("NormalizedName")
                         .IsUnique()
-                        .HasDatabaseName("RoleNameIndex");
+                        .HasDatabaseName("RoleNameIndex")
+                        .HasFilter("[NormalizedName] IS NOT NULL");
 
                     b.ToTable("AspNetRoles");
 
@@ -151,13 +152,13 @@ namespace ReactStore.API.Migrations
                         new
                         {
                             Id = 1,
-                            ConcurrencyStamp = "93af1dd6-4af6-47f6-b339-8c3870046fd7",
+                            ConcurrencyStamp = "cc828056-a334-436d-a664-99c8631cd0e7",
                             Name = "Admin"
                         },
                         new
                         {
                             Id = 2,
-                            ConcurrencyStamp = "42e66dc6-dcc2-4363-af4e-88c5e3823390",
+                            ConcurrencyStamp = "89ddd1f9-4b73-44e8-a45d-f813c3c1c6a1",
                             Name = "Customer"
                         });
                 });
@@ -166,64 +167,64 @@ namespace ReactStore.API.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
-                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<int>("AccessFailedCount")
-                        .HasColumnType("integer");
+                        .HasColumnType("int");
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Email")
                         .HasMaxLength(256)
-                        .HasColumnType("character varying(256)");
+                        .HasColumnType("nvarchar(256)");
 
                     b.Property<bool>("EmailConfirmed")
-                        .HasColumnType("boolean");
+                        .HasColumnType("bit");
 
                     b.Property<string>("FirstName")
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("LastName")
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("LockoutEnabled")
-                        .HasColumnType("boolean");
+                        .HasColumnType("bit");
 
                     b.Property<DateTimeOffset?>("LockoutEnd")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("datetimeoffset");
 
                     b.Property<string>("NormalizedEmail")
                         .HasMaxLength(256)
-                        .HasColumnType("character varying(256)");
+                        .HasColumnType("nvarchar(256)");
 
                     b.Property<string>("NormalizedUserName")
                         .HasMaxLength(256)
-                        .HasColumnType("character varying(256)");
+                        .HasColumnType("nvarchar(256)");
 
                     b.Property<string>("PasswordHash")
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("PhoneNumber")
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("PhoneNumberConfirmed")
-                        .HasColumnType("boolean");
+                        .HasColumnType("bit");
 
                     b.Property<string>("RefreshToken")
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("SecurityStamp")
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("TwoFactorEnabled")
-                        .HasColumnType("boolean");
+                        .HasColumnType("bit");
 
                     b.Property<string>("UserName")
                         .HasMaxLength(256)
-                        .HasColumnType("character varying(256)");
+                        .HasColumnType("nvarchar(256)");
 
                     b.HasKey("Id");
 
@@ -232,7 +233,8 @@ namespace ReactStore.API.Migrations
 
                     b.HasIndex("NormalizedUserName")
                         .IsUnique()
-                        .HasDatabaseName("UserNameIndex");
+                        .HasDatabaseName("UserNameIndex")
+                        .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers");
                 });
@@ -241,11 +243,11 @@ namespace ReactStore.API.Migrations
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid");
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -256,27 +258,27 @@ namespace ReactStore.API.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("4083fe1d-5792-4f78-b475-ff8dc49ff770"),
+                            Id = new Guid("8b50935b-e810-4a74-b5e8-302ea8f196d3"),
                             Name = "Apple"
                         },
                         new
                         {
-                            Id = new Guid("cf6fc884-75c3-487f-9df3-8ae9a1a54fee"),
+                            Id = new Guid("9550436b-b0b5-45b0-af0b-1290eae8d93d"),
                             Name = "Samsung"
                         },
                         new
                         {
-                            Id = new Guid("e9218ce2-c1ea-4436-adff-73f4fe5b7baf"),
+                            Id = new Guid("655a1b2b-925b-4507-8712-34974a1c7e57"),
                             Name = "Google"
                         },
                         new
                         {
-                            Id = new Guid("f67f6528-83dc-42cb-906e-85a06b5b0b8a"),
+                            Id = new Guid("73f1144b-d350-4390-bd98-5e28e687f92d"),
                             Name = "Motorola"
                         },
                         new
                         {
-                            Id = new Guid("863c021c-2df5-439f-9406-9a38470e4624"),
+                            Id = new Guid("81d62c5c-6277-4f58-8bc3-a8f8f5a94280"),
                             Name = "LG"
                         });
                 });
@@ -285,11 +287,11 @@ namespace ReactStore.API.Migrations
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid");
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -298,47 +300,47 @@ namespace ReactStore.API.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("694cfe9a-d18b-46c9-8ef3-11163d91a9df"),
+                            Id = new Guid("cac1afa0-989b-4ccd-b546-b55a54beb4a0"),
                             Name = "Black"
                         },
                         new
                         {
-                            Id = new Guid("9eed779f-5afd-48fc-9b94-79dec4a39d9b"),
+                            Id = new Guid("6914f67a-d843-444e-8492-b2d04608b0b3"),
                             Name = "White"
                         },
                         new
                         {
-                            Id = new Guid("0f6fb8a9-8367-43a1-a43c-64063667a5eb"),
+                            Id = new Guid("8cf6b02f-ce8f-4118-81be-55e781f5eaab"),
                             Name = "Blue"
                         },
                         new
                         {
-                            Id = new Guid("9b19c4cc-f6f4-4f5e-a11b-ca7c2a1d5d7c"),
+                            Id = new Guid("65c56e9a-ccb7-49f1-b208-3d34140f54a5"),
                             Name = "Green"
                         },
                         new
                         {
-                            Id = new Guid("87deb307-03a7-4107-9b0c-0c04d85d2719"),
+                            Id = new Guid("9a292290-766a-4c56-ae03-234068ab8a9b"),
                             Name = "Purple"
                         },
                         new
                         {
-                            Id = new Guid("ad19a8b7-e083-41cd-b527-ced2b5f91ebd"),
+                            Id = new Guid("cbc1b3a1-f178-4a02-8a96-86efdde6b7ed"),
                             Name = "Red"
                         },
                         new
                         {
-                            Id = new Guid("aa6bb402-3d98-44ea-96dc-6a6519791fb0"),
+                            Id = new Guid("a2a74029-6e13-4ff5-8fed-94de1b3b5391"),
                             Name = "Red"
                         },
                         new
                         {
-                            Id = new Guid("60e94e18-8fe3-4255-9ff0-3af68e0e744c"),
+                            Id = new Guid("15bf9618-7f6d-4ddb-bb97-bd1fcd21bee0"),
                             Name = "Pink"
                         },
                         new
                         {
-                            Id = new Guid("89821d11-76b7-4c8e-910d-451cf162d37c"),
+                            Id = new Guid("35d63c9e-bc58-4536-8610-565147a25fe1"),
                             Name = "Grey"
                         });
                 });
@@ -347,11 +349,11 @@ namespace ReactStore.API.Migrations
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid");
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -360,32 +362,32 @@ namespace ReactStore.API.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("fa5db1f1-b714-42ec-bd1c-dfcc147d99b7"),
+                            Id = new Guid("9ee71f0b-a60f-424a-becd-d948bcd45e47"),
                             Name = "5G"
                         },
                         new
                         {
-                            Id = new Guid("e925292d-08ec-4eff-b161-3542e986132d"),
+                            Id = new Guid("6fa640bd-41b7-48de-b8bd-ca1c0c72453a"),
                             Name = "4G"
                         },
                         new
                         {
-                            Id = new Guid("2aad7405-d875-42fa-8cc8-adb7526b3c5e"),
+                            Id = new Guid("2d68d9f7-34be-4eba-8c4b-b25ea0aa4762"),
                             Name = "Memory Expandable"
                         },
                         new
                         {
-                            Id = new Guid("72179e80-198d-4df0-a266-da0b008480cc"),
+                            Id = new Guid("5e36e9f6-c331-4590-a7bd-d966e8dbf60a"),
                             Name = "USB-C Connector"
                         },
                         new
                         {
-                            Id = new Guid("f3abb52f-fd09-4e5c-a9a1-f79df7ba0d9c"),
+                            Id = new Guid("9eb77a4b-54ae-41b2-8237-8adc79668fa5"),
                             Name = "Fast Charger"
                         },
                         new
                         {
-                            Id = new Guid("186d6a11-fb15-483e-8992-dae3382dac41"),
+                            Id = new Guid("e24a70e5-da60-40d4-a566-03fa26cc2726"),
                             Name = "Wireless  Charging"
                         });
                 });
@@ -394,14 +396,14 @@ namespace ReactStore.API.Migrations
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid");
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<Guid>("ProductId")
-                        .HasColumnType("uuid");
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Url")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -412,163 +414,163 @@ namespace ReactStore.API.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("664845d1-33cf-49f7-8f67-f3fabc3464e3"),
+                            Id = new Guid("20665285-18af-49e6-a642-d230e7564a99"),
                             ProductId = new Guid("7e60cf5a-0aab-49d5-9ef2-3f2c9b0f097d"),
                             Url = "https://localhost:5001/galaxys21ultra/samsung-s21-ultra.png"
                         },
                         new
                         {
-                            Id = new Guid("853c448b-f8da-498f-a052-79009310392e"),
+                            Id = new Guid("b54ba290-9cdc-46af-8c1a-ca1e758645ff"),
                             ProductId = new Guid("7e60cf5a-0aab-49d5-9ef2-3f2c9b0f097d"),
                             Url = "https://localhost:5001/galaxys21ultra/samsung-s21-ultra1.png"
                         },
                         new
                         {
-                            Id = new Guid("320efcc9-00f8-417b-aabc-39ee59c5c07d"),
+                            Id = new Guid("7c65d5a9-efcd-4bf2-b03d-91f0cc0f6aea"),
                             ProductId = new Guid("7e60cf5a-0aab-49d5-9ef2-3f2c9b0f097d"),
                             Url = "https://localhost:5001/galaxys21ultra/samsung-s21-ultra2.png"
                         },
                         new
                         {
-                            Id = new Guid("9daa3ab9-ea58-4f28-a4a1-e95f3b1c735b"),
+                            Id = new Guid("f53db0d4-08d9-4de8-b5ef-8c41e72162f8"),
                             ProductId = new Guid("7e60cf5a-0aab-49d5-9ef2-3f2c9b0f097d"),
                             Url = "https://localhost:5001/galaxys21ultra/samsung-s21-ultra3.png"
                         },
                         new
                         {
-                            Id = new Guid("9bb59747-dbfd-450d-8ef0-88e8ba277416"),
+                            Id = new Guid("b7dc45b4-8144-47cc-b17a-e3e3d0671071"),
                             ProductId = new Guid("533ed09f-6a3a-4ad7-922f-76ebc4a9bc30"),
                             Url = "https://localhost:5001/galaxynote20/galaxy-note20.png"
                         },
                         new
                         {
-                            Id = new Guid("257bd5af-10df-4efe-80c4-98f423a9b74a"),
+                            Id = new Guid("8273071b-52b9-4018-a8c6-2eae6ed5cfc6"),
                             ProductId = new Guid("533ed09f-6a3a-4ad7-922f-76ebc4a9bc30"),
                             Url = "https://localhost:5001/galaxynote20/galaxy-note20_1.png"
                         },
                         new
                         {
-                            Id = new Guid("1cdf72d5-b705-4f53-bb56-bf14c958a13f"),
+                            Id = new Guid("63c93f93-ca42-4be8-a9ec-7d6a71690be1"),
                             ProductId = new Guid("533ed09f-6a3a-4ad7-922f-76ebc4a9bc30"),
                             Url = "https://localhost:5001/galaxynote20/galaxy-note20_2.png"
                         },
                         new
                         {
-                            Id = new Guid("9936d20a-0c4e-479e-807d-d0daec74929f"),
+                            Id = new Guid("b66ffbf7-3882-4103-93a9-e32c0c88964b"),
                             ProductId = new Guid("533ed09f-6a3a-4ad7-922f-76ebc4a9bc30"),
                             Url = "https://localhost:5001/galaxynote20/galaxy-note20_3.png"
                         },
                         new
                         {
-                            Id = new Guid("e1dc2c53-919c-4f65-b680-0ebe07aa7885"),
+                            Id = new Guid("09ea2b3b-9071-4d9e-ba74-1633939b62fb"),
                             ProductId = new Guid("8b94cae3-0ef3-4e2e-bbcd-92ec689d3b73"),
                             Url = "https://localhost:5001/iphone12promax/iphone12-pro.png"
                         },
                         new
                         {
-                            Id = new Guid("d990b0be-141a-4faa-a349-f75003577af2"),
+                            Id = new Guid("09972f84-6a1b-43cb-97f9-6fedff8ceb1e"),
                             ProductId = new Guid("8b94cae3-0ef3-4e2e-bbcd-92ec689d3b73"),
                             Url = "https://localhost:5001/iphone12promax/iphone12-pro1.png"
                         },
                         new
                         {
-                            Id = new Guid("3c26a7ee-a93d-4f4a-aaa8-9f60ab7fda32"),
+                            Id = new Guid("4b5add65-7c4a-4627-b941-b228c99d6b9c"),
                             ProductId = new Guid("8b94cae3-0ef3-4e2e-bbcd-92ec689d3b73"),
                             Url = "https://localhost:5001/iphone12promax/iphone12-pro2.png"
                         },
                         new
                         {
-                            Id = new Guid("c7b5b32e-a375-400b-beb5-360515d09080"),
+                            Id = new Guid("561c71bd-ae32-4849-b91f-5d7eef17b9fc"),
                             ProductId = new Guid("8b94cae3-0ef3-4e2e-bbcd-92ec689d3b73"),
                             Url = "https://localhost:5001/iphone12promax/iphone12-pro3.png"
                         },
                         new
                         {
-                            Id = new Guid("d6ae74b2-0227-4f8d-939b-eb9f8a2f7f4e"),
+                            Id = new Guid("9fa85199-a9a4-4e34-9600-e3c73cefc6fb"),
                             ProductId = new Guid("d96901d6-44aa-4d67-b616-a347966df5a2"),
                             Url = "https://localhost:5001/iphone12/iphone-12.png"
                         },
                         new
                         {
-                            Id = new Guid("7749826b-a657-4be3-a558-4e3ae67f0aa8"),
+                            Id = new Guid("222be47b-e45d-40c5-a6f7-fe0701422719"),
                             ProductId = new Guid("d96901d6-44aa-4d67-b616-a347966df5a2"),
                             Url = "https://localhost:5001/iphone12/iphone-12_1.png"
                         },
                         new
                         {
-                            Id = new Guid("eada588d-a1c7-40dd-9a60-d60eae78c0f2"),
+                            Id = new Guid("e654516b-9d75-454e-aa62-0d3bdbb1ba0a"),
                             ProductId = new Guid("d96901d6-44aa-4d67-b616-a347966df5a2"),
                             Url = "https://localhost:5001/iphone12/iphone-12_2.png"
                         },
                         new
                         {
-                            Id = new Guid("995ca79a-0a45-4195-8273-0f09f410e796"),
+                            Id = new Guid("efef9cbd-4fb9-474c-8d5e-7bdf0cec2d08"),
                             ProductId = new Guid("a3478123-d608-4032-b447-b634a2dec89c"),
                             Url = "https://localhost:5001/iphone12mini/iphone-12-mini.png"
                         },
                         new
                         {
-                            Id = new Guid("918d6230-208c-4a1f-af66-47e26be2c546"),
+                            Id = new Guid("92d24fb6-4af1-4cc2-9000-68583af85db0"),
                             ProductId = new Guid("a3478123-d608-4032-b447-b634a2dec89c"),
                             Url = "https://localhost:5001/iphone12mini/iphone-12-mini1.png"
                         },
                         new
                         {
-                            Id = new Guid("b271fdd2-70e5-4c9c-ba60-9c18634b3ee0"),
+                            Id = new Guid("26389e92-7cb8-4022-9174-409d7ba71d23"),
                             ProductId = new Guid("a3478123-d608-4032-b447-b634a2dec89c"),
                             Url = "https://localhost:5001/iphone12mini/iphone-12-mini2.png"
                         },
                         new
                         {
-                            Id = new Guid("d4caa76b-9f15-48a0-996f-f925d3e5cb0a"),
+                            Id = new Guid("345f5849-d728-4f42-a34c-60df173d145e"),
                             ProductId = new Guid("a3478123-d608-4032-b447-b634a2dec89c"),
                             Url = "https://localhost:5001/iphone12mini/iphone-12-mini3.png"
                         },
                         new
                         {
-                            Id = new Guid("eed207a2-3904-495c-9ffa-4593c5bb53a5"),
+                            Id = new Guid("b7ed0ffc-c0b2-4360-8459-f66b4c9f4ca3"),
                             ProductId = new Guid("5b5087a0-5cac-4fde-b39d-d6fbdb7f5d57"),
                             Url = "https://localhost:5001/google5/google-pixel5.png"
                         },
                         new
                         {
-                            Id = new Guid("98d46381-c748-441c-a42b-d6fc56d478bd"),
+                            Id = new Guid("474d771a-eb56-4e0f-8af1-e9be645d0a83"),
                             ProductId = new Guid("5b5087a0-5cac-4fde-b39d-d6fbdb7f5d57"),
                             Url = "https://localhost:5001/google5/google-pixel5_1.png"
                         },
                         new
                         {
-                            Id = new Guid("bb69450b-ef66-4eb9-be38-ee1d0f045ebc"),
+                            Id = new Guid("6bfcb6ad-585b-4727-a834-744bbaa19e60"),
                             ProductId = new Guid("5b5087a0-5cac-4fde-b39d-d6fbdb7f5d57"),
                             Url = "https://localhost:5001/google5/google-pixel5_2.png"
                         },
                         new
                         {
-                            Id = new Guid("f77adca5-10e5-4942-b7d9-1fc03195c62e"),
+                            Id = new Guid("09886d41-de45-4812-aa1d-b40eeff71a86"),
                             ProductId = new Guid("5b5087a0-5cac-4fde-b39d-d6fbdb7f5d57"),
                             Url = "https://localhost:5001/google5/google-pixel5_3.png"
                         },
                         new
                         {
-                            Id = new Guid("a09afe60-d968-4322-9d7d-84e4690167ea"),
+                            Id = new Guid("5ea5dd5f-2f9d-4ca8-b49e-986cd211b02b"),
                             ProductId = new Guid("fc386a0a-48a8-49e9-aff7-e0bf6902d3b3"),
                             Url = "https://localhost:5001/galaxys21/samsung-s21.png"
                         },
                         new
                         {
-                            Id = new Guid("6a1a5c86-a30b-4f10-a72b-6a49fc19ba74"),
+                            Id = new Guid("79b5e2e3-9f82-4acb-961c-1ccf9d4a3f18"),
                             ProductId = new Guid("fc386a0a-48a8-49e9-aff7-e0bf6902d3b3"),
                             Url = "https://localhost:5001/galaxys21/samsung-s21_1.png"
                         },
                         new
                         {
-                            Id = new Guid("535ce4ce-2597-4b7c-9de2-7308110b496c"),
+                            Id = new Guid("e8cc4a6d-dad9-4b6e-8011-1583ee192fc0"),
                             ProductId = new Guid("fc386a0a-48a8-49e9-aff7-e0bf6902d3b3"),
                             Url = "https://localhost:5001/galaxys21/samsung-s21_2.png"
                         },
                         new
                         {
-                            Id = new Guid("e4b83e6c-6a89-465f-9f10-deb702ba2ea9"),
+                            Id = new Guid("8bcf4ef1-bbbe-4c8a-ae38-58889b72f9c4"),
                             ProductId = new Guid("fc386a0a-48a8-49e9-aff7-e0bf6902d3b3"),
                             Url = "https://localhost:5001/galaxys21/samsung-s21_3.png"
                         });
@@ -578,11 +580,11 @@ namespace ReactStore.API.Migrations
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid");
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -591,12 +593,12 @@ namespace ReactStore.API.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("5ebd7336-4c47-4a33-a0db-e3bfe5b540e8"),
+                            Id = new Guid("4da1c3d5-0fe8-4c41-88a5-6e0a07df2041"),
                             Name = "Android"
                         },
                         new
                         {
-                            Id = new Guid("c0a14f61-1241-4b1b-9809-a14011baaa2f"),
+                            Id = new Guid("d0e4b055-a394-4a65-ba58-0661c9738a71"),
                             Name = "iOS"
                         });
                 });
@@ -605,17 +607,17 @@ namespace ReactStore.API.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
-                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<int>("PaymentStatus")
-                        .HasColumnType("integer");
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("Placed")
-                        .HasColumnType("timestamp without time zone");
+                        .HasColumnType("datetime2");
 
                     b.Property<int>("UserId")
-                        .HasColumnType("integer");
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -628,23 +630,23 @@ namespace ReactStore.API.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
-                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<Guid>("ColorId")
-                        .HasColumnType("uuid");
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<int>("OrderId")
-                        .HasColumnType("integer");
+                        .HasColumnType("int");
 
                     b.Property<Guid>("ProductId")
-                        .HasColumnType("uuid");
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<int>("Quantity")
-                        .HasColumnType("integer");
+                        .HasColumnType("int");
 
                     b.Property<Guid>("StorageId")
-                        .HasColumnType("uuid");
+                        .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
 
@@ -659,45 +661,45 @@ namespace ReactStore.API.Migrations
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid");
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<Guid>("BrandId")
-                        .HasColumnType("uuid");
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Description")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<Guid>("OSId")
-                        .HasColumnType("uuid");
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<decimal>("ScreenSize")
                         .HasPrecision(14, 2)
-                        .HasColumnType("numeric(14,2)");
+                        .HasColumnType("decimal(14,2)");
 
                     b.Property<string>("ShortDescription")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Slug")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<decimal>("StandByTime")
                         .HasPrecision(14, 2)
-                        .HasColumnType("numeric(14,2)");
+                        .HasColumnType("decimal(14,2)");
 
                     b.Property<decimal>("TalkTime")
                         .HasPrecision(14, 2)
-                        .HasColumnType("numeric(14,2)");
+                        .HasColumnType("decimal(14,2)");
 
                     b.Property<string>("Thumbnail")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -713,7 +715,7 @@ namespace ReactStore.API.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("187452bb-9e1a-4fca-a871-c51f1d7123db"),
+                            Id = new Guid("14915afa-97fe-47f8-8ffe-344286c99a2a"),
                             BrandId = new Guid("6213ab61-e37d-40fe-9fd9-61ea21fba50b"),
                             Description = "The best iPhone display ever for incredible contrast and higher resolution. With Ceramic Shield, which has four times better drop performance. Superfast speeds. Superlow latency. So you can get faster downloads, better-quality video streaming, more responsive gaming and real-time interactivity. A14 Bionic is the fastest chip in a smartphone. With a 16-core Neural Engine, it crunches trillions of operations each second. And it’s superefficient for great battery life. ",
                             Name = "iPhone 12 mini",
@@ -727,7 +729,7 @@ namespace ReactStore.API.Migrations
                         },
                         new
                         {
-                            Id = new Guid("2dac889f-434e-4e24-b9da-d69300049935"),
+                            Id = new Guid("f9d40590-d02a-4b52-b931-4a6821b875d3"),
                             BrandId = new Guid("6213ab61-e37d-40fe-9fd9-61ea21fba50b"),
                             Description = "The best iPhone display ever for incredible contrast and higher resolution. With Ceramic Shield, which has four times better drop performance. Superfast speeds. Superlow latency. So you can get faster downloads, better-quality video streaming, more responsive gaming and real-time interactivity.A14 Bionic is the fastest chip in a smartphone. With a 16-core Neural Engine, it crunches trillions of operations each second. And it’s superefficient for great battery life.",
                             Name = "iPhone 12",
@@ -741,7 +743,7 @@ namespace ReactStore.API.Migrations
                         },
                         new
                         {
-                            Id = new Guid("46c8a4bc-87c2-4204-b137-2cf82a43ef01"),
+                            Id = new Guid("2f97b1fd-7fb2-4bbb-a2da-6b1c666116b2"),
                             BrandId = new Guid("6213ab61-e37d-40fe-9fd9-61ea21fba50b"),
                             Description = "The Super Retina XDR display goes edge to edge. With Ceramic Shield, which has four times better drop performance. Superfast speeds. Superlow latency. So you can get faster downloads, better-quality video streaming, more responsive gaming and real-time interactivity. Introducing the first 5-nanometre chip in the industry. Which means more speed, more power and more efficiency. LiDAR creates accurate depth maps in nanoseconds, so objects are placed instantly and more accurately in AR experiences.",
                             Name = "iPhone 12 Pro Max",
@@ -755,7 +757,7 @@ namespace ReactStore.API.Migrations
                         },
                         new
                         {
-                            Id = new Guid("e2982908-d613-4715-8659-eefe46dd26c0"),
+                            Id = new Guid("78a6160f-07c6-4f88-9f8d-4aa8c1f76e27"),
                             BrandId = new Guid("8ab3a1c4-0b52-4671-ab2a-753e28c1a0be"),
                             Description = "With 5G,you can download your favourite movies on the go and start watching before you know it. Go from game time to show time, all in crystal clear HD. Pixel’s 5G hotspot is powerful enough to keep multiple devices connected at once. HDR+ automatically enhances colour and lighting, so the photos that you take stay as vivid as you remember. With HD Duo screen sharing, you can read articles, watch live sports, and laugh together as if you were sitting in the same room. Adaptive Battery reduces power to the apps that you rarely use, so your mobile phone keeps its charge all day.",
                             Name = "Google Pixel 5",
@@ -769,7 +771,7 @@ namespace ReactStore.API.Migrations
                         },
                         new
                         {
-                            Id = new Guid("369797be-d93f-4848-9e07-ad852cf08a0d"),
+                            Id = new Guid("7214bb82-b7c2-435e-b327-ef87d820397e"),
                             BrandId = new Guid("7360baa4-71c3-442d-9328-7f9cfbdf5e1f"),
                             Description = "This isn't the time to slow down, this is the time to forge ahead and take the opportunities that come your way. You don’t need a smartphone. You need a power phone. One as beautiful as it is intelligent with a pen that is mighty, a battery that doesn't leave you hanging and is as well-connected as you are. The Galaxy Note20 5G and Galaxy Note20 Ultra 5G take power to the next level with cutting-edge technology, letting you master whatever you choose to do next. The Galaxy Note20 5G and Galaxy Note20 Ultra 5G have a big battery. Big enough to last all day. But that's not all, it's also intelligent. The Galaxy Note20 5G and Galaxy Note20 Ultra 5G intuitively manage your app usage to conserve energy on its own so you don't need to. Rest assured that you can tackle those emails during the day and be left with enough power to tackle your opponents at night. And if you are running low on battery, get hours of power from minutes of charge with Super Fast Charging.",
                             Name = "Samsung Galaxy Note20",
@@ -783,7 +785,7 @@ namespace ReactStore.API.Migrations
                         },
                         new
                         {
-                            Id = new Guid("0d4071b5-5532-4524-9bf8-a1ca7aafce22"),
+                            Id = new Guid("0446d697-c296-475d-8b0c-f9db2df3e387"),
                             BrandId = new Guid("7360baa4-71c3-442d-9328-7f9cfbdf5e1f"),
                             Description = "Create share-ready GIFs and videos in one take1 or pick your favourite moments and pull your favorite stills in super high res to share with your followers. Zoom in close, take photos and videos like a pro, and capture incredible share-ready moments with our easy-to-use, multi-lens camera. Power every scroll, click, tap, and stream all day long and then some with an intelligent battery that works with you, not against you. A night out. Your best friend's birthday party. Family moments you'll want to remember forever. Capture your life's best moments in head-turning, super smooth 8K video.",
                             Name = "Samsung Galaxy S21 Ultra",
@@ -797,7 +799,7 @@ namespace ReactStore.API.Migrations
                         },
                         new
                         {
-                            Id = new Guid("072dc017-7b1b-4b73-9d46-0ca1779c12c2"),
+                            Id = new Guid("ce1ff821-31dc-4ef9-bf9c-b2506dbdde29"),
                             BrandId = new Guid("7360baa4-71c3-442d-9328-7f9cfbdf5e1f"),
                             Description = "Create share-ready GIFs and videos in one take1 or pick your favourite moments and pull your favorite stills in super high res to share with your followers. Zoom in close, take photos and videos like a pro, and capture incredible share-ready moments with our easy-to-use, multi-lens camera. Power every scroll, click, tap, and stream all day long and then some with an intelligent battery that works with you, not against you. A night out. Your best friend's birthday party. Family moments you'll want to remember forever. Capture your life's best moments in head-turning, super smooth 8K video.",
                             Name = "Samsung Galaxy S21",
@@ -814,10 +816,10 @@ namespace ReactStore.API.Migrations
             modelBuilder.Entity("ReactStore.Domain.Entities.ProductFeature", b =>
                 {
                     b.Property<Guid>("FeatureId")
-                        .HasColumnType("uuid");
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<Guid>("ProductId")
-                        .HasColumnType("uuid");
+                        .HasColumnType("uniqueidentifier");
 
                     b.HasKey("FeatureId", "ProductId");
 
@@ -956,17 +958,17 @@ namespace ReactStore.API.Migrations
             modelBuilder.Entity("ReactStore.Domain.Entities.ProductVariant", b =>
                 {
                     b.Property<Guid>("ColorId")
-                        .HasColumnType("uuid");
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<Guid>("ProductId")
-                        .HasColumnType("uuid");
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<Guid>("StorageId")
-                        .HasColumnType("uuid");
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<decimal>("Price")
                         .HasPrecision(14, 2)
-                        .HasColumnType("numeric(14,2)");
+                        .HasColumnType("decimal(14,2)");
 
                     b.HasKey("ColorId", "ProductId", "StorageId");
 
@@ -1221,11 +1223,11 @@ namespace ReactStore.API.Migrations
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid");
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Capacity")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -1234,27 +1236,27 @@ namespace ReactStore.API.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("4b6d2f64-68c1-4fe1-805a-f1c0516eacef"),
+                            Id = new Guid("900ef2e0-84c6-4495-81ef-3d6bf6b5cd03"),
                             Capacity = "32GB"
                         },
                         new
                         {
-                            Id = new Guid("1ea54453-bd7b-4f15-9445-70b89202171c"),
+                            Id = new Guid("c958d2a0-5101-4f02-9bd2-98b2ae4d08bc"),
                             Capacity = "64GB"
                         },
                         new
                         {
-                            Id = new Guid("a91def6b-fd80-43e4-9ea9-d588cc15eb10"),
+                            Id = new Guid("56fdf576-5b9a-435b-80bf-6077a3380281"),
                             Capacity = "128GB"
                         },
                         new
                         {
-                            Id = new Guid("5fb56e04-c55f-4ea5-88a6-c4c90d661c7a"),
+                            Id = new Guid("6b60cdd4-c4d9-4c73-b639-7de0b8196b4e"),
                             Capacity = "256GB"
                         },
                         new
                         {
-                            Id = new Guid("d38d8c78-8f3e-4a82-a67b-30043dad3bd7"),
+                            Id = new Guid("1add9a78-afb4-4cf8-b7af-1aa240c6770f"),
                             Capacity = "512GB"
                         });
                 });
@@ -1333,36 +1335,36 @@ namespace ReactStore.API.Migrations
                         {
                             b1.Property<int>("OrderId")
                                 .ValueGeneratedOnAdd()
-                                .HasColumnType("integer")
-                                .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+                                .HasColumnType("int")
+                                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                             b1.Property<string>("Address1")
                                 .IsRequired()
-                                .HasColumnType("text");
+                                .HasColumnType("nvarchar(max)");
 
                             b1.Property<string>("Address2")
                                 .IsRequired()
-                                .HasColumnType("text");
+                                .HasColumnType("nvarchar(max)");
 
                             b1.Property<string>("Country")
                                 .IsRequired()
-                                .HasColumnType("text");
+                                .HasColumnType("nvarchar(max)");
 
                             b1.Property<string>("FirstName")
                                 .IsRequired()
-                                .HasColumnType("text");
+                                .HasColumnType("nvarchar(max)");
 
                             b1.Property<string>("LastName")
                                 .IsRequired()
-                                .HasColumnType("text");
+                                .HasColumnType("nvarchar(max)");
 
                             b1.Property<string>("Postcode")
                                 .IsRequired()
-                                .HasColumnType("text");
+                                .HasColumnType("nvarchar(max)");
 
                             b1.Property<string>("TownCity")
                                 .IsRequired()
-                                .HasColumnType("text");
+                                .HasColumnType("nvarchar(max)");
 
                             b1.HasKey("OrderId");
 
