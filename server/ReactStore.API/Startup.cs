@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
@@ -35,7 +36,9 @@ namespace ReactStore.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddAppDbContext(Configuration.GetSection("DataSource:ConnectionString").Value);
+
+            services.AddAppDbContext(Configuration.GetConnectionString("ConnectionString"));
+            /*services.AddAppDbContext(Configuration.GetSection("DataSource:ConnectionString").Value);*/
             services.AddScoped<IProductRepository, ProductRepository>()
                 .AddScoped<IBrandRepository, BrandRepository>()
                 .AddScoped<IColorRepository, ColorRepository>()
@@ -55,34 +58,29 @@ namespace ReactStore.API
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "ReactStore.API", Version = "v1" });
             });
+
+            services.AddCors(options => options.AddPolicy("CorsPolicy", builder =>
+                  builder
+                   .AllowAnyMethod()
+                   .AllowAnyHeader()
+                   .WithOrigins(Configuration["Frontend"])));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            app.UseDeveloperExceptionPage();
             if (env.IsDevelopment())
             {
-                app.UseDeveloperExceptionPage();
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "ReactStore.API v1"));
             }
-            
-            app.UseCors(cfg =>
-            {
-                cfg.WithOrigins("http://localhost:3000")
-                    .AllowAnyMethod()
-                    .AllowAnyHeader();
-            });
-
             app.UseHttpsRedirection();
 
-            app.UseStaticFiles(new StaticFileOptions
-            {
-                FileProvider = new PhysicalFileProvider(Path.Combine(env.ContentRootPath,"StaticFiles")),
-                RequestPath = ""
-            });
+            app.UseStaticFiles();
 
             app.UseRouting();
+            app.UseCors("CorsPolicy");
             app.UseAuthentication();
             app.UseAuthorization();
 

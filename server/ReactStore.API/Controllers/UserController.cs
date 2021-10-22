@@ -12,7 +12,6 @@ namespace ReactStore.API.Controllers
     [Authorize]
     [ApiController]
     [Route("api/user")]
-    [JsonException]
     public class UserController : ControllerBase
     {
         private readonly IUserService _userService;
