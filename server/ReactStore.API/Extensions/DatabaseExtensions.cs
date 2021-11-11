@@ -11,7 +11,7 @@ namespace ReactStore.API.Extensions
             return services
                 .AddDbContext<ReactStoreContext>(contextOptions =>
                 {
-                    contextOptions.UseSqlServer(
+                    contextOptions.UseNpgsql(
                         connectionString,
                         serverOptions =>
                         {
