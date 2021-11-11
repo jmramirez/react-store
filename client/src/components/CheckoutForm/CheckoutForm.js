@@ -7,6 +7,7 @@ import {useForm} from "react-hook-form";
 import axios from "axios";
 import {Link} from "react-router-dom";
 import {clearCartItems} from "../../redux/actions/cartActions";
+import { webAPIURL } from '../../AppSettings';
 
 
 
@@ -36,7 +37,7 @@ const CheckoutForm = ({ submitForm }) => {
             e.preventDefault()
             const stripeToken = await stripe.createToken(elements.getElement(CardElement), data.nameOnCard)
             const response = await axios.post(
-                'https://localhost:44383/api/orders',
+                `${webAPIURL}/orders`,
                 {
                     stripeToken: stripeToken.token.id,
                     firstName: data.firstName,

@@ -48,7 +48,7 @@ export const Header = () => {
     <header className="header">
       <nav className="header-nav">
         <Link to="/" className="header-nav__heading">
-          CoreNETStore
+          CoreStoreNet
         </Link>
         <div className="header-nav__links">
           {

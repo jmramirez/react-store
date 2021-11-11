@@ -2,6 +2,7 @@ import './ProductsList.scss'
 import {useEffect, useState} from 'react'
 import axios from 'axios'
 import {ProductItem} from "../ProductItem/ProductItem";
+import { webAPIURL } from '../../AppSettings';
 
 export const ProductsList = ({ location }) => {
   const [products, setProducts] = useState([])
@@ -9,7 +10,7 @@ export const ProductsList = ({ location }) => {
   useEffect(() => {
     const getProducts = async () => {
       try {
-        const response = await axios.get(`https://localhost:44383/api/products${location.search}`)
+        const response = await axios.get(`${webAPIURL}/products${location.search}`)
         setProducts(response.data)
       } catch (e) {
         console.log(e)

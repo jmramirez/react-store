@@ -6,6 +6,7 @@ import {ProductImage} from '../../components/ProductImage/ProductImage'
 import _ from 'lodash'
 import  {useDispatch} from 'react-redux'
 import { addToCart } from '../../redux/actions/cartActions'
+import { webAPIURL } from '../../AppSettings'
 
 export const ProductPage = ({ match }) => {
   const [product, setProduct] = useState(null)
@@ -23,7 +24,7 @@ export const ProductPage = ({ match }) => {
   
   useEffect(() => {
     const getProduct = async (slug) => {
-      const product = await axios.get(`https://localhost:44383/api/products/${slug}`)
+      const product = await axios.get(`${webAPIURL}/products/${slug}`)
       setProduct(product.data)
       const colorsList = _.uniqBy(product.data.productVariants.map( v =>{
           return {

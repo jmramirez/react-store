@@ -2,6 +2,7 @@
 import {useEffect, useState} from "react";
 import axios from "axios";
 import {MultiFilter} from "../MultiFilter/MultiFilter";
+import { webAPIURL } from '../../AppSettings';
 
 export const FiltersList = ({ location, history, open }) => {
   const [filtersItems, setFiltersItems] = useState([])
@@ -11,7 +12,7 @@ export const FiltersList = ({ location, history, open }) => {
     useEffect(() => {
       const getFilters = async () =>{
         try {
-          const filters = await axios.get(`https://localhost:44383/api/filters`)
+          const filters = await axios.get(`${webAPIURL}/filters`)
           setFiltersItems(filters.data)
           setLoading(false)
         } catch (e){

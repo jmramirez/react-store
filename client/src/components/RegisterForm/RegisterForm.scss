@@ -4,5 +4,8 @@
 
 .form--xl {
   @extend .form;
-  height: 31rem;
+
+  @include tablet{
+    height: 31rem;
+  }
 }

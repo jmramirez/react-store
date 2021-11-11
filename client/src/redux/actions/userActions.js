@@ -13,6 +13,7 @@ import { CART_CLEAR_ITEMS } from "../constants/cartConstants";
 import {
     HIDE_AUTH_MODAL
 } from "../constants/modalConstant";
+import { webAPIURL } from "../../AppSettings";
 
 export const login = (email, password) => async (dispatch) => {
     try {
@@ -27,7 +28,7 @@ export const login = (email, password) => async (dispatch) => {
         }
         
         const { data } = await axios.post(
-            'https://localhost:44383/api/user/auth',
+            `${webAPIURL}/user/auth`,
             { email, password },
             config
         )
@@ -65,7 +66,7 @@ export const signup = (firstName, lastName, email, password) => async (dispatch)
         }
         
         const { data } = await axios.post(
-            'https://localhost:44383/api/user',
+            `${webAPIURL}/user`,
             { firstName, lastName, email, password},
             config
         )

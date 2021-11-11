@@ -152,3 +152,14 @@ _Pvt_Extensions
 
 # FAKE - F# Make
 .fake/
+
+# Publish Web Output
+*.[Pp]ublish.xml
+*.azurePubxml
+# TODO: Comment the next line if you want to checkin your web deploy settings
+# but database connection strings (with potential passwords) will be unencrypted
+*.pubxml
+*.publishproj
+*.arm.json
+**Deploy.json
+**Dependencies.json
