@@ -63,7 +63,7 @@ namespace ReactStore.API
                   builder
                    .AllowAnyMethod()
                    .AllowAnyHeader()
-                   .WithOrigins(Configuration["Frontend"])));
+                   .WithOrigins(Configuration.GetSection("Frontend").Get<string[]>())));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

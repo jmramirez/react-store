@@ -164,3 +164,4 @@ _Pvt_Extensions
 *.arm.json
 **Deploy.json
 **Dependencies.json
+**AppSettings.js
