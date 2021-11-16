@@ -31,6 +31,10 @@ const LoginForm = ({ signUp }) => {
         dispatch(login(data.email, data.password))
     }
     
+    const demoLogin = () => {
+        dispatch(login("demouser@example.com","coreStoreNet"))
+    }
+    
     return(
         <>
             <form className="form form--login" onSubmit={handleSubmit(onSubmit)}>
@@ -53,7 +57,10 @@ const LoginForm = ({ signUp }) => {
                     <button className="form-action__cancel" onClick={closeModal} type="button">
                         Cancel
                     </button>
-                    <input className="form-action__accept" type="submit" value="Log In" />
+                    <input className="form-action__accept form-action__accept--login" type="submit" value="Log In" />
+                    <button className="form-action__cancel" onClick={demoLogin} type="button">
+                        Demo Log In
+                    </button>
                 </div>
             </form>
         </>

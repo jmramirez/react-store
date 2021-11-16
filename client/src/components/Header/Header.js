@@ -5,7 +5,7 @@ import {useEffect, useState} from 'react'
 import Modal from "../Modal/Modal";
 import { useDispatch } from "react-redux";
 import { showAuthModal,  } from "../../redux/actions/modalActions";
-import { logout } from "../../redux/actions/userActions";
+import {login, logout} from "../../redux/actions/userActions";
 import axios from "axios";
 
 
@@ -43,6 +43,9 @@ export const Header = () => {
     history.push('/')
   }
   
+  const demoLogin = () => {
+    dispatch(login("demouser@example.com","coreStoreNet"))
+  }
   
   return (
     <header className="header">
@@ -73,6 +76,9 @@ export const Header = () => {
                         </button>
                         <button className="header-nav__links-auth__test__auth-create" onClick={() => openModal('signup')}>
                           Create Account
+                        </button>
+                        <button className="header-nav__links-auth__test__auth-demo" onClick={demoLogin}>
+                          Demo Account
                         </button>
                       </div>
                     </div>         

@@ -97,6 +97,7 @@
             width: 18rem;
             right: 0;
             padding: 1rem;
+            flex-wrap: wrap;
           }
           
           &__auth-sign {
@@ -114,6 +115,16 @@
 
             @include tablet{
               margin: 0;
+            }
+          }
+          
+          &__auth-demo {
+            @include auth_button(#FFF,#02558b);
+            margin: 0.25rem 0;
+            width: 100%;
+
+            @include tablet{
+              margin: 0.5rem 0.5rem 0 0.5rem;
             }
           }
           
